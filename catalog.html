@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Online Store — Firmmit Uzbekistan</title>
+<meta name="description" content="Firmmit Uzbekistan online store — download or view the full product catalog (PDF).">
+<link rel="stylesheet" href="css/style.css">
+<style>
+.store-bar { display:flex; align-items:center; justify-content:space-between; gap:22px; flex-wrap:wrap; background:var(--bg-blue); border:1px solid rgba(50,100,255,0.16); border-radius:var(--radius); padding:22px 26px; margin-bottom:26px; }
+.store-bar .sb-copy h3 { font-size:1.14rem; margin:0 0 4px; }
+.store-bar .sb-copy p { color:var(--muted); font-size:0.92rem; margin:0; }
+.store-bar .sb-actions { display:flex; gap:12px; flex-wrap:wrap; }
+.pdf-shell { border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow-md); background:#f3f5f9; position:relative; }
+.pdf-shell iframe { width:100%; height:78vh; min-height:560px; border:0; display:block; background:#f3f5f9; }
+.pdf-fallback { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:16px; text-align:center; padding:30px; color:var(--muted); }
+.pdf-fallback .fi { width:64px; height:64px; border-radius:16px; background:var(--blue); color:#fff; display:grid; place-items:center; }
+</style>
+</head>
+<body data-page="catalog">
+
+<section class="page-hero no-i18n">
+  <div class="hero-bg media-farm photo" data-photo="assets/photos/store-hero.jpg"><div class="rows"></div></div>
+  <div class="wrap">
+    <span class="eyebrow" style="color:var(--sky)" data-c="eyebrow">Online Store</span>
+    <h1 data-c="title">Product catalog</h1>
+    <p data-c="subtitle">Our full smart-farm components catalog — view it below or download the PDF.</p>
+    <div class="crumbs"><a href="index.html" data-c="crumbHome">Home</a><span class="sep">/</span><span data-c="crumbHere">Online Store</span></div>
+  </div>
+</section>
+
+<section class="block no-i18n">
+  <div class="wrap">
+    <div class="store-bar">
+      <div class="sb-copy">
+        <h3 data-c="h3">FIRMMIT product catalog 2026</h3>
+        <p data-c="desc">Click to open the full catalog with photos and specifications.</p>
+      </div>
+      <div class="sb-actions">
+        <a class="btn btn-primary" id="pdf-open" href="assets/firmmit-catalog.pdf" target="_blank" rel="noopener" data-c="openbtn">Open catalog (PDF) <span class="arrow">↗</span></a>
+        <a class="btn btn-outline" id="pdf-dl" download="Firmmit-Uzbekistan-Catalog-2026.pdf" data-c="dl">Download <span class="arrow">↓</span></a>
+      </div>
+    </div>
+
+    <div class="pdf-shell">
+      <div class="pdf-fallback" id="pdf-fallback">
+        <div class="fi"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg></div>
+        <div><strong style="color:var(--ink);font-size:1.05rem;" data-c="fbTitle">Open the catalog</strong><br><span data-c="fbText">Click “Open catalog (PDF)” above to view it in a new tab.</span></div>
+      </div>
+      <iframe id="pdf-frame" title="Firmmit Uzbekistan product catalog"></iframe>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band no-i18n">
+  <div class="hero-bg media-farm"><div class="rows"></div></div>
+  <div class="wrap">
+    <h2 data-c="ctaTitle">Need pricing or bulk orders?</h2>
+    <p data-c="ctaText">Tell us what you need — we'll send a quote and current availability for your project.</p>
+    <a href="contact.html" class="btn btn-primary" data-c="ctaBtn">Contact us <span class="arrow">→</span></a>
+  </div>
+</section>
+
+<script>
+(function () {
+  'use strict';
+  var UI = {
+    en:{eyebrow:"Online Store",title:"Product catalog",subtitle:"Our full smart-farm components catalog — view it below or download the PDF.",crumbHome:"Home",crumbHere:"Online Store",h3:"FIRMMIT product catalog 2026",desc:"Click to open the full catalog with photos and specifications.",openbtn:"Open catalog (PDF)",dl:"Download",fbTitle:"Open the catalog",fbText:"Click “Open catalog (PDF)” above to view it in a new tab.",ctaTitle:"Need pricing or bulk orders?",ctaText:"Tell us what you need — we'll send a quote and current availability for your project.",ctaBtn:"Contact us"},
+    uz:{eyebrow:"Online savdo",title:"Mahsulot katalogi",subtitle:"To'liq aqlli ferma komponentlari katalogi — pastda ko'ring yoki PDF'ni yuklab oling.",crumbHome:"Bosh sahifa",crumbHere:"Online savdo",h3:"FIRMMIT mahsulot katalogi 2026",desc:"To'liq katalogni rasm va spetsifikatsiyalari bilan ochish uchun bosing.",openbtn:"Katalogni ochish (PDF)",dl:"Yuklab olish",fbTitle:"Katalogni oching",fbText:"Yuqoridagi “Katalogni ochish (PDF)” tugmasini bosing — yangi oynada ochiladi.",ctaTitle:"Narx yoki ulgurji buyurtma kerakmi?",ctaText:"Nima kerakligini ayting — loyihangiz uchun narx va joriy mavjudlikni yuboramiz.",ctaBtn:"Bog'lanish"},
+    ru:{eyebrow:"Онлайн-магазин",title:"Каталог продукции",subtitle:"Полный каталог компонентов для умных ферм — смотрите ниже или скачайте PDF.",crumbHome:"Главная",crumbHere:"Онлайн-магазин",h3:"Каталог продукции FIRMMIT 2026",desc:"Нажмите, чтобы открыть полный каталог с фото и спецификациями.",openbtn:"Открыть каталог (PDF)",dl:"Скачать",fbTitle:"Откройте каталог",fbText:"Нажмите «Открыть каталог (PDF)» выше — откроется в новой вкладке.",ctaTitle:"Нужны цены или оптовые заказы?",ctaText:"Сообщите, что вам нужно — пришлём расчёт и актуальное наличие.",ctaBtn:"Связаться с нами"},
+    ko:{eyebrow:"온라인 스토어",title:"제품 카탈로그",subtitle:"전체 스마트팜 부품 카탈로그 — 아래에서 보거나 PDF를 다운로드하세요.",crumbHome:"홈",crumbHere:"온라인 스토어",h3:"FIRMMIT 제품 카탈로그 2026",desc:"사진과 사양이 포함된 전체 카탈로그를 보려면 클릭하세요.",openbtn:"카탈로그 열기 (PDF)",dl:"다운로드",fbTitle:"카탈로그 열기",fbText:"위의 “카탈로그 열기 (PDF)”를 클릭하면 새 탭에서 열립니다.",ctaTitle:"가격이나 대량 주문이 필요하신가요?",ctaText:"필요하신 것을 알려주세요 — 견적과 재고를 보내드립니다.",ctaBtn:"문의하기"}
+  };
+  function lang(){ try{ return (window.FirmmitI18N&&FirmmitI18N.get())||localStorage.getItem("firmmit-lang")||"en"; }catch(e){ return "en"; } }
+  function render(){ var t=UI[lang()]||UI.en; document.querySelectorAll("[data-c]").forEach(function(el){ var k=el.getAttribute("data-c"); if(t[k]!=null){ var a=el.querySelector(".arrow"); el.textContent=t[k]; if(a){ el.appendChild(document.createTextNode(" ")); el.appendChild(a);} } }); document.documentElement.setAttribute("lang",lang()); }
+  document.addEventListener("DOMContentLoaded",render);
+  document.addEventListener("firmmit:lang",render);
+
+  document.addEventListener("DOMContentLoaded", function () {
+    var open = document.getElementById('pdf-open');
+    var dl = document.getElementById('pdf-dl');
+    var frame = document.getElementById('pdf-frame');
+    var fb = document.getElementById('pdf-fallback');
+    var href = open.getAttribute('href') || '';
+    var isData = href.indexOf('data:') === 0;
+    var blobUrl = null;
+    if (dl && !isData) dl.setAttribute('href', href); // live site: native download
+
+    function ensureBlob(cb){
+      if (!isData){ cb(href); return; }
+      if (blobUrl){ cb(blobUrl); return; }
+      fetch(href).then(function(r){return r.blob();}).then(function(b){ blobUrl = URL.createObjectURL(b); cb(blobUrl); }).catch(function(){ cb(null); });
+    }
+
+    // inline viewer
+    ensureBlob(function(url){
+      if (!url) return;
+      frame.src = url + '#view=FitH';
+      frame.addEventListener('load', function(){ if (fb) fb.style.display='none'; });
+      setTimeout(function(){ if (frame.contentWindow && fb) fb.style.display='none'; }, 1200);
+    });
+
+    // Open in new tab (works even where inline PDF is blocked)
+    open.addEventListener('click', function(e){
+      if (!isData) return; // real file: default target=_blank works
+      e.preventDefault();
+      ensureBlob(function(url){ if(url) window.open(url,'_blank'); else window.open(href,'_blank'); });
+    });
+    // Download
+    dl.addEventListener('click', function(e){
+      if (!isData) return; // real file: native download works
+      e.preventDefault();
+      ensureBlob(function(url){ if(!url){ window.open(href,'_blank'); return; } var a=document.createElement('a'); a.href=url; a.download='Firmmit-Uzbekistan-Catalog-2026.pdf'; document.body.appendChild(a); a.click(); a.remove(); });
+    });
+  });
+})();
+</script>
+<script src="js/site.js"></script>
+</body>
+</html>
