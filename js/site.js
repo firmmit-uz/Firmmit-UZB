@@ -32,9 +32,8 @@
   var NAV = [
     { key: 'home' },
     { key: 'about' },
-    { key: 'products' },
-    { key: 'services' },
-    { key: 'trade' }
+    { key: 'products', children: ['products', 'trade'] },
+    { key: 'services' }
   ];
   var NAV_LABEL = {
     home: 'Home', about: 'About Us', products: 'Products', catalog: 'Online Store', services: 'Services',
@@ -1313,6 +1312,16 @@
 
   function buildHeader(active) {
     var links = NAV.map(function (n) {
+      if (n.children && n.children.length) {
+        var on = n.children.indexOf(active) >= 0;
+        var kids = n.children.map(function (k) {
+          return '<a href="' + hrefFor(k) + '" data-key="' + k + '"' + (k === active ? ' class="active"' : '') + '>' + NAV_LABEL[k] + '</a>';
+        }).join('');
+        return '<div class="has-drop' + (on ? ' active' : '') + '">' +
+                 '<a class="drop-parent' + (on ? ' active' : '') + '" href="' + hrefFor(n.key) + '" data-key="' + n.key + '">' + NAV_LABEL[n.key] + '<span class="caret no-i18n" aria-hidden="true">▾</span></a>' +
+                 '<div class="dropdown">' + kids + '</div>' +
+               '</div>';
+      }
       return '<a href="' + hrefFor(n.key) + '" data-key="' + n.key + '"' + (n.key === active ? ' class="active"' : '') + '>' + NAV_LABEL[n.key] + '</a>';
     }).join('');
 
@@ -1334,6 +1343,12 @@
     var drawer = document.createElement('div');
     drawer.className = 'drawer';
     var dLinks = NAV.map(function (n) {
+      if (n.children && n.children.length) {
+        return n.children.map(function (k, i) {
+          var cls = (i > 0 ? 'drawer-sub' : '') + (k === active ? ' active' : '');
+          return '<a' + (cls.trim() ? ' class="' + cls.trim() + '"' : '') + ' href="' + hrefFor(k) + '" data-key="' + k + '">' + NAV_LABEL[k] + '</a>';
+        }).join('');
+      }
       return '<a href="' + hrefFor(n.key) + '" data-key="' + n.key + '"' + (n.key === active ? ' class="active"' : '') + '>' + NAV_LABEL[n.key] + '</a>';
     }).join('');
     drawer.innerHTML =
