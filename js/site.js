@@ -6,7 +6,14 @@
   'use strict';
 
   var KR_URL = 'https://www.firmmit.kr/html/#firstPage';
-  var CATALOG_PDF = 'assets/firmmit-catalog-2026.pdf';
+  // Per-language catalog PDF. Replace each value with that language's PDF when available.
+  var CATALOG_PDF = {
+    uz: 'assets/firmmit-catalog.pdf',
+    ru: 'assets/firmmit-catalog.pdf',
+    en: 'assets/firmmit-catalog.pdf',
+    ko: 'assets/firmmit-catalog.pdf'
+  };
+  function catalogHref(lang) { return CATALOG_PDF[lang] || CATALOG_PDF.en; }
   var STORE = 'firmmit-lang';
   var LANGS = ['uz', 'ru', 'en', 'ko'];
 
@@ -33,8 +40,9 @@
   var NAV = [
     { key: 'home' },
     { key: 'about' },
-    { key: 'products', children: ['products', 'trade'] },
-    { key: 'services' }
+    { key: 'products' },
+    { key: 'services' },
+    { key: 'trade' }
   ];
   var NAV_LABEL = {
     home: 'Home', about: 'About Us', products: 'Products', catalog: 'Online Store', services: 'Services',
@@ -1327,41 +1335,39 @@
   }
 
   function buildHeader(active) {
+    var links = NAV.map(function (n) {
+      return '<a href="' + hrefFor(n.key) + '" data-key="' + n.key + '"' + (n.key === active ? ' class="active"' : '') + '>' + NAV_LABEL[n.key] + '</a>';
+    }).join('');
+    var contactActive = active === 'contact' ? ' class="active"' : '';
+
     var header = document.createElement('header');
     header.className = 'site-header';
     header.innerHTML =
       '<div class="wrap">' + brandMarkup() +
+        '<nav class="nav">' + links + '</nav>' +
         '<div class="header-cta">' +
-          '<a class="nav-catalog" href="' + CATALOG_PDF + '" target="_blank" rel="noopener" aria-label="Product catalog (PDF)">' + iconCatalog() + '<span>Catalog</span></a>' +
+          '<a class="nav-catalog" href="' + catalogHref(current) + '" target="_blank" rel="noopener" aria-label="Product catalog (PDF)">' + iconCatalog() + '<span>Catalog</span></a>' +
           '<div class="lang-switch no-i18n" role="group" aria-label="Language">' +
             '<button data-lang="uz">UZ</button><button data-lang="ru">RU</button><button data-lang="en">EN</button><button data-lang="ko">한</button>' +
           '</div>' +
+          '<a class="nav-contact" href="' + hrefFor('contact') + '" data-key="contact">Contact</a>' +
           '<button class="burger" aria-label="Open menu"><span></span><span></span><span></span></button>' +
         '</div>' +
       '</div>';
 
-    // full-screen overlay menu (head-office style)
-    var PRIMARY = ['home', 'about', 'products', 'services'];
-    var SECONDARY = ['trade', 'contact'];
-    function ovLink(k, cls) {
-      return '<a class="' + cls + (k === active ? ' active' : '') + '" href="' + hrefFor(k) + '" data-key="' + k + '">' + NAV_LABEL[k] + '</a>';
-    }
+    var dLinks = NAV.map(function (n) {
+      return '<a href="' + hrefFor(n.key) + '" data-key="' + n.key + '"' + (n.key === active ? ' class="active"' : '') + '>' + NAV_LABEL[n.key] + '</a>';
+    }).join('');
     var drawer = document.createElement('div');
     drawer.className = 'drawer';
     drawer.innerHTML =
       '<div class="drawer-panel">' +
-        '<div class="drawer-top no-i18n">' +
-          '<div class="drawer-lang" role="group" aria-label="Language">' +
-            '<button data-lang="uz">UZ</button><button data-lang="ru">RU</button><button data-lang="en">EN</button><button data-lang="ko">한</button>' +
-          '</div>' +
-          '<button class="drawer-close" aria-label="Close menu">&times;</button>' +
-        '</div>' +
-        '<nav class="drawer-nav">' +
-          PRIMARY.map(function (k) { return ovLink(k, 'd-main'); }).join('') +
-          '<div class="drawer-sec">' + SECONDARY.map(function (k) { return ovLink(k, 'd-sub'); }).join('') +
-            '<a class="d-sub d-catalog" href="' + CATALOG_PDF + '" target="_blank" rel="noopener">' + iconCatalog() + '<span>Catalog (PDF)</span></a>' +
-          '</div>' +
-        '</nav>' +
+        '<button class="drawer-close no-i18n" aria-label="Close menu">&times;</button>' +
+        '<div class="drawer-lang no-i18n">' +
+          '<button data-lang="uz">UZ</button><button data-lang="ru">RU</button><button data-lang="en">EN</button><button data-lang="ko">한</button>' +
+        '</div>' + dLinks +
+        '<a href="' + hrefFor('contact') + '" data-key="contact"' + contactActive + '>Contact</a>' +
+        '<a class="drawer-catalog" href="' + catalogHref(current) + '" target="_blank" rel="noopener">' + iconCatalog() + '<span>Catalog (PDF)</span></a>' +
       '</div>';
 
     document.body.prepend(drawer);
@@ -1372,15 +1378,19 @@
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
 
-    function closeDrawer() { drawer.classList.remove('open'); document.body.style.overflow = ''; }
-    header.querySelector('.burger').addEventListener('click', function () { drawer.classList.add('open'); document.body.style.overflow = 'hidden'; });
-    drawer.querySelector('.drawer-close').addEventListener('click', closeDrawer);
-    drawer.addEventListener('click', function (e) { if (e.target === drawer || e.target.classList.contains('drawer-panel') || e.target.classList.contains('drawer-nav')) closeDrawer(); });
-    drawer.querySelectorAll('.drawer-nav a').forEach(function (a) { a.addEventListener('click', closeDrawer); });
-    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeDrawer(); });
+    header.querySelector('.burger').addEventListener('click', function () { drawer.classList.add('open'); });
+    drawer.querySelector('.drawer-close').addEventListener('click', function () { drawer.classList.remove('open'); });
+    drawer.addEventListener('click', function (e) { if (e.target === drawer) drawer.classList.remove('open'); });
+    drawer.querySelectorAll('.drawer-panel a').forEach(function (a) { a.addEventListener('click', function () { drawer.classList.remove('open'); }); });
 
     document.querySelectorAll('.lang-switch button, .drawer-lang button').forEach(function (b) {
       b.addEventListener('click', function () { apply(b.getAttribute('data-lang')); if (drawer.classList.contains('open')) drawer.classList.remove('open'); });
+    });
+
+    // catalog link follows the selected language
+    document.addEventListener('firmmit:lang', function (e) {
+      var href = catalogHref(e.detail);
+      document.querySelectorAll('.nav-catalog, .drawer-catalog').forEach(function (a) { a.setAttribute('href', href); });
     });
   }
 
