@@ -212,18 +212,18 @@
       "From feasibility study to harvest, we stay involved: designing the facility, sourcing the right systems, installing them, training the team and supporting every season that follows.":
         "От технико-экономического обоснования до урожая мы рядом: проектируем объект, подбираем системы, монтируем их, обучаем команду и поддерживаем каждый последующий сезон.",
       "Because your life is behind our work.": "Потому что за нашей работой — ваша жизнь.",
-      "Food security is personal. Everything we build is meant to help a family, a farm and a region grow with confidence.":
-        "Продовольственная безопасность — это личное. Всё, что мы создаём, помогает семье, ферме и региону уверенно расти.",
+      "Food security is not merely a matter of agriculture — it is directly tied to the sustainable future of every family, every farm and the entire region. That is why every technological solution we build rests on the principles of dependable harvests, rational use of resources and long-term sustainability. We adapt Korea's advanced smart-farm technologies to Central Asia's climate, water, crops and local growing conditions — delivering practical, measurable results for farmers.":
+        "Продовольственная безопасность — это не просто вопрос сельского хозяйства. Она напрямую связана с устойчивым будущим каждой семьи, каждого фермерского хозяйства и всего региона.\n\nИменно поэтому каждое технологическое решение, которое мы создаём, опирается на принципы надёжного урожая, рационального использования ресурсов и долгосрочной устойчивости.\n\nМы адаптируем передовые корейские технологии умных ферм к климату, воде, культурам и местным условиям выращивания Центральной Азии, обеспечивая фермерам практический и измеримый результат.",
       "MISSION": "МИССИЯ", "VISION": "ВИДЕНИЕ", "VALUES": "ЦЕННОСТИ",
-      "Feed the future": "Накормить будущее",
-      "Make dependable, high-yield farming possible in every climate through smart, resource-efficient technology.":
-        "Сделать надёжное высокоурожайное фермерство возможным в любом климате с помощью умных ресурсосберегающих технологий.",
-      "A greener region": "Более зелёный регион",
-      "To be Central Asia's most trusted smart-farm partner, cutting water use while raising quality and output.":
-        "Стать самым надёжным партнёром по умному фермерству в Центральной Азии, снижая расход воды и повышая качество и объём.",
-      "Trust & results": "Доверие и результат",
-      "Reliable, distinctive and professional — we measure success by our growers' harvests, not our promises.":
-        "Надёжно, уникально и профессионально — мы измеряем успех урожаем аграриев, а не обещаниями.",
+      "Sustainably feed the future": "Устойчиво накормить будущее",
+      "To build high-yield, efficient and sustainable agricultural production in any climate by deploying smart, precise and resource-efficient agri-technologies. Our aim is not simply to introduce modern technology, but to turn it into real economic results for the farmer.":
+        "Формировать высокоурожайное, эффективное и устойчивое сельскохозяйственное производство в любом климате за счёт внедрения умных, точных и ресурсосберегающих агротехнологий.\n\nНаша цель — не просто внедрить современные технологии, а превратить их в реальный экономический результат для фермера.",
+      "Setting a new standard for smart agriculture in Central Asia": "Создать новый стандарт умного сельского хозяйства в Центральной Азии",
+      "To become Central Asia's most trusted smart-farm technology partner by optimising water and energy use, raising yield and quality, and automating production processes. We combine Korean engineering and innovation with local agronomic experience to develop suitable, measurable and scalable agri-technology solutions for Uzbekistan and the wider region.":
+        "Стать самым надёжным партнёром по технологиям умных ферм в Центральной Азии за счёт оптимизации расхода воды и энергии, повышения урожайности и качества, а также автоматизации производственных процессов.\n\nМы объединяем корейскую инженерию и инновации с местным агрономическим опытом, разрабатывая подходящие, измеримые и масштабируемые агротехнологические решения для Узбекистана и всего региона.",
+      "Trust. Precision. Results.": "Доверие. Точность. Результат.",
+      "Our work rests on three core principles: Trust — we build open, responsible and long-term partnerships with farmers, partners and investors. Precision — we base decisions on data, sensors, agronomic analysis and real indicators, not guesswork. Results — we turn every technological solution into real, measurable economic value for the farmer.":
+        "Наша работа опирается на три ключевых принципа:\n\nДоверие — мы выстраиваем открытые, ответственные и долгосрочные партнёрства с фермерами, партнёрами и инвесторами.\n\nТочность — мы принимаем решения не на догадках, а на данных, датчиках, агрономическом анализе и реальных показателях.\n\nРезультат — мы превращаем каждое технологическое решение в реальную, измеримую экономическую ценность для фермера.",
       "Four commitments to every grower.": "Четыре обязательства перед каждым аграрием.",
       "Localized engineering": "Локализованная инженерия",
       "Every system is specified for the site's climate, water and target crop — not copy-pasted from another market.":
@@ -573,17 +573,17 @@
       "From feasibility study to harvest, we stay involved: designing the facility, sourcing the right systems, installing them, training the team and supporting every season that follows.":
         "Texnik-iqtisodiy asosdan hosilgacha biz yoningizdamiz: obyektni loyihalash, tizimlarni tanlash, o'rnatish, jamoani o'qitish va keyingi har bir mavsumni qo'llab-quvvatlash.",
       "Because your life is behind our work.": "Bizning ishimiz ortida insonlar hayoti turadi.",
-      "Food security is personal. Everything we build is meant to help a family, a farm and a region grow with confidence.":
+      "Food security is not merely a matter of agriculture — it is directly tied to the sustainable future of every family, every farm and the entire region. That is why every technological solution we build rests on the principles of dependable harvests, rational use of resources and long-term sustainability. We adapt Korea's advanced smart-farm technologies to Central Asia's climate, water, crops and local growing conditions — delivering practical, measurable results for farmers.":
         "Oziq-ovqat xavfsizligi — shunchaki qishloq xo'jaligi masalasi emas. Bu har bir oila, fermer xo'jaligi va butun mintaqaning barqaror kelajagi bilan bevosita bog'liq.\n\nShu sababli biz yaratadigan har bir texnologik yechim ishonchli hosil, oqilona resurs sarfi va uzoq muddatli barqarorlik tamoyillariga asoslanadi.\n\nBiz Koreyaning ilg'or aqlli ferma texnologiyalarini Markaziy Osiyoning iqlimi, suv resurslari, ekinlari va mahalliy agrotexnik sharoitlariga moslashtirib, fermerlar uchun amaliy va o'lchanadigan natija beradigan yechimlarni joriy etamiz.",
       "MISSION": "MISSIYA", "VISION": "MAQSAD", "VALUES": "QADRIYATLAR",
-      "Feed the future": "Kelajakni barqaror oziqlantirish",
-      "Make dependable, high-yield farming possible in every climate through smart, resource-efficient technology.":
+      "Sustainably feed the future": "Kelajakni barqaror oziqlantirish",
+      "To build high-yield, efficient and sustainable agricultural production in any climate by deploying smart, precise and resource-efficient agri-technologies. Our aim is not simply to introduce modern technology, but to turn it into real economic results for the farmer.":
         "Aqlli, aniq va resurs-tejamkor agrotexnologiyalarni joriy etish orqali iqlim sharoitidan qat'i nazar, yuqori hosildor, samarali va barqaror qishloq xo'jaligi ishlab chiqarishini shakllantirish.\n\nBizning maqsadimiz — zamonaviy texnologiyani shunchaki joriy etish emas, balki uni fermer uchun real iqtisodiy natijaga aylantirishdir.",
-      "A greener region": "Markaziy Osiyoda aqlli qishloq xo'jaligining yangi standartini yaratish",
-      "To be Central Asia's most trusted smart-farm partner, cutting water use while raising quality and output.":
+      "Setting a new standard for smart agriculture in Central Asia": "Markaziy Osiyoda aqlli qishloq xo'jaligining yangi standartini yaratish",
+      "To become Central Asia's most trusted smart-farm technology partner by optimising water and energy use, raising yield and quality, and automating production processes. We combine Korean engineering and innovation with local agronomic experience to develop suitable, measurable and scalable agri-technology solutions for Uzbekistan and the wider region.":
         "Suv va energiya sarfini optimallashtirish, hosildorlik va mahsulot sifatini oshirish hamda ishlab chiqarish jarayonlarini avtomatlashtirish orqali Markaziy Osiyoning eng ishonchli aqlli ferma texnologiyalari hamkoriga aylanish.\n\nBiz Koreya muhandisligi va innovatsiyasini mahalliy agronomik tajriba bilan birlashtirib, O'zbekiston va butun Markaziy Osiyo uchun mos, o'lchanadigan va kengaytiriladigan agrotexnologik yechimlarni rivojlantiramiz.",
-      "Trust & results": "Ishonch. Aniqlik. Natija.",
-      "Reliable, distinctive and professional — we measure success by our growers' harvests, not our promises.":
+      "Trust. Precision. Results.": "Ishonch. Aniqlik. Natija.",
+      "Our work rests on three core principles: Trust — we build open, responsible and long-term partnerships with farmers, partners and investors. Precision — we base decisions on data, sensors, agronomic analysis and real indicators, not guesswork. Results — we turn every technological solution into real, measurable economic value for the farmer.":
         "Bizning faoliyatimiz uchta asosiy tamoyilga tayanadi:\n\nIshonch — fermerlar, hamkorlar va investorlar bilan ochiq, mas'uliyatli va uzoq muddatli hamkorlikni yo'lga qo'yamiz.\n\nAniqlik — qarorlarni taxminlarga emas, ma'lumotlar, sensorlar, agronomik tahlil va real ko'rsatkichlarga asoslaymiz.\n\nNatija — har bir texnologik yechimni fermer uchun real, o'lchanadigan iqtisodiy samaraga aylantiramiz.",
       "Four commitments to every grower.": "Har bir fermerga to'rtta majburiyat.",
       "Localized engineering": "Mahalliylashtirilgan muhandislik",
@@ -933,18 +933,18 @@
       "From feasibility study to harvest, we stay involved: designing the facility, sourcing the right systems, installing them, training the team and supporting every season that follows.":
         "타당성 조사부터 수확까지 함께합니다: 시설 설계, 적합한 시스템 조달, 설치, 팀 교육, 그리고 이후 모든 시즌 지원.",
       "Because your life is behind our work.": "우리의 일 뒤에 당신의 삶이 있기에.",
-      "Food security is personal. Everything we build is meant to help a family, a farm and a region grow with confidence.":
-        "식량 안보는 개인의 문제입니다. 우리가 만드는 모든 것은 한 가족, 한 농장, 한 지역이 자신 있게 성장하도록 돕기 위한 것입니다.",
+      "Food security is not merely a matter of agriculture — it is directly tied to the sustainable future of every family, every farm and the entire region. That is why every technological solution we build rests on the principles of dependable harvests, rational use of resources and long-term sustainability. We adapt Korea's advanced smart-farm technologies to Central Asia's climate, water, crops and local growing conditions — delivering practical, measurable results for farmers.":
+        "식량 안보는 단순한 농업의 문제가 아닙니다. 그것은 모든 가정과 농장, 그리고 지역 전체의 지속 가능한 미래와 직접 연결되어 있습니다.\n\n그래서 우리가 만드는 모든 기술 솔루션은 신뢰할 수 있는 수확, 합리적인 자원 사용, 장기적인 지속 가능성의 원칙에 기반합니다.\n\n우리는 한국의 첨단 스마트팜 기술을 중앙아시아의 기후, 물, 작물, 현지 재배 환경에 맞게 적용하여 농가에 실질적이고 측정 가능한 결과를 제공합니다.",
       "MISSION": "미션", "VISION": "비전", "VALUES": "가치",
-      "Feed the future": "미래를 먹이다",
-      "Make dependable, high-yield farming possible in every climate through smart, resource-efficient technology.":
-        "스마트하고 자원 효율적인 기술로 모든 기후에서 안정적이고 높은 수확의 농업을 실현합니다.",
-      "A greener region": "더 푸른 지역",
-      "To be Central Asia's most trusted smart-farm partner, cutting water use while raising quality and output.":
-        "물 사용을 줄이면서 품질과 생산량을 높이는, 중앙아시아에서 가장 신뢰받는 스마트팜 파트너가 되는 것.",
-      "Trust & results": "신뢰와 성과",
-      "Reliable, distinctive and professional — we measure success by our growers' harvests, not our promises.":
-        "신뢰할 수 있고 독보적이며 전문적으로 — 우리는 약속이 아니라 농가의 수확으로 성공을 측정합니다.",
+      "Sustainably feed the future": "미래를 지속 가능하게 먹이다",
+      "To build high-yield, efficient and sustainable agricultural production in any climate by deploying smart, precise and resource-efficient agri-technologies. Our aim is not simply to introduce modern technology, but to turn it into real economic results for the farmer.":
+        "스마트하고 정밀하며 자원 효율적인 농업 기술을 도입하여 어떤 기후에서도 고수확·고효율·지속 가능한 농업 생산을 구축합니다.\n\n우리의 목표는 단순히 현대 기술을 도입하는 것이 아니라, 그것을 농가를 위한 실질적인 경제적 성과로 전환하는 것입니다.",
+      "Setting a new standard for smart agriculture in Central Asia": "중앙아시아 스마트 농업의 새로운 기준 만들기",
+      "To become Central Asia's most trusted smart-farm technology partner by optimising water and energy use, raising yield and quality, and automating production processes. We combine Korean engineering and innovation with local agronomic experience to develop suitable, measurable and scalable agri-technology solutions for Uzbekistan and the wider region.":
+        "물과 에너지 사용을 최적화하고 수확량과 품질을 높이며 생산 공정을 자동화하여 중앙아시아에서 가장 신뢰받는 스마트팜 기술 파트너가 되는 것.\n\n우리는 한국의 엔지니어링과 혁신을 현지 농학 경험과 결합하여 우즈베키스탄과 더 넓은 지역을 위한 적합하고 측정 가능하며 확장 가능한 농업 기술 솔루션을 개발합니다.",
+      "Trust. Precision. Results.": "신뢰. 정밀. 결과.",
+      "Our work rests on three core principles: Trust — we build open, responsible and long-term partnerships with farmers, partners and investors. Precision — we base decisions on data, sensors, agronomic analysis and real indicators, not guesswork. Results — we turn every technological solution into real, measurable economic value for the farmer.":
+        "우리의 활동은 세 가지 핵심 원칙에 기반합니다:\n\n신뢰 — 농가, 파트너, 투자자와 열린 자세로 책임감 있고 장기적인 협력을 구축합니다.\n\n정밀 — 추측이 아니라 데이터, 센서, 농학적 분석, 실제 지표에 근거하여 결정합니다.\n\n결과 — 모든 기술 솔루션을 농가를 위한 실질적이고 측정 가능한 경제적 가치로 전환합니다.",
       "Four commitments to every grower.": "모든 농가를 위한 네 가지 약속.",
       "Localized engineering": "현지화 엔지니어링",
       "Every system is specified for the site's climate, water and target crop — not copy-pasted from another market.":
