@@ -33,7 +33,6 @@
     { key: 'home' },
     { key: 'about' },
     { key: 'products' },
-    { key: 'catalog' },
     { key: 'services' },
     { key: 'trade' }
   ];
@@ -1382,7 +1381,7 @@
           '</div>' +
         '</div>' +
         col('Company', [['About Us', 'about'], ['Our Partners', 'partners'], ['Certificates', 'certs'], ['News', 'news']]) +
-        col('What we do', [['Products', 'products'], ['Online Store', 'catalog'], ['Services', 'services'], ['Import & Export', 'trade'], ['Contact', 'contact']]) +
+        col('What we do', [['Products', 'products'], ['Services', 'services'], ['Import & Export', 'trade'], ['Contact', 'contact']]) +
         '<div class="footer-head-office">' +
           '<span class="tag no-i18n">HEAD OFFICE</span>' +
           '<strong class="no-i18n">Firmmit Korea</strong>' +
