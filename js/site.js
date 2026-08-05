@@ -14,7 +14,6 @@
     email: 'global@firmmit.com',
     phone: '+998 99 850 4500',
     phoneHref: '+998998504500',
-    inn: '311507169',
     bank: 'Aloqabank (АТ "ALOQABANK") IP PARK RCKU, Tashkent',
     mfo: '00401',
     account: '20208000907117476001'
@@ -1174,10 +1173,10 @@
     ko: '우즈베키스탄 공화국, 타슈켄트시, 야시나바드구, 「도스토보드」 MSG, 마흐툼쿨리 거리 130'
   };
   var LEGALNAME = {
-    en: 'Limited Liability Company "FIRMMIT"',
-    ru: 'ООО «FIRMMIT»',
-    uz: '«FIRMMIT» MChJ',
-    ko: '유한책임회사 "FIRMMIT"'
+    en: 'Firmmit Uzbekistan',
+    ru: 'Firmmit Uzbekistan',
+    uz: 'Firmmit Uzbekistan',
+    ko: 'Firmmit Uzbekistan'
   };
 
   /* ============================================================
@@ -1391,7 +1390,7 @@
           '<a class="no-i18n" href="' + KR_URL + '" target="_blank" rel="noopener">www.firmmit.kr ↗</a>' +
         '</div>' +
         '<div class="footer-legal no-i18n">' +
-          '<strong>' + LEGALNAME.en + '</strong> · INN: ' + CO.inn +
+          '<strong>' + LEGALNAME.en + '</strong>' +
           ' &nbsp;|&nbsp; Bank: ' + CO.bank + ' · MFO ' + CO.mfo + ' · Acc. ' + CO.account +
         '</div>' +
       '</div>' +
