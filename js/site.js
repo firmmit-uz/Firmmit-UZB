@@ -456,6 +456,10 @@
       "Mon–Fri, 09:00 – 18:00": "Пн–Пт, 09:00 – 18:00", "Closed on public holidays": "Выходные в праздничные дни",
       "Full name": "Полное имя", "Company / Farm": "Компания / ферма",
       "I'm interested in": "Меня интересует", "Select a topic": "Выберите тему",
+      "Can I help you with anything?": "Чем мы можем вам помочь?",
+      "Outdoor Smart Farm": "Уличная умная ферма", "Indoor Smart Farm": "Крытая умная ферма",
+      "Plant Factory": "Фабрика растений", "Collaboration proposal": "Предложение о сотрудничестве",
+      "Casual Meeting": "Неформальная встреча", "ETC": "Другое",
       "Smart greenhouse project": "Проект умной теплицы", "Products & equipment": "Продукция и оборудование",
       "Services (design, install, training)": "Услуги (проект, монтаж, обучение)",
       "Import & export / trade": "Импорт и экспорт / торговля", "Partnership": "Партнёрство", "Other": "Другое",
@@ -803,6 +807,10 @@
       "Mon–Fri, 09:00 – 18:00": "Dush–Jum, 09:00 – 18:00", "Closed on public holidays": "Bayram kunlari dam olish",
       "Full name": "To'liq ism", "Company / Farm": "Kompaniya / ferma",
       "I'm interested in": "Meni qiziqtiradi", "Select a topic": "Mavzuni tanlang",
+      "Can I help you with anything?": "Sizga qanday yordam bera olamiz?",
+      "Outdoor Smart Farm": "Ochiq maydon aqlli fermasi", "Indoor Smart Farm": "Yopiq aqlli ferma",
+      "Plant Factory": "O'simlik fabrikasi", "Collaboration proposal": "Hamkorlik taklifi",
+      "Casual Meeting": "Norasmiy uchrashuv", "ETC": "Boshqa",
       "Smart greenhouse project": "Aqlli issiqxona loyihasi", "Products & equipment": "Mahsulot va jihozlar",
       "Services (design, install, training)": "Xizmatlar (loyiha, o'rnatish, o'qitish)",
       "Import & export / trade": "Import va eksport / savdo", "Partnership": "Hamkorlik", "Other": "Boshqa",
@@ -1148,6 +1156,10 @@
       "Mon–Fri, 09:00 – 18:00": "월–금, 09:00 – 18:00", "Closed on public holidays": "공휴일 휴무",
       "Full name": "성함", "Company / Farm": "회사 / 농장",
       "I'm interested in": "관심 분야", "Select a topic": "주제 선택",
+      "Can I help you with anything?": "무엇을 도와드릴까요?",
+      "Outdoor Smart Farm": "노지 스마트팜", "Indoor Smart Farm": "실내 스마트팜",
+      "Plant Factory": "식물공장", "Collaboration proposal": "협업 제안",
+      "Casual Meeting": "가벼운 미팅", "ETC": "기타",
       "Smart greenhouse project": "스마트 온실 프로젝트", "Products & equipment": "제품 및 장비",
       "Services (design, install, training)": "서비스 (설계·설치·교육)",
       "Import & export / trade": "수출입 / 교역", "Partnership": "파트너십", "Other": "기타",
@@ -1311,53 +1323,38 @@
   }
 
   function buildHeader(active) {
-    var links = NAV.map(function (n) {
-      if (n.children && n.children.length) {
-        var on = n.children.indexOf(active) >= 0;
-        var kids = n.children.map(function (k) {
-          return '<a href="' + hrefFor(k) + '" data-key="' + k + '"' + (k === active ? ' class="active"' : '') + '>' + NAV_LABEL[k] + '</a>';
-        }).join('');
-        return '<div class="has-drop' + (on ? ' active' : '') + '">' +
-                 '<a class="drop-parent' + (on ? ' active' : '') + '" href="' + hrefFor(n.key) + '" data-key="' + n.key + '">' + NAV_LABEL[n.key] + '<span class="caret no-i18n" aria-hidden="true">▾</span></a>' +
-                 '<div class="dropdown">' + kids + '</div>' +
-               '</div>';
-      }
-      return '<a href="' + hrefFor(n.key) + '" data-key="' + n.key + '"' + (n.key === active ? ' class="active"' : '') + '>' + NAV_LABEL[n.key] + '</a>';
-    }).join('');
-
-    var contactActive = active === 'contact' ? ' active' : '';
     var header = document.createElement('header');
     header.className = 'site-header';
     header.innerHTML =
       '<div class="wrap">' + brandMarkup() +
-        '<nav class="nav">' + links + '</nav>' +
         '<div class="header-cta">' +
           '<div class="lang-switch no-i18n" role="group" aria-label="Language">' +
             '<button data-lang="uz">UZ</button><button data-lang="ru">RU</button><button data-lang="en">EN</button><button data-lang="ko">한</button>' +
           '</div>' +
-          '<a class="nav-contact" href="' + hrefFor('contact') + '" data-key="contact">Contact</a>' +
           '<button class="burger" aria-label="Open menu"><span></span><span></span><span></span></button>' +
         '</div>' +
       '</div>';
 
+    // full-screen overlay menu (head-office style)
+    var PRIMARY = ['home', 'about', 'products', 'services'];
+    var SECONDARY = ['trade', 'contact'];
+    function ovLink(k, cls) {
+      return '<a class="' + cls + (k === active ? ' active' : '') + '" href="' + hrefFor(k) + '" data-key="' + k + '">' + NAV_LABEL[k] + '</a>';
+    }
     var drawer = document.createElement('div');
     drawer.className = 'drawer';
-    var dLinks = NAV.map(function (n) {
-      if (n.children && n.children.length) {
-        return n.children.map(function (k, i) {
-          var cls = (i > 0 ? 'drawer-sub' : '') + (k === active ? ' active' : '');
-          return '<a' + (cls.trim() ? ' class="' + cls.trim() + '"' : '') + ' href="' + hrefFor(k) + '" data-key="' + k + '">' + NAV_LABEL[k] + '</a>';
-        }).join('');
-      }
-      return '<a href="' + hrefFor(n.key) + '" data-key="' + n.key + '"' + (n.key === active ? ' class="active"' : '') + '>' + NAV_LABEL[n.key] + '</a>';
-    }).join('');
     drawer.innerHTML =
       '<div class="drawer-panel">' +
-        '<button class="drawer-close no-i18n" aria-label="Close menu">&times;</button>' +
-        '<div class="drawer-lang no-i18n">' +
-          '<button data-lang="uz">UZ</button><button data-lang="ru">RU</button><button data-lang="en">EN</button><button data-lang="ko">한</button>' +
-        '</div>' + dLinks +
-        '<a href="' + hrefFor('contact') + '" data-key="contact"' + (contactActive ? ' class="active"' : '') + '>Contact</a>' +
+        '<div class="drawer-top no-i18n">' +
+          '<div class="drawer-lang" role="group" aria-label="Language">' +
+            '<button data-lang="uz">UZ</button><button data-lang="ru">RU</button><button data-lang="en">EN</button><button data-lang="ko">한</button>' +
+          '</div>' +
+          '<button class="drawer-close" aria-label="Close menu">&times;</button>' +
+        '</div>' +
+        '<nav class="drawer-nav">' +
+          PRIMARY.map(function (k) { return ovLink(k, 'd-main'); }).join('') +
+          '<div class="drawer-sec">' + SECONDARY.map(function (k) { return ovLink(k, 'd-sub'); }).join('') + '</div>' +
+        '</nav>' +
       '</div>';
 
     document.body.prepend(drawer);
@@ -1368,9 +1365,12 @@
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
 
-    header.querySelector('.burger').addEventListener('click', function () { drawer.classList.add('open'); });
-    drawer.querySelector('.drawer-close').addEventListener('click', function () { drawer.classList.remove('open'); });
-    drawer.addEventListener('click', function (e) { if (e.target === drawer) drawer.classList.remove('open'); });
+    function closeDrawer() { drawer.classList.remove('open'); document.body.style.overflow = ''; }
+    header.querySelector('.burger').addEventListener('click', function () { drawer.classList.add('open'); document.body.style.overflow = 'hidden'; });
+    drawer.querySelector('.drawer-close').addEventListener('click', closeDrawer);
+    drawer.addEventListener('click', function (e) { if (e.target === drawer || e.target.classList.contains('drawer-panel') || e.target.classList.contains('drawer-nav')) closeDrawer(); });
+    drawer.querySelectorAll('.drawer-nav a').forEach(function (a) { a.addEventListener('click', closeDrawer); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeDrawer(); });
 
     document.querySelectorAll('.lang-switch button, .drawer-lang button').forEach(function (b) {
       b.addEventListener('click', function () { apply(b.getAttribute('data-lang')); if (drawer.classList.contains('open')) drawer.classList.remove('open'); });
