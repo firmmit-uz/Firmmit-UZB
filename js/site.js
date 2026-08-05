@@ -6,6 +6,7 @@
   'use strict';
 
   var KR_URL = 'https://www.firmmit.kr/html/#firstPage';
+  var CATALOG_PDF = 'assets/firmmit-catalog-2026.pdf';
   var STORE = 'firmmit-lang';
   var LANGS = ['uz', 'ru', 'en', 'ko'];
 
@@ -460,6 +461,7 @@
       "Outdoor Smart Farm": "Уличная умная ферма", "Indoor Smart Farm": "Крытая умная ферма",
       "Plant Factory": "Фабрика растений", "Collaboration proposal": "Предложение о сотрудничестве",
       "Casual Meeting": "Неформальная встреча", "ETC": "Другое",
+      "Catalog": "Каталог", "Catalog (PDF)": "Каталог (PDF)",
       "Smart greenhouse project": "Проект умной теплицы", "Products & equipment": "Продукция и оборудование",
       "Services (design, install, training)": "Услуги (проект, монтаж, обучение)",
       "Import & export / trade": "Импорт и экспорт / торговля", "Partnership": "Партнёрство", "Other": "Другое",
@@ -811,6 +813,7 @@
       "Outdoor Smart Farm": "Ochiq maydon aqlli fermasi", "Indoor Smart Farm": "Yopiq aqlli ferma",
       "Plant Factory": "O'simlik fabrikasi", "Collaboration proposal": "Hamkorlik taklifi",
       "Casual Meeting": "Norasmiy uchrashuv", "ETC": "Boshqa",
+      "Catalog": "Katalog", "Catalog (PDF)": "Katalog (PDF)",
       "Smart greenhouse project": "Aqlli issiqxona loyihasi", "Products & equipment": "Mahsulot va jihozlar",
       "Services (design, install, training)": "Xizmatlar (loyiha, o'rnatish, o'qitish)",
       "Import & export / trade": "Import va eksport / savdo", "Partnership": "Hamkorlik", "Other": "Boshqa",
@@ -1160,6 +1163,7 @@
       "Outdoor Smart Farm": "노지 스마트팜", "Indoor Smart Farm": "실내 스마트팜",
       "Plant Factory": "식물공장", "Collaboration proposal": "협업 제안",
       "Casual Meeting": "가벼운 미팅", "ETC": "기타",
+      "Catalog": "카탈로그", "Catalog (PDF)": "카탈로그 (PDF)",
       "Smart greenhouse project": "스마트 온실 프로젝트", "Products & equipment": "제품 및 장비",
       "Services (design, install, training)": "서비스 (설계·설치·교육)",
       "Import & export / trade": "수출입 / 교역", "Partnership": "파트너십", "Other": "기타",
@@ -1328,6 +1332,7 @@
     header.innerHTML =
       '<div class="wrap">' + brandMarkup() +
         '<div class="header-cta">' +
+          '<a class="nav-catalog" href="' + CATALOG_PDF + '" target="_blank" rel="noopener" aria-label="Product catalog (PDF)">' + iconCatalog() + '<span>Catalog</span></a>' +
           '<div class="lang-switch no-i18n" role="group" aria-label="Language">' +
             '<button data-lang="uz">UZ</button><button data-lang="ru">RU</button><button data-lang="en">EN</button><button data-lang="ko">한</button>' +
           '</div>' +
@@ -1353,7 +1358,9 @@
         '</div>' +
         '<nav class="drawer-nav">' +
           PRIMARY.map(function (k) { return ovLink(k, 'd-main'); }).join('') +
-          '<div class="drawer-sec">' + SECONDARY.map(function (k) { return ovLink(k, 'd-sub'); }).join('') + '</div>' +
+          '<div class="drawer-sec">' + SECONDARY.map(function (k) { return ovLink(k, 'd-sub'); }).join('') +
+            '<a class="d-sub d-catalog" href="' + CATALOG_PDF + '" target="_blank" rel="noopener">' + iconCatalog() + '<span>Catalog (PDF)</span></a>' +
+          '</div>' +
         '</nav>' +
       '</div>';
 
@@ -1423,6 +1430,7 @@
   function iconMail() { return '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>'; }
   function iconPin() { return '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s7-6.4 7-11a7 7 0 1 0-14 0c0 4.6 7 11 7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg>'; }
   function iconPhone() { return '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2 4.2 2 2 0 0 1 4 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.4 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7A2 2 0 0 1 22 16.9Z"/></svg>'; }
+  function iconCatalog() { return '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4.5A1.5 1.5 0 0 1 5.5 3H14l6 6v10.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 4 19.5z"/><path d="M14 3v6h6M8 13h8M8 17h5"/></svg>'; }
 
   /* ---- interactions ---- */
   // ensure muted showcase videos autoplay (some browsers need a JS nudge)
