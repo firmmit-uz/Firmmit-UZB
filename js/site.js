@@ -20,8 +20,8 @@
   /* ---- company details (from letterhead) ---- */
   var CO = {
     email: 'global@firmmit.com',
-    phone: '+998 99 850 4500',
-    phoneHref: '+998998504500',
+    phone: '+998 90 063 23 15',
+    phoneHref: '+998900632315',
     bank: 'Aloqabank (АТ "ALOQABANK") IP PARK RCKU, Tashkent',
     mfo: '00401',
     account: '20208000907117476001'
@@ -164,8 +164,8 @@
       "Standards & accreditation": "Стандарты и аккредитация", "Our commitment": "Наши обязательства",
       "Latest updates": "Последние новости", "Get in touch": "Связаться с нами", "Company details": "Реквизиты компании",
       /* home hero */
-      "Firmmit Uzbekistan delivers Korean controlled-environment agriculture — modern greenhouses, precision climate systems and reliable agri-trade — to farms across Uzbekistan and Central Asia.":
-        "Firmmit Uzbekistan поставляет корейское сельское хозяйство с контролируемой средой — современные теплицы, точные климатические системы и надёжную агроторговлю — фермам Узбекистана и Центральной Азии.",
+      "Firmmit Uzbekistan delivers Korean controlled-environment agriculture — modern greenhouses, precision climate systems and reliable agri-systems — to farms across Uzbekistan and Central Asia.":
+        "Firmmit Uzbekistan поставляет корейское сельское хозяйство с контролируемой средой — современные теплицы, точные климатические системы и надёжные агросистемы — фермам Узбекистана и Центральной Азии.",
       "Explore our solutions": "Наши решения", "Talk to our team": "Связаться с командой",
       "Regions served": "Регионов охвачено", "Projects delivered": "Реализовано проектов",
       "Client retention": "Удержание клиентов", "Greenhouse projects": "Тепличных проектов",
@@ -524,7 +524,7 @@
       "Standards & accreditation": "Standartlar va akkreditatsiya", "Our commitment": "Majburiyatlarimiz",
       "Latest updates": "So'nggi yangiliklar", "Get in touch": "Bog'lanish", "Company details": "Kompaniya rekvizitlari",
       /* home hero */
-      "Firmmit Uzbekistan delivers Korean controlled-environment agriculture — modern greenhouses, precision climate systems and reliable agri-trade — to farms across Uzbekistan and Central Asia.":
+      "Firmmit Uzbekistan delivers Korean controlled-environment agriculture — modern greenhouses, precision climate systems and reliable agri-systems — to farms across Uzbekistan and Central Asia.":
         "Firmmit Uzbekistan Koreyaning nazorat qilinadigan muhit dehqonchiligini — zamonaviy issiqxonalar, aniq iqlim tizimlari va ishonchli agro tizimni — O'zbekiston va Markaziy Osiyo fermalariga yetkazadi.",
       "Explore our solutions": "Yechimlarimiz", "Talk to our team": "Jamoa bilan bog'lanish",
       "Regions served": "Qamrab olingan hududlar", "Projects delivered": "Bajarilgan loyihalar",
@@ -884,8 +884,8 @@
       "Latest updates": "최신 소식", "Get in touch": "문의하기", "Company details": "회사 정보",
       "For sale": "판매 중", "Catalog": "카탈로그", "Online Store": "온라인 스토어",
       /* home hero */
-      "Firmmit Uzbekistan delivers Korean controlled-environment agriculture — modern greenhouses, precision climate systems and reliable agri-trade — to farms across Uzbekistan and Central Asia.":
-        "Firmmit Uzbekistan은 한국의 시설 농업 — 현대식 온실, 정밀 기후 시스템, 신뢰할 수 있는 농산물 교역 — 을 우즈베키스탄과 중앙아시아 전역의 농가에 제공합니다.",
+      "Firmmit Uzbekistan delivers Korean controlled-environment agriculture — modern greenhouses, precision climate systems and reliable agri-systems — to farms across Uzbekistan and Central Asia.":
+        "Firmmit Uzbekistan은 한국의 시설 농업 — 현대식 온실, 정밀 기후 시스템, 신뢰할 수 있는 농업 시스템 — 을 우즈베키스탄과 중앙아시아 전역의 농가에 제공합니다.",
       "Explore our solutions": "솔루션 보기", "Talk to our team": "팀에 문의",
       "Regions served": "서비스 지역", "Projects delivered": "완료 프로젝트",
       "Client retention": "고객 유지율", "Greenhouse projects": "온실 프로젝트",
