@@ -23,12 +23,14 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "rest_framework",
     "django_filters",
+    "corsheaders",
     "apps.core",
     "apps.catalog",
 ]
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+    "corsheaders.middleware.CorsMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -95,3 +97,9 @@ REST_FRAMEWORK = {
     "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
     "PAGE_SIZE": 20,
 }
+
+# CORS — frontend (boshqa manzil) API'ga ulanishi uchun.
+# Test rejimida (DEBUG) hamma manzilga ruxsat; jonli saytda faqat quyidagi
+# ro'yxatdagi manzillarga (DJANGO_CORS_ORIGINS orqali sozlanadi).
+CORS_ALLOW_ALL_ORIGINS = DEBUG
+CORS_ALLOWED_ORIGINS = env.list("DJANGO_CORS_ORIGINS", default=[])
