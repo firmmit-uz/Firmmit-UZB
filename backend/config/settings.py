@@ -14,6 +14,9 @@ SECRET_KEY = env("DJANGO_SECRET_KEY", default="insecure-dev-key")
 DEBUG = env.bool("DJANGO_DEBUG", default=False)
 ALLOWED_HOSTS = env.list("DJANGO_ALLOWED_HOSTS", default=["localhost", "127.0.0.1"])
 
+if DEBUG:
+    ALLOWED_HOSTS = ["*"]
+
 INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
