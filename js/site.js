@@ -1378,7 +1378,7 @@
       '<div class="wrap">' + brandMarkup() +
         '<nav class="nav">' + links + '</nav>' +
         '<div class="header-cta">' +
-          '<a class="nav-catalog" href="' + catalogHref(current) + '" target="_blank" rel="noopener" aria-label="Product catalog (PDF)">' + iconCatalog() + '<span>Catalog</span></a>' +
+          '<a class="nav-catalog" href="' + hrefFor('catalog') + '" data-key="catalog" aria-label="Online store — product catalog">' + iconCatalog() + '<span>Catalog</span></a>' +
           '<div class="lang-switch no-i18n" role="group" aria-label="Language">' +
             '<button data-lang="uz">UZ</button><button data-lang="ru">RU</button><button data-lang="en">EN</button><button data-lang="ko">한</button>' +
           '</div>' +
@@ -1399,7 +1399,7 @@
           '<button data-lang="uz">UZ</button><button data-lang="ru">RU</button><button data-lang="en">EN</button><button data-lang="ko">한</button>' +
         '</div>' + dLinks +
         '<a href="' + hrefFor('contact') + '" data-key="contact"' + contactActive + '>Contact</a>' +
-        '<a class="drawer-catalog" href="' + catalogHref(current) + '" target="_blank" rel="noopener">' + iconCatalog() + '<span>Catalog (PDF)</span></a>' +
+        '<a class="drawer-catalog" href="' + hrefFor('catalog') + '" data-key="catalog">' + iconCatalog() + '<span>Catalog</span></a>' +
       '</div>';
 
     document.body.prepend(drawer);
@@ -1417,12 +1417,6 @@
 
     document.querySelectorAll('.lang-switch button, .drawer-lang button').forEach(function (b) {
       b.addEventListener('click', function () { apply(b.getAttribute('data-lang')); if (drawer.classList.contains('open')) drawer.classList.remove('open'); });
-    });
-
-    // catalog link follows the selected language
-    document.addEventListener('firmmit:lang', function (e) {
-      var href = catalogHref(e.detail);
-      document.querySelectorAll('.nav-catalog, .drawer-catalog').forEach(function (a) { a.setAttribute('href', href); });
     });
   }
 
