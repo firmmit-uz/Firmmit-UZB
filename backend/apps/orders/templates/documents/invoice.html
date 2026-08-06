@@ -1,0 +1,88 @@
+{% load humanize %}<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<style>
+  @page {
+    size: A4 portrait;
+    margin: 18mm 16mm 22mm 16mm;
+    @bottom-center {
+      content: "«FIRMMIT GLOBAL» МЧЖ ХК  ·  {{ seller.seller_phone }}  ·  саҳифа " counter(page);
+      font-size: 7pt;
+      color: #666;
+    }
+  }
+  body { font-family: "DejaVu Sans", sans-serif; font-size: 9.5pt; color: #111; line-height: 1.5; }
+  .brand { color: #3365FF; font-weight: bold; }
+  .logo { text-align: right; font-size: 20pt; }
+  .logo .dot { color: #3365FF; }
+  h1 { text-align: center; font-size: 13pt; margin: 6px 0 2px; }
+  .sub { text-align: center; font-size: 9pt; color: #444; margin-bottom: 12px; }
+  .box { border: 1px solid #ccc; padding: 8px 10px; margin: 8px 0; font-size: 9pt; }
+  .box b { color: #3365FF; }
+  table { width: 100%; border-collapse: collapse; margin-top: 6px; font-size: 8.5pt; }
+  th { background: #3365FF; color: #fff; padding: 5px 4px; border: 1px solid #3365FF; }
+  td { padding: 4px; border: 1px solid #bbb; }
+  td.num { text-align: right; }
+  td.c { text-align: center; }
+  .totals { margin-top: 6px; font-size: 9pt; }
+  .totals .line { display: flex; justify-content: space-between; }
+  .totals .grand { font-weight: bold; color: #3365FF; }
+  .words { font-style: italic; margin-top: 4px; }
+  .note { margin-top: 10px; padding: 8px 10px; background: #eef2ff; border: 1px solid #3365FF; font-size: 9pt; }
+</style>
+</head>
+<body>
+  <div class="logo"><span class="brand">FIRMMIT</span><span class="dot">.</span></div>
+
+  <h1>ТЎЛОВ УЧУН ҲИСОБ № {{ order.invoice_number }}</h1>
+  <div class="sub">{{ today|date:"d.m.Y" }} й.</div>
+
+  <div class="box">
+    <b>Сотувчи:</b> {{ seller.seller_name_uz_cyrillic }}<br>
+    Манзил: {{ seller.seller_address }}<br>
+    СТИР: {{ seller.seller_inn }} &nbsp;·&nbsp; ҚҚС коди: {{ seller.seller_vat_code }}<br>
+    Х/Р: {{ seller.seller_account }} &nbsp;·&nbsp; Банк: {{ seller.seller_bank }} &nbsp;·&nbsp; МФО: {{ seller.seller_mfo }}
+  </div>
+
+  <div class="box">
+    <b>Харидор:</b> {{ company.name }} &nbsp;·&nbsp; СТИР: {{ company.inn }}
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>№</th><th>Товар номи</th><th>Артикул</th><th>Бирлик</th><th>Миқдори</th>
+        <th>Нархи (ҚҚСсиз)</th><th>Суммаси</th><th>ҚҚС 12%</th><th>Жами</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in items %}
+      <tr>
+        <td class="c">{{ forloop.counter }}</td>
+        <td>{{ item.product_name }}</td>
+        <td class="c">{{ item.product_sku }}</td>
+        <td class="c">{{ item.unit }}</td>
+        <td class="c">{{ item.quantity }}</td>
+        <td class="num">{{ item.price|floatformat:0|intcomma }}</td>
+        <td class="num">{{ item.subtotal|floatformat:0|intcomma }}</td>
+        <td class="num">{{ item.vat_amount|floatformat:0|intcomma }}</td>
+        <td class="num">{{ item.total|floatformat:0|intcomma }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <div class="totals">
+    <div class="line"><span>Жами (ҚҚСсиз):</span><span>{{ order.amount_without_vat|floatformat:0|intcomma }} сўм</span></div>
+    <div class="line"><span>ҚҚС 12%:</span><span>{{ order.vat_amount|floatformat:0|intcomma }} сўм</span></div>
+    <div class="line grand"><span>Умумий сумма:</span><span>{{ order.total_amount|floatformat:0|intcomma }} сўм</span></div>
+    <div class="words">Сумма сўз билан: {{ total_words }}.</div>
+  </div>
+
+  <div class="note">
+    Тўлов изоҳида кўрсатилиши шарт: <b>«{{ order.invoice_number }} рақамли ҳисоб бўйича тўлов»</b>.<br>
+    Ҳисоб {{ seller.invoice_validity_days }} иш куни давомида амал қилади.
+  </div>
+</body>
+</html>

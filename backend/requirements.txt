@@ -8,3 +8,4 @@ gunicorn>=23,<24
 Pillow>=11,<12
 django-filter>=24.3,<26
 django-cors-headers>=4.4,<5
+weasyprint>=63,<64
