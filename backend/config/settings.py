@@ -17,6 +17,11 @@ ALLOWED_HOSTS = env.list("DJANGO_ALLOWED_HOSTS", default=["localhost", "127.0.0.
 if DEBUG:
     ALLOWED_HOSTS = ["*"]
 
+# Tunnel/proksi (cloudflared, nginx) orqasida ishlaganda to'g'ri manzil (https)
+# va host qaytishi uchun. Rasm URL'lari https bo'lib chiqadi.
+USE_X_FORWARDED_HOST = True
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+
 INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
