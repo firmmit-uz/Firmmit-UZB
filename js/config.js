@@ -3,10 +3,15 @@
    Jonli saytda faqat shu faylni o'zgartiring.
    ============================================================ */
 window.FIRMMIT_CONFIG = {
-  // Backend API base URL. Bu manzil vaqti-vaqti bilan o'zgaradi —
-  // yangisi berilganda FAQAT shu qatorni almashtiring.
-  // Jonli saytda, masalan: 'https://api.firmmit.uz/api/v1/'
-  API_BASE: 'http://localhost:8000/api/v1/',
+  // Backend API base URL — avtomatik aniqlanadi:
+  //  - mahalliy ishlab chiqish (localhost): http://localhost:8000/api/v1/
+  //  - jonli sayt (domen): o'sha domenning /api/v1/ manzili (bir xil origin)
+  // Odatda bu qatorga tegish shart emas.
+  API_BASE: (function () {
+    var h = location.hostname;
+    if (h === 'localhost' || h === '127.0.0.1') return 'http://localhost:8000/api/v1/';
+    return location.origin + '/api/v1/';
+  })(),
 
   // Katalog PDF (til bo'yicha). Hozircha barchasi bitta fayl —
   // tilga mos PDF'lar tayyor bo'lganda shu qiymatlarni almashtiring.

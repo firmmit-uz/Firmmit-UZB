@@ -1,0 +1,31 @@
+# Caddy — avtomatik HTTPS (Let's Encrypt) + frontend + backend proksi.
+# SITE_DOMAIN muhit o'zgaruvchisi (.env) orqali beriladi.
+# Domen bo'lmasa (faqat IP bilan sinov uchun): SITE_DOMAIN=:80 qo'ying (SSL bo'lmaydi).
+{$SITE_DOMAIN} {
+	encode gzip
+
+	# Backend API va admin panel
+	handle /api/* {
+		reverse_proxy backend:8000
+	}
+	handle /admin/* {
+		reverse_proxy backend:8000
+	}
+
+	# Django statik (admin uslublari) va yuklangan media
+	handle_path /static/* {
+		root * /srv/static
+		file_server
+	}
+	handle_path /media/* {
+		root * /srv/media
+		file_server
+	}
+
+	# Qolgan hammasi — frontend (statik sayt)
+	handle {
+		root * /srv/site
+		try_files {path} {path}/index.html {path}.html /index.html
+		file_server
+	}
+}

@@ -43,6 +43,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "corsheaders.middleware.CorsMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -116,3 +117,18 @@ REST_FRAMEWORK = {
 # ro'yxatdagi manzillarga (DJANGO_CORS_ORIGINS orqali sozlanadi).
 CORS_ALLOW_ALL_ORIGINS = DEBUG
 CORS_ALLOWED_ORIGINS = env.list("DJANGO_CORS_ORIGINS", default=[])
+
+# Jonli saytda admin panelga kirish uchun (https domen)
+CSRF_TRUSTED_ORIGINS = env.list("DJANGO_CSRF_TRUSTED_ORIGINS", default=[])
+
+# Statik fayllarni gunicorn orqali berish (WhiteNoise) — jonli saytда admin uslublari.
+# Manifest faqat production'да (DEBUG=False); dev'да oddiy storage.
+_staticfiles_backend = (
+    "django.contrib.staticfiles.storage.StaticFilesStorage"
+    if DEBUG
+    else "whitenoise.storage.CompressedManifestStaticFilesStorage"
+)
+STORAGES = {
+    "default": {"BACKEND": "django.core.files.storage.FileSystemStorage"},
+    "staticfiles": {"BACKEND": _staticfiles_backend},
+}
