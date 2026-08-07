@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Checkout — Firmmit Uzbekistan</title>
+<meta name="description" content="Firmmit Uzbekistan — checkout: place your order.">
+<link rel="stylesheet" href="css/style.css">
+<style>
+.co-wrap { display:grid; grid-template-columns:1.4fr 1fr; gap:28px; align-items:start; }
+@media (max-width:820px){ .co-wrap { grid-template-columns:1fr; } }
+.co-card { border:1.5px solid var(--line); border-radius:16px; padding:22px; }
+.co-card h2 { font-size:1.1rem; margin:0 0 14px; }
+.co-sum-row { display:flex; gap:12px; padding:10px 0; border-bottom:1px solid #f2f2f2; font-size:.9rem; }
+.co-sum-row .n { flex:1; }
+.co-sum-row .q { color:var(--muted); }
+.co-total { display:flex; justify-content:space-between; font-weight:800; font-size:1.1rem; margin-top:14px; }
+.co-types { display:flex; gap:10px; margin-bottom:18px; flex-wrap:wrap; }
+.co-type { flex:1 1 160px; border:1.5px solid var(--line); border-radius:12px; padding:12px 14px; cursor:pointer; font-weight:600; text-align:center; }
+.co-type.active { border-color:#3365FF; background:#eef2ff; color:#3365FF; }
+.co-field { margin-bottom:12px; }
+.co-field label { display:block; font-size:.82rem; color:var(--muted); margin-bottom:5px; }
+.co-field input, .co-field textarea { width:100%; padding:11px 13px; border:1.5px solid var(--line); border-radius:10px; font-size:14px; font-family:var(--font); }
+.co-grid2 { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+@media (max-width:520px){ .co-grid2 { grid-template-columns:1fr; } }
+.co-sub { font-size:.8rem; color:var(--muted); margin:16px 0 8px; font-weight:700; text-transform:uppercase; letter-spacing:.4px; }
+.co-submit { width:100%; padding:15px; background:#3365FF; color:#fff; border:none; border-radius:12px; font-size:1.05rem; font-weight:700; cursor:pointer; }
+.co-submit:disabled { opacity:.6; cursor:default; }
+.co-err { color:#e11d48; font-size:.82rem; margin-top:6px; }
+.co-result { margin-top:18px; padding:18px; border-radius:14px; }
+.co-result.ok { background:#ecfdf5; border:1.5px solid #10b981; }
+.co-result.bad { background:#fef2f2; border:1.5px solid #ef4444; }
+.co-result a { color:#3365FF; font-weight:700; }
+.co-empty { text-align:center; padding:60px 0; color:var(--muted); }
+</style>
+</head>
+<body data-page="checkout">
+
+<section class="page-hero no-i18n">
+  <div class="hero-bg media-farm"><div class="rows"></div></div>
+  <div class="wrap">
+    <span class="eyebrow" style="color:var(--sky)" id="co-eyebrow">Checkout</span>
+    <h1 id="co-title">Checkout</h1>
+    <div class="crumbs"><a href="index.html">Home</a><span class="sep">/</span><a href="catalog.html" id="co-crumb-cat">Online Store</a><span class="sep">/</span><span id="co-crumb">Checkout</span></div>
+  </div>
+</section>
+
+<section class="block no-i18n">
+  <div class="wrap"><div id="checkout-root"></div></div>
+</section>
+
+<script src="js/config.js"></script>
+<script src="js/site.js"></script>
+<script src="js/cart.js"></script>
+<script src="js/checkout.js"></script>
+</body>
+</html>
