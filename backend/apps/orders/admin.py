@@ -1,7 +1,13 @@
 from django.contrib import admin
 from django.utils.html import format_html
 
-from apps.orders.models import DeliveryZone, Order, OrderItem, OrderStatusLog
+from apps.orders.models import (
+    CallbackRequest,
+    DeliveryZone,
+    Order,
+    OrderItem,
+    OrderStatusLog,
+)
 from apps.orders.services import OrderDocumentService
 
 
@@ -62,3 +68,11 @@ class DeliveryZoneAdmin(admin.ModelAdmin):
 class OrderStatusLogAdmin(admin.ModelAdmin):
 
     list_display = ("order", "from_status", "to_status", "changed_by", "created_at")
+
+
+@admin.register(CallbackRequest)
+class CallbackRequestAdmin(admin.ModelAdmin):
+
+    list_display = ("request_number", "full_name", "phone", "estimated_amount", "status", "created_at")
+    list_filter = ("status",)
+    search_fields = ("request_number", "full_name", "phone")

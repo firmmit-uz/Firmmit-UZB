@@ -113,6 +113,44 @@ class OrderStatusLog(BaseModel):
         return f"{self.order.order_number}: {self.from_status} -> {self.to_status}"
 
 
+class CallbackStatus(models.TextChoices):
+
+    NEW = "new", "Yangi"
+    CALLED = "called", "Qo'ng'iroq qilindi"
+    CONVERTED = "converted", "Buyurtmaga aylandi"
+    REJECTED = "rejected", "Rad etildi"
+
+
+class CallbackRequest(BaseModel):
+
+    request_number = models.CharField(max_length=30, unique=True)
+    full_name = models.CharField(max_length=200)
+    phone = models.CharField(max_length=20)
+    region = models.CharField(max_length=100, null=True, blank=True)
+    comment = models.TextField(null=True, blank=True)
+    items = models.JSONField()
+    estimated_amount = models.DecimalField(max_digits=14, decimal_places=2, default=0)
+    status = models.CharField(
+        max_length=20, choices=CallbackStatus.choices, default=CallbackStatus.NEW
+    )
+    assigned_to = models.ForeignKey(
+        settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True, blank=True
+    )
+    called_at = models.DateTimeField(null=True, blank=True)
+    manager_comment = models.TextField(null=True, blank=True)
+    order = models.ForeignKey(
+        Order, on_delete=models.SET_NULL, null=True, blank=True, related_name="callback_requests"
+    )
+
+    class Meta:
+        ordering = ("-created_at",)
+        verbose_name = "Qo'ng'iroq so'rovi"
+        verbose_name_plural = "Qo'ng'iroq so'rovlari"
+
+    def __str__(self) -> str:
+        return f"{self.request_number} — {self.full_name}"
+
+
 class DeliveryZone(BaseModel):
 
     region = models.CharField(max_length=100)
