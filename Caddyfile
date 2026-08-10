@@ -25,6 +25,15 @@
 	# Qolgan hammasi — frontend (statik sayt)
 	handle {
 		root * /srv/site
+
+		# HTML/JS/CSS — brauzer har safar serverdan yangiligini tekshirsin.
+		# (ETag orqali: o'zgarmagan bo'lsa 304, o'zgargan bo'lsa yangi versiya.)
+		# Shu tufayli sayt yangilangач foydalanuvchi darhol ko'radi, kesh ilashib qolmaydi.
+		@revalidate {
+			path *.html *.js *.css
+		}
+		header @revalidate Cache-Control "no-cache"
+
 		try_files {path} {path}/index.html {path}.html /index.html
 		file_server
 	}
