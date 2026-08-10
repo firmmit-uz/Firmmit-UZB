@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Product — Firmmit Uzbekistan</title>
+<meta name="description" content="Firmmit Uzbekistan — product details.">
+<link rel="stylesheet" href="css/style.css">
+<style>
+.pd-wrap { display:grid; grid-template-columns:1fr 1fr; gap:34px; align-items:start; }
+@media (max-width:820px){ .pd-wrap { grid-template-columns:1fr; } }
+.pd-gallery { position:relative; }
+.pd-main { position:relative; border:1.5px solid var(--line); border-radius:16px; overflow:hidden; background:#fff; aspect-ratio:1/1; display:flex; align-items:center; justify-content:center; }
+.pd-main img { width:100%; height:100%; object-fit:contain; }
+.pd-noimg { color:var(--muted); }
+.pd-noimg svg { width:64px; height:64px; }
+.pd-nav { position:absolute; top:50%; transform:translateY(-50%); width:42px; height:42px; border-radius:50%; border:none; background:rgba(255,255,255,.9); box-shadow:0 2px 10px rgba(0,0,0,.15); cursor:pointer; font-size:20px; color:#333; display:flex; align-items:center; justify-content:center; }
+.pd-prev { left:10px; } .pd-next { right:10px; }
+.pd-thumbs { display:flex; gap:10px; margin-top:12px; flex-wrap:wrap; }
+.pd-thumb { width:64px; height:64px; border:1.5px solid var(--line); border-radius:10px; overflow:hidden; cursor:pointer; background:#fff; padding:2px; }
+.pd-thumb.active { border-color:#3365FF; }
+.pd-thumb img { width:100%; height:100%; object-fit:contain; }
+.pd-info h1 { font-size:1.6rem; margin:0 0 6px; }
+.pd-sku { color:var(--muted); font-size:.85rem; margin-bottom:14px; }
+.pd-price { font-size:1.5rem; font-weight:800; color:var(--ink); }
+.pd-price .cur { font-size:1rem; font-weight:600; color:var(--muted); }
+.pd-price .vat { font-size:.8rem; font-weight:500; color:var(--muted); margin-left:6px; }
+.pd-meta { margin:12px 0; font-size:.92rem; color:#444; }
+.pd-stock { display:inline-block; padding:4px 12px; border-radius:20px; font-size:.8rem; font-weight:600; background:#eef7ee; color:#2f8132; }
+.pd-stock.out { background:#fff4e5; color:#b45309; }
+.pd-add { width:100%; max-width:320px; padding:15px; background:#3365FF; color:#fff; border:none; border-radius:12px; font-size:1.05rem; font-weight:700; cursor:pointer; margin:18px 0; }
+.pd-add:hover { background:#2550d8; }
+.pd-section { margin-top:22px; }
+.pd-section h3 { font-size:1rem; margin:0 0 8px; }
+.pd-desc { color:#444; line-height:1.7; white-space:pre-line; }
+.pd-specs { width:100%; border-collapse:collapse; font-size:.9rem; }
+.pd-specs td { padding:8px 10px; border:1px solid var(--line); }
+.pd-specs td:first-child { color:var(--muted); width:45%; }
+#pd-loading, #pd-error { text-align:center; color:var(--muted); padding:60px 0; }
+.pd-back { display:inline-block; margin-bottom:6px; color:#3365FF; text-decoration:none; font-size:.9rem; }
+</style>
+</head>
+<body data-page="product">
+
+<section class="page-hero no-i18n">
+  <div class="hero-bg media-farm"><div class="rows"></div></div>
+  <div class="wrap">
+    <a href="catalog.html" class="pd-back" id="pd-back">← Catalog</a>
+    <h1 id="pd-hero-title">Product</h1>
+    <div class="crumbs"><a href="index.html">Home</a><span class="sep">/</span><a href="catalog.html" id="pd-crumb-cat">Online Store</a></div>
+  </div>
+</section>
+
+<section class="block no-i18n">
+  <div class="wrap">
+    <div id="pd-loading">Loading…</div>
+    <div id="pd-error" style="display:none;">Product not found.</div>
+    <div id="product-root"></div>
+  </div>
+</section>
+
+<script src="js/config.js"></script>
+<script src="js/site.js"></script>
+<script src="js/cart.js"></script>
+<script src="js/product.js"></script>
+</body>
+</html>

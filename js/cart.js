@@ -76,7 +76,9 @@
       '.fc-total{display:flex;justify-content:space-between;font-weight:800;font-size:1.05rem;margin-bottom:12px}',
       '.fc-checkout{display:block;width:100%;text-align:center;padding:14px;background:#3365FF;color:#fff;border:none;border-radius:12px;font-size:1rem;font-weight:700;cursor:pointer;text-decoration:none}',
       '.ci-add{margin-top:8px;width:100%;padding:9px;border:1.5px solid #3365FF;background:#fff;color:#3365FF;border-radius:10px;font-weight:600;cursor:pointer;font-family:var(--font,sans-serif)}',
-      '.ci-add:hover{background:#3365FF;color:#fff}'
+      '.ci-add:hover{background:#3365FF;color:#fff}',
+      '.ci-link{text-decoration:none;color:inherit;display:block;cursor:pointer}',
+      '.ci-link:hover h3{color:#3365FF}'
     ].join('');
     document.head.appendChild(css);
   }

@@ -46,9 +46,11 @@
     var unitLine = pr.unit ? '<div class="ci-cat">' + esc(pr.unit) + '</div>' : '';
     var stockCls = inStock ? 'ci-stock' : 'ci-stock ci-out';
     var stockTxt = inStock ? t('inStockBadge') : t('outStock');
+    var link = 'product.html?slug=' + encodeURIComponent(pr.slug);
     return '<div class="cat-item">' +
-      '<div class="ci-thumb-wrap">' + thumb + '<span class="' + stockCls + '">' + stockTxt + '</span></div>' +
-      '<div class="ci-body"><h3>' + esc(nameOf(pr)) + '</h3>' + priceLine + unitLine +
+      '<a class="ci-link" href="' + link + '"><div class="ci-thumb-wrap">' + thumb + '<span class="' + stockCls + '">' + stockTxt + '</span></div></a>' +
+      '<div class="ci-body">' +
+        '<a class="ci-link" href="' + link + '"><h3>' + esc(nameOf(pr)) + '</h3></a>' + priceLine + unitLine +
         '<button type="button" class="ci-add" data-slug="' + esc(pr.slug) + '">' + esc(t('add')) + '</button></div>' +
     '</div>';
   }
