@@ -598,8 +598,8 @@ img.mark { width: 34px; height: 34px; object-fit: contain; }
    ============================================================ */
 @keyframes fmtCardIn { from { opacity: 0; transform: translateY(26px) scale(0.98); } to { opacity: 1; transform: none; } }
 .js-anim .cat-item { opacity: 0; }
-.cat-item.a-in { animation: fmtCardIn 0.6s var(--ease) both; animation-delay: var(--as, 0ms); }
-.cat-item.a-shown { opacity: 1; }
+.js-anim .cat-item.a-in { animation: fmtCardIn 0.6s var(--ease) both; animation-delay: var(--as, 0ms); }
+.js-anim .cat-item.a-shown { opacity: 1; }
 
 @keyframes fmtFadeLeft { from { opacity: 0; transform: translateX(-22px); } to { opacity: 1; transform: none; } }
 @keyframes fmtFadeUp   { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: none; } }
