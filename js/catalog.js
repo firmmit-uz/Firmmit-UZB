@@ -68,7 +68,7 @@
     var cards = grid.querySelectorAll('.cat-item');
     var wave = 0;
     for (var i = fromIndex; i < cards.length; i++) {
-      cards[i].style.setProperty('--as', (wave % 8) * 60 + 'ms');
+      cards[i].style.setProperty('--as', (wave % 8) * 100 + 'ms');
       cards[i].classList.add('a-in');
       wave++;
     }
