@@ -550,8 +550,8 @@ img.mark { width: 34px; height: 34px; object-fit: contain; }
 .cat-item { border: 1px solid var(--line); border-radius: 14px; padding: 0; overflow: hidden; background: #fff; transition: 0.3s var(--ease); display: flex; flex-direction: column; }
 .cat-item:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: transparent; }
 .cat-item:hover .ci-thumb img { transform: scale(1.04); }
-.ci-thumb { position: relative; height: 165px; background: #fff; display: grid; place-items: center; border-bottom: 1px solid var(--line); overflow: hidden; }
-.ci-thumb img { width: 100%; height: 100%; object-fit: contain; padding: 14px; transition: transform 0.4s var(--ease); }
+.ci-thumb { position: relative; aspect-ratio: 1 / 1; background: #fff; display: grid; place-items: center; border-bottom: 1px solid var(--line); overflow: hidden; }
+.ci-thumb img { width: 100%; height: 100%; object-fit: contain; padding: 16px; transition: transform 0.4s var(--ease); }
 .ci-thumb.ci-noimg { background: var(--bg-blue); color: var(--blue); }
 .ci-thumb.ci-noimg svg { width: 34px; height: 34px; }
 .ci-stock { position: absolute; top: 10px; right: 10px; font-size: 11px; font-weight: 600; color: #1e46d0; background: rgba(255,255,255,0.92); padding: 4px 10px; border-radius: 999px; white-space: nowrap; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
