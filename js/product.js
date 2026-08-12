@@ -26,6 +26,7 @@
   var product = null;
   var imgs = [];
   var idx = 0;
+  var entered = false;
 
   function getSlug() { var m = location.search.match(/[?&]slug=([^&]+)/); return m ? decodeURIComponent(m[1]) : ''; }
 
@@ -75,7 +76,9 @@
   }
 
   function render() {
-    $('product-root').innerHTML = '<div class="pd-wrap">' + galleryHTML() + infoHTML() + '</div>';
+    var enterCls = entered ? '' : ' pd-enter';
+    entered = true;
+    $('product-root').innerHTML = '<div class="pd-wrap' + enterCls + '">' + galleryHTML() + infoHTML() + '</div>';
     wire();
     var hero = $('pd-hero-title'); if (hero) hero.textContent = loc(product, 'name');
     document.title = loc(product, 'name') + ' — Firmmit Uzbekistan';

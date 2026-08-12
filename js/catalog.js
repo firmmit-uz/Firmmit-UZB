@@ -59,6 +59,33 @@
     grid.innerHTML = state.items.map(cardHTML).join('');
   }
 
+  // Kartochkalarni ketma-ket (stagger) paydo qilish — mavjud .reveal tizimiga xalaqit bermaydi
+  var _cardIO = null, _cardIOInit = false;
+  function cardObserver() {
+    if (_cardIOInit) return _cardIO;
+    _cardIOInit = true;
+    var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce || !('IntersectionObserver' in window)) { _cardIO = null; return null; }
+    _cardIO = new IntersectionObserver(function (ents) {
+      ents.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('a-in'); _cardIO.unobserve(e.target); }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+    return _cardIO;
+  }
+  function animateCards(fromIndex) {
+    var cards = grid.querySelectorAll('.cat-item');
+    var io = cardObserver();
+    var wave = 0;
+    for (var i = 0; i < cards.length; i++) {
+      var c = cards[i];
+      if (i < fromIndex || !io) { c.classList.add('a-shown'); continue; }
+      c.style.setProperty('--as', (wave % 6) * 70 + 'ms');
+      wave++;
+      io.observe(c);
+    }
+  }
+
   function setState(which) {
     loadingBox.style.display = which === 'loading' ? '' : 'none';
     errorBox.style.display = which === 'error' ? '' : 'none';
@@ -99,9 +126,11 @@
         var results = data.results || data || [];
         state.count = (data.count != null) ? data.count : results.length;
         state.nextUrl = data.next || null;
+        var prevLen = reset ? 0 : state.items.length;
         if (reset) state.items = results.slice();
         else state.items = state.items.concat(results);
         renderGrid();
+        animateCards(prevLen);
         updateCount();
         updateMore();
         setState(state.items.length ? '' : 'empty');
@@ -170,6 +199,7 @@
     loadingBox = $('cat-loading'); emptyBox = $('cat-empty'); errorBox = $('cat-error');
     moreWrap = $('cat-more-wrap'); moreBtn = $('cat-more');
     if (!grid) return;
+    document.documentElement.classList.add('js-anim');
 
     grid.addEventListener('click', function (e) {
       var btn = e.target.closest ? e.target.closest('.ci-add') : null;
