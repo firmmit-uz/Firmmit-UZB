@@ -608,3 +608,8 @@ img.mark { width: 34px; height: 34px; object-fit: contain; }
 @media (prefers-reduced-motion: reduce) {
   .js-anim .cat-item.a-in, .pd-enter .pd-gallery, .pd-enter .pd-info { animation: none; }
 }
+
+/* Hero fon — sekin "Ken Burns" zoom (chuqurlik/hayot hissi). .hero overflow:hidden bo'lgani uchun xavfsiz */
+.hero .hero-bg.has-photo { animation: fmtHeroZoom 24s ease-in-out infinite alternate; will-change: transform; }
+@keyframes fmtHeroZoom { from { transform: scale(1); } to { transform: scale(1.09); } }
+@media (prefers-reduced-motion: reduce) { .hero .hero-bg.has-photo { animation: none; } }
