@@ -73,17 +73,26 @@
     }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
     return _cardIO;
   }
+  function inView(c) {
+    var r = c.getBoundingClientRect();
+    return r.top < (window.innerHeight || 0) + 60 && r.bottom > 0;
+  }
   function animateCards(fromIndex) {
     var cards = grid.querySelectorAll('.cat-item');
     var io = cardObserver();
-    var wave = 0;
+    var wave = 0, pending = [];
     for (var i = 0; i < cards.length; i++) {
       var c = cards[i];
       if (i < fromIndex || !io) { c.classList.add('a-shown'); continue; }
       c.style.setProperty('--as', (wave % 6) * 70 + 'ms');
       wave++;
-      io.observe(c);
+      if (inView(c)) { c.classList.add('a-in'); }   // ekranda -> darhol animatsiya
+      else { io.observe(c); pending.push(c); }        // pastda -> scroll bilan
     }
+    // Xavfsizlik to'ri: nimadir ishlamasa ham kartochkalar ko'rinib qolsin
+    if (pending.length) setTimeout(function () {
+      pending.forEach(function (c) { if (!c.classList.contains('a-in')) c.classList.add('a-shown'); });
+    }, 3000);
   }
 
   function setState(which) {
