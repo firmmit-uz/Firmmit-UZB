@@ -597,9 +597,8 @@ img.mark { width: 34px; height: 34px; object-fit: contain; }
    Ranglar/easing mavjud brenddan (--blue, --ease) olinadi.
    ============================================================ */
 @keyframes fmtCardIn { from { opacity: 0; transform: translateY(26px) scale(0.98); } to { opacity: 1; transform: none; } }
-.js-anim .cat-item { opacity: 0; }
+/* Fail-safe: kartochka sukut bo'yicha KO'RINADI; .a-in faqat animatsiya qo'shadi (yashirmaydi) */
 .js-anim .cat-item.a-in { animation: fmtCardIn 0.6s var(--ease) both; animation-delay: var(--as, 0ms); }
-.js-anim .cat-item.a-shown { opacity: 1; }
 
 @keyframes fmtFadeLeft { from { opacity: 0; transform: translateX(-22px); } to { opacity: 1; transform: none; } }
 @keyframes fmtFadeUp   { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: none; } }
@@ -607,6 +606,5 @@ img.mark { width: 34px; height: 34px; object-fit: contain; }
 .pd-enter .pd-info    { animation: fmtFadeUp 0.65s var(--ease) 0.1s both; }
 
 @media (prefers-reduced-motion: reduce) {
-  .js-anim .cat-item { opacity: 1; }
-  .cat-item.a-in, .pd-enter .pd-gallery, .pd-enter .pd-info { animation: none; }
+  .js-anim .cat-item.a-in, .pd-enter .pd-gallery, .pd-enter .pd-info { animation: none; }
 }

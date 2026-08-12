@@ -59,40 +59,19 @@
     grid.innerHTML = state.items.map(cardHTML).join('');
   }
 
-  // Kartochkalarni ketma-ket (stagger) paydo qilish — mavjud .reveal tizimiga xalaqit bermaydi
-  var _cardIO = null, _cardIOInit = false;
-  function cardObserver() {
-    if (_cardIOInit) return _cardIO;
-    _cardIOInit = true;
-    var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reduce || !('IntersectionObserver' in window)) { _cardIO = null; return null; }
-    _cardIO = new IntersectionObserver(function (ents) {
-      ents.forEach(function (e) {
-        if (e.isIntersecting) { e.target.classList.add('a-in'); _cardIO.unobserve(e.target); }
-      });
-    }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
-    return _cardIO;
-  }
-  function inView(c) {
-    var r = c.getBoundingClientRect();
-    return r.top < (window.innerHeight || 0) + 60 && r.bottom > 0;
-  }
+  // Yangi kartochkalarni ketma-ket (stagger) suzib chiqarish.
+  // Kartochka HECH QACHON yashirilmaydi — .a-in faqat animatsiya qo'shadi (fail-safe).
+  // renderdan keyin darhol (paintdan oldin) qo'llanadi, shuning uchun "miltillash" bo'lmaydi.
   function animateCards(fromIndex) {
+    var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce) return;
     var cards = grid.querySelectorAll('.cat-item');
-    var io = cardObserver();
-    var wave = 0, pending = [];
-    for (var i = 0; i < cards.length; i++) {
-      var c = cards[i];
-      if (i < fromIndex || !io) { c.classList.add('a-shown'); continue; }
-      c.style.setProperty('--as', (wave % 6) * 70 + 'ms');
+    var wave = 0;
+    for (var i = fromIndex; i < cards.length; i++) {
+      cards[i].style.setProperty('--as', (wave % 8) * 60 + 'ms');
+      cards[i].classList.add('a-in');
       wave++;
-      if (inView(c)) { c.classList.add('a-in'); }   // ekranda -> darhol animatsiya
-      else { io.observe(c); pending.push(c); }        // pastda -> scroll bilan
     }
-    // Xavfsizlik to'ri: nimadir ishlamasa ham kartochkalar ko'rinib qolsin
-    if (pending.length) setTimeout(function () {
-      pending.forEach(function (c) { if (!c.classList.contains('a-in')) c.classList.add('a-shown'); });
-    }, 3000);
   }
 
   function setState(which) {
