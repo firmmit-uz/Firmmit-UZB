@@ -6,170 +6,187 @@
 <title>Hero preview — Firmmit</title>
 <link rel="stylesheet" href="css/style.css">
 <style>
-/* ===== SINOV: yangi hero (B ustida, A ortida) + typing + drag kolleksiya ===== */
 .lab { --smooth: cubic-bezier(.16,1,.1,1); }
 .lab-note { position:fixed; top:10px; left:10px; z-index:99; background:#111; color:#fff; font:600 12px/1.3 system-ui; padding:8px 12px; border-radius:8px; opacity:.85; }
 
-/* Qatlamli hero: A orqada (sticky), B ustida (scrollda ko'tariladi) */
-.lab-stack { position:relative; }
-.lab-back { position:sticky; top:0; height:100vh; background:#0b1f16 center/cover no-repeat; z-index:0; }
-.lab-back::after { content:''; position:absolute; inset:0; background:linear-gradient(90deg, rgba(10,20,50,.55), rgba(10,20,50,.15) 55%, transparent); }
-.lab-front { position:relative; height:100vh; z-index:1; overflow:hidden; display:flex; align-items:center; }
-.lab-front .bg { position:absolute; inset:0; background:center/cover no-repeat; animation:labZoom 24s ease-in-out infinite alternate; will-change:transform; }
-.lab-front::after { content:''; position:absolute; inset:0; background:linear-gradient(90deg, rgba(8,14,34,.72), rgba(8,14,34,.32) 55%, rgba(8,14,34,.05)); z-index:1; }
-@keyframes labZoom { from{transform:scale(1)} to{transform:scale(1.09)} }
-.lab-inner { position:relative; z-index:2; max-width:1240px; margin:0 auto; padding:0 32px; width:100%; }
-.lab-inner .box { max-width:760px; color:#fff; }
+/* ---- #1: HERO fikslanadi (joyida turadi), kontent ustidan suzib chiqadi ---- */
+.lab-hero { position:fixed; inset:0; height:100vh; z-index:0; overflow:hidden; }
+.lab-hero .bg { position:absolute; inset:0; background:center/cover no-repeat; animation:labZoom 26s ease-in-out infinite alternate; }
+@keyframes labZoom { from{transform:scale(1)} to{transform:scale(1.08)} }
+#lab-ripple { position:absolute; inset:0; width:100%; height:100%; display:block; z-index:1; }
+.lab-hero::after { content:''; position:absolute; inset:0; z-index:2;
+  background:linear-gradient(90deg, rgba(8,14,34,.72), rgba(8,14,34,.34) 55%, rgba(8,14,34,.06)); pointer-events:none; }
+.lab-inner { position:absolute; inset:0; z-index:3; display:flex; align-items:center; pointer-events:none; }
+.lab-inner .wrap3 { max-width:1240px; margin:0 auto; padding:0 32px; width:100%; }
+.lab-inner .box { max-width:780px; color:#fff; }
 .lab-eyebrow { display:inline-block; font:600 13px/1 var(--font-en,sans-serif); letter-spacing:.18em; text-transform:uppercase; color:#bcd0ff; margin-bottom:20px; }
-.lab-title { font-size:clamp(2.2rem,5vw,4rem); line-height:1.05; font-weight:800; margin:0 0 22px; text-shadow:0 2px 30px rgba(0,0,0,.45); }
-.lab-lead { font-size:clamp(1rem,1.5vw,1.22rem); line-height:1.65; color:rgba(255,255,255,.9); max-width:640px; }
-.lab-actions { margin-top:34px; display:flex; gap:16px; flex-wrap:wrap; }
-.lab-scroll { position:absolute; bottom:28px; left:50%; transform:translateX(-50%); z-index:3; color:rgba(255,255,255,.8); font:600 11px/1 var(--font-en,sans-serif); letter-spacing:.24em; display:flex; flex-direction:column; align-items:center; gap:10px; }
+.lab-title { font-size:clamp(2.2rem,5vw,4.1rem); line-height:1.05; font-weight:800; margin:0 0 22px; text-shadow:0 2px 30px rgba(0,0,0,.5); }
+.lab-lead { font-size:clamp(1rem,1.5vw,1.22rem); line-height:1.65; color:rgba(255,255,255,.92); max-width:660px; }
+.lab-actions { margin-top:34px; display:flex; gap:16px; flex-wrap:wrap; pointer-events:auto; }
+.lab-scroll { position:absolute; bottom:26px; left:50%; transform:translateX(-50%); z-index:3; color:rgba(255,255,255,.85); font:600 11px/1 var(--font-en,sans-serif); letter-spacing:.24em; display:flex; flex-direction:column; align-items:center; gap:10px; pointer-events:none; }
 .lab-scroll .bar { width:1px; height:44px; background:linear-gradient(rgba(255,255,255,.7),transparent); }
 
-/* Orqadagi A ustidagi matn */
-.lab-back-inner { position:absolute; inset:0; z-index:2; display:flex; align-items:flex-end; }
-.lab-back-inner .wrap2 { max-width:1240px; margin:0 auto; padding:0 32px 12vh; width:100%; color:#fff; }
-.lab-back-inner h2 { font-size:clamp(1.8rem,4vw,3rem); font-weight:800; max-width:640px; text-shadow:0 2px 24px rgba(0,0,0,.5); }
+/* Kontent qatlami — fiks hero USTIDAN suzadi (opaque fon) */
+.lab-after { position:relative; z-index:2; margin-top:100vh; }
+.lab-panel { position:relative; height:100vh; background:center/cover no-repeat; display:flex; align-items:flex-end; overflow:hidden; }
+.lab-panel::after { content:''; position:absolute; inset:0; background:linear-gradient(to top, rgba(6,12,30,.65), transparent 55%); }
+.lab-panel .wrap3 { position:relative; z-index:2; max-width:1240px; margin:0 auto; padding:0 32px 12vh; width:100%; color:#fff; }
+.lab-panel h2 { font-size:clamp(1.8rem,4vw,3rem); font-weight:800; max-width:640px; text-shadow:0 2px 24px rgba(0,0,0,.5); }
 
-/* Typing (so'z-so'z yozilib chiqadi) */
-.type span { display:inline-block; opacity:0; transform:translateY(14px); }
-.type.go span { animation:labWord .5s var(--smooth) both; }
+/* ---- #2: typing so'z-so'z (sekinroq; har scrollda qayta) ---- */
+.type span { display:inline-block; opacity:0; transform:translateY(16px); }
+.type.go span { animation:labWord .6s var(--smooth) both; }
 @keyframes labWord { to{opacity:1; transform:none} }
 
-/* Drag kolleksiya */
-.lab-coll { padding:96px 0 110px; background:var(--bg-soft,#f5f7fb); overflow:hidden; }
-.lab-coll .head { max-width:1240px; margin:0 auto 30px; padding:0 32px; }
+/* ---- #3: drag kolleksiya — kattaroq kartochkalar ---- */
+.lab-coll { padding:90px 0 120px; background:var(--bg-soft,#f5f7fb); overflow:hidden; }
+.lab-coll .head { max-width:1240px; margin:0 auto 34px; padding:0 32px; }
 .lab-coll .head .eye { font:600 13px/1 var(--font-en,sans-serif); letter-spacing:.16em; text-transform:uppercase; color:var(--blue,#3264ff); }
-.lab-coll .head h2 { font-size:clamp(1.6rem,3vw,2.4rem); font-weight:800; margin:10px 0 0; color:var(--ink,#111); }
+.lab-coll .head h2 { font-size:clamp(1.8rem,3.4vw,2.8rem); font-weight:800; margin:10px 0 0; color:var(--ink,#111); }
 .lab-coll .head p { color:var(--muted,#6b7280); margin:10px 0 0; }
-.lab-track { display:flex; gap:20px; padding:0 32px; cursor:grab; user-select:none; overflow-x:auto; scroll-behavior:smooth; scrollbar-width:none; -webkit-overflow-scrolling:touch; }
+.lab-track { display:flex; gap:26px; padding:0 max(32px, calc((100vw - 1180px)/2)); cursor:grab; user-select:none; overflow-x:auto; scrollbar-width:none; -webkit-overflow-scrolling:touch; }
 .lab-track::-webkit-scrollbar { display:none; }
-.lab-track.grabbing { cursor:grabbing; scroll-behavior:auto; }
-.lab-card { position:relative; flex:0 0 auto; width:min(78vw,440px); aspect-ratio:3/2; border-radius:16px; overflow:hidden; background:#dde; box-shadow:var(--shadow-sm,0 6px 20px rgba(0,0,0,.08)); }
-.lab-card img { width:100%; height:100%; object-fit:cover; pointer-events:none; transition:transform .6s var(--smooth); }
-.lab-card:hover img { transform:scale(1.05); }
-.lab-card .cap { position:absolute; left:14px; bottom:12px; z-index:2; color:#fff; font:600 14px/1.2 var(--font,sans-serif); text-shadow:0 1px 10px rgba(0,0,0,.6); }
+.lab-track.grabbing { cursor:grabbing; }
+.lab-card { position:relative; flex:0 0 auto; width:min(90vw,900px); aspect-ratio:16/10; border-radius:20px; overflow:hidden; background:#dde; box-shadow:0 20px 50px rgba(10,20,60,.16); }
+.lab-card img { width:100%; height:100%; object-fit:cover; pointer-events:none; transition:transform .8s var(--smooth); }
+.lab-card:hover img { transform:scale(1.04); }
+.lab-card .cap { position:absolute; left:22px; bottom:20px; z-index:2; color:#fff; font:700 20px/1.2 var(--font,sans-serif); text-shadow:0 1px 14px rgba(0,0,0,.6); }
 .lab-card::after { content:''; position:absolute; inset:0; background:linear-gradient(to top, rgba(0,0,0,.5), transparent 45%); }
-.lab-hint { max-width:1240px; margin:22px auto 0; padding:0 32px; color:var(--muted,#6b7280); font-size:13px; display:flex; align-items:center; gap:8px; }
+.lab-hint { max-width:1240px; margin:24px auto 0; padding:0 32px; color:var(--muted,#6b7280); font-size:13px; }
 
 @media (prefers-reduced-motion: reduce){
-  .lab-front .bg{animation:none}
+  .lab-hero .bg{animation:none}
   .type span{opacity:1;transform:none}
   .type.go span{animation:none}
 }
 </style>
 </head>
 <body class="lab">
-<div class="lab-note">SINOV sahifasi — bosh sahifa emas. Yoqsa asosiyga o'tkazamiz.</div>
+<div class="lab-note">SINOV sahifasi — bosh sahifa emas.</div>
 
-<!-- Qatlamli hero -->
-<div class="lab-stack">
-  <div class="lab-back" style="background-image:url('assets/photos/hero-back.jpg')">
-    <div class="lab-back-inner"><div class="wrap2">
-      <h2>Korean smart-farm technology, engineered for Uzbek soil and climate.</h2>
-    </div></div>
-  </div>
-  <section class="lab-front">
-    <div class="bg" style="background-image:url('assets/photos/hero-front.jpg')"></div>
-    <div class="lab-inner"><div class="box">
-      <span class="lab-eyebrow type" data-text="Firmmit Uzbekistan · Smart Agriculture"></span>
-      <h1 class="lab-title type" data-text="Growing tomorrow's harvest with smart-farm technology."></h1>
-      <p class="lab-lead type" data-text="Firmmit Uzbekistan delivers Korean controlled-environment agriculture — modern greenhouses, precision climate systems and reliable agri-systems — to farms across Uzbekistan and Central Asia."></p>
-      <div class="lab-actions">
-        <a href="catalog.html" class="btn btn-primary">Explore our catalog <span class="arrow">→</span></a>
-        <a href="contact.html" class="btn btn-ghost">Talk to our team</a>
-      </div>
-    </div></div>
-    <div class="lab-scroll">SCROLL<div class="bar"></div></div>
+<!-- #1: fiks hero (B rasm + suv effekti + typing) -->
+<div class="lab-hero" id="lab-hero">
+  <div class="bg" style="background-image:url('assets/photos/hero-front.jpg')"></div>
+  <canvas id="lab-ripple"></canvas>
+  <div class="lab-inner"><div class="wrap3"><div class="box">
+    <span class="lab-eyebrow type" data-text="Firmmit Uzbekistan · Smart Agriculture"></span>
+    <h1 class="lab-title type" data-text="Growing tomorrow's harvest with smart-farm technology."></h1>
+    <p class="lab-lead type" data-text="Firmmit Uzbekistan delivers Korean controlled-environment agriculture — modern greenhouses, precision climate systems and reliable agri-systems — to farms across Uzbekistan and Central Asia."></p>
+    <div class="lab-actions">
+      <a href="catalog.html" class="btn btn-primary">Explore our catalog <span class="arrow">→</span></a>
+      <a href="contact.html" class="btn btn-ghost">Talk to our team</a>
+    </div>
+  </div></div></div>
+  <div class="lab-scroll">SCROLL<div class="bar"></div></div>
+</div>
+
+<!-- Kontent: fiks hero USTIDAN suzadi -->
+<div class="lab-after">
+  <section class="lab-panel" style="background-image:url('assets/photos/hero-back.jpg')">
+    <div class="wrap3"><h2>Korean smart-farm technology, engineered for Uzbek soil and climate.</h2></div>
+  </section>
+
+  <section class="lab-coll">
+    <div class="head">
+      <span class="eye">Our world</span>
+      <h2>Inside Firmmit smart farms</h2>
+      <p>O'ng va chapga torting — film kadri kabi.</p>
+    </div>
+    <div class="lab-track" id="lab-track">
+      <div class="lab-card"><img src="assets/photos/collection/01.jpg" alt=""><span class="cap">Modern greenhouses</span></div>
+      <div class="lab-card"><img src="assets/photos/collection/02.jpg" alt=""><span class="cap">Precision irrigation</span></div>
+      <div class="lab-card"><img src="assets/photos/collection/03.jpg" alt=""><span class="cap">Quality harvest</span></div>
+      <div class="lab-card"><img src="assets/photos/collection/04.jpg" alt=""><span class="cap">Climate automation</span></div>
+      <div class="lab-card"><img src="assets/photos/collection/05.jpg" alt=""><span class="cap">Hydroponic systems</span></div>
+      <div class="lab-card"><img src="assets/photos/collection/06.jpg" alt=""><span class="cap">Expert agronomy</span></div>
+      <div class="lab-card"><img src="assets/photos/collection/07.jpg" alt=""><span class="cap">Farm to market</span></div>
+      <div class="lab-card"><img src="assets/photos/collection/08.jpg" alt=""><span class="cap">At scale</span></div>
+    </div>
+    <div class="lab-hint">← torting / drag →</div>
   </section>
 </div>
 
-<!-- Drag kolleksiya -->
-<section class="lab-coll">
-  <div class="head">
-    <span class="eye">Our world</span>
-    <h2>Inside Firmmit smart farms</h2>
-    <p>Torting — o'ng va chapga suring (film kadri kabi).</p>
-  </div>
-  <div class="lab-track" id="lab-track">
-    <div class="lab-card"><img src="assets/photos/collection/01.jpg" alt=""><span class="cap">Modern greenhouses</span></div>
-    <div class="lab-card"><img src="assets/photos/collection/02.jpg" alt=""><span class="cap">Precision irrigation</span></div>
-    <div class="lab-card"><img src="assets/photos/collection/03.jpg" alt=""><span class="cap">Quality harvest</span></div>
-    <div class="lab-card"><img src="assets/photos/collection/04.jpg" alt=""><span class="cap">Climate automation</span></div>
-    <div class="lab-card"><img src="assets/photos/collection/05.jpg" alt=""><span class="cap">Hydroponic systems</span></div>
-    <div class="lab-card"><img src="assets/photos/collection/06.jpg" alt=""><span class="cap">Expert agronomy</span></div>
-    <div class="lab-card"><img src="assets/photos/collection/07.jpg" alt=""><span class="cap">Farm to market</span></div>
-    <div class="lab-card"><img src="assets/photos/collection/08.jpg" alt=""><span class="cap">At scale</span></div>
-  </div>
-  <div class="lab-hint">← torting / drag →</div>
-</section>
-
+<script src="js/ripple.js"></script>
 <script>
 (function(){
   var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* Typing — so'z-so'z yozilib chiqadi. JS ishlamasa ham matn ko'rinadi (fail-safe). */
-  function buildType(el, delayStart){
+  /* ---- #2: typing (sekinroq, har scrollda qayta) ---- */
+  function build(el){
     var text = el.getAttribute('data-text') || el.textContent;
-    el.textContent = '';
-    var words = text.split(' ');
-    words.forEach(function(w, i){
-      var s = document.createElement('span');
-      s.textContent = w + (i < words.length-1 ? ' ' : '');
-      s.style.animationDelay = (delayStart + i*0.05) + 's';
-      el.appendChild(s);
-    });
+    el.textContent=''; var words=text.split(' ');
+    words.forEach(function(w,i){ var s=document.createElement('span'); s.textContent=w+(i<words.length-1?' ':''); el.appendChild(s); });
     return words.length;
   }
-  var types = document.querySelectorAll('.type');
-  if (reduce){
-    types.forEach(function(el){ el.textContent = el.getAttribute('data-text') || el.textContent; });
-  } else {
-    var d = 0.15;
-    types.forEach(function(el){ var n = buildType(el, d); el.classList.add('go'); d += Math.min(n*0.05, 0.9) + 0.15; });
+  var types=[].slice.call(document.querySelectorAll('.type'));
+  types.forEach(function(el){ el._n = build(el); });
+  function playType(){
+    if(reduce){ types.forEach(function(el){ el.classList.add('go'); [].forEach.call(el.children,function(s){s.style.opacity=1;}); }); return; }
+    var d=0.15;
+    types.forEach(function(el){
+      el.classList.remove('go'); void el.offsetWidth;   // reset (replay)
+      var dd=d; [].forEach.call(el.children,function(s,i){ s.style.animationDelay=(dd+i*0.11)+'s'; });
+      el.classList.add('go');
+      d += Math.min(el._n*0.11, 1.4) + 0.2;
+    });
   }
+  playType();
 
-  /* Drag kolleksiya — pointer bilan tortish + inertsiya. overflow-x:auto tufayli JS'siz ham ishlaydi. */
-  var track = document.getElementById('lab-track');
-  if (track){
-    var down=false, startX=0, startScroll=0, moved=false, vx=0, lastX=0, raf=null;
-    function onDown(e){
-      down=true; moved=false; track.classList.add('grabbing');
-      startX = (e.touches? e.touches[0].pageX : e.pageX);
-      lastX = startX; startScroll = track.scrollLeft; vx=0;
-      if(raf) cancelAnimationFrame(raf);
+  /* ---- #4: suv-ripple (fail-safe) ---- */
+  var canvas=document.getElementById('lab-ripple');
+  var rip = window.FirmmitRipple ? window.FirmmitRipple(canvas, 'assets/photos/hero-front.jpg') : null;
+  if(!rip){ canvas.style.display='none'; }  // WebGL yo'q -> oddiy rasm (bg) qoladi
+  // Ripple ustiga kursor kelishi uchun hero'dan event uzatamiz (matn qatlami pointer-events:none)
+
+  /* Hero ko'rinsa: typing qayta + ripple ishlaydi; ko'rinmasa: ripple pauza (tejamkorlik) */
+  var heroActive=true;
+  function onScroll(){
+    var vis = window.scrollY < window.innerHeight*0.55;
+    if(vis && !heroActive){ heroActive=true; playType(); if(rip) rip.resume(); }
+    else if(!vis && heroActive){ heroActive=false; if(rip) rip.pause(); }
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+
+  /* ---- #3: drag — kattaroq + "tormoz bergandek" sekin to'xtash (snap) ---- */
+  var track=document.getElementById('lab-track');
+  if(track){
+    var down=false, startX=0, startScroll=0, moved=false, lastX=0, lastT=0, vel=0, tween=null;
+    function step(){ var c=track.querySelector('.lab-card'); var gap=26; return c? c.offsetWidth+gap : 400; }
+    function easeOutCubic(t){ return 1-Math.pow(1-t,3); }
+    function animateTo(target, dur){
+      if(tween) cancelAnimationFrame(tween);
+      var start=track.scrollLeft, dist=target-start, t0=null;
+      function fr(ts){ if(t0===null) t0=ts; var p=Math.min((ts-t0)/dur,1);
+        track.scrollLeft=start+dist*easeOutCubic(p);
+        if(p<1) tween=requestAnimationFrame(fr); }
+      tween=requestAnimationFrame(fr);
     }
-    function onMove(e){
-      if(!down) return;
-      var x = (e.touches? e.touches[0].pageX : e.pageX);
-      var dx = x - startX;
+    function snap(){
+      var s=step();
+      var throwDist = vel*14;                    // "uloqtirish" — tezlikka qarab
+      var idx=Math.round((track.scrollLeft - throwDist)/s);
+      var max=track.scrollWidth - track.clientWidth;
+      var target=Math.max(0, Math.min(idx*s, max));
+      animateTo(target, 900);                    // sekin, tormoz bergandek (~0.9s)
+    }
+    function getX(e){ return e.touches? e.touches[0].pageX : e.pageX; }
+    function onDown(e){ down=true; moved=false; track.classList.add('grabbing');
+      if(tween) cancelAnimationFrame(tween);
+      startX=getX(e); lastX=startX; lastT=Date.now(); startScroll=track.scrollLeft; vel=0; }
+    function onMove(e){ if(!down) return; var x=getX(e); var dx=x-startX;
       if(Math.abs(dx)>4) moved=true;
-      track.scrollLeft = startScroll - dx;
-      vx = x - lastX; lastX = x;
-      if(e.cancelable && e.touches) {} // touch: native
-    }
-    function momentum(){
-      vx *= 0.94; track.scrollLeft -= vx;
-      if(Math.abs(vx) > 0.5) raf = requestAnimationFrame(momentum);
-    }
-    function onUp(){
-      if(!down) return; down=false; track.classList.remove('grabbing');
-      if(Math.abs(vx) > 1) momentum();
-    }
+      track.scrollLeft=startScroll-dx;
+      var now=Date.now(), dt=now-lastT; if(dt>0){ vel=(x-lastX)/dt*16; } lastX=x; lastT=now; }
+    function onUp(){ if(!down) return; down=false; track.classList.remove('grabbing'); snap(); }
     track.addEventListener('mousedown', onDown);
     window.addEventListener('mousemove', onMove, {passive:true});
     window.addEventListener('mouseup', onUp);
     track.addEventListener('touchstart', onDown, {passive:true});
     track.addEventListener('touchmove', onMove, {passive:true});
     track.addEventListener('touchend', onUp);
-    // Havolalarni tortishdan keyin bosilib ketmasligi uchun
-    track.addEventListener('click', function(e){ if(moved){ e.preventDefault(); } }, true);
-    // Sichqoncha g'ildiragi bilan gorizontal
-    track.addEventListener('wheel', function(e){ if(Math.abs(e.deltaY)>Math.abs(e.deltaX)){ track.scrollLeft += e.deltaY; e.preventDefault(); } }, {passive:false});
+    track.addEventListener('click', function(e){ if(moved) e.preventDefault(); }, true);
   }
 })();
 </script>
-<script defer src="js/interactive.js"></script>
 </body>
 </html>
