@@ -137,44 +137,47 @@
       })();
     })();
 
-    /* ---- Nur-bug' otilishi (Smoke uslubi): kursor tez harakatlanib to'xtaganda
-           yo'nalish bo'yicha iliq nur-bug' otilib chiqadi va tarqalib yo'qoladi ---- */
+    /* ---- Shaffof SMOKE (tutun) otilishi: kursor tez harakatlanib to'xtaganda
+           yo'nalish bo'yicha shaffof tutun otiladi; u o'tgan joy ozgina xiralashib/cho'ziladi
+           (backdrop blur ostidagi fonni buzadi), keyin tarqalib yo'qoladi ---- */
     (function () {
-      var cv = document.createElement('canvas');
-      cv.style.cssText = 'position:fixed;inset:0;width:100vw;height:100vh;pointer-events:none;z-index:9993;mix-blend-mode:screen';
-      document.body.appendChild(cv);
-      var ctx = cv.getContext('2d'), dpr = Math.min(window.devicePixelRatio || 1, 2);
-      function rs() { cv.width = Math.floor(innerWidth * dpr); cv.height = Math.floor(innerHeight * dpr); ctx.setTransform(dpr, 0, 0, dpr, 0, 0); }
-      rs(); addEventListener('resize', rs);
-      var ps = [], MAXP = 150, plx = null, ply = null;
+      var smStyle = document.createElement('style');
+      smStyle.textContent = '.fmt-smoke{position:fixed;top:0;left:0;border-radius:50%;pointer-events:none;z-index:9993;' +
+        'background:radial-gradient(circle, rgba(255,255,255,.13), rgba(232,240,252,.05) 55%, rgba(220,230,245,0) 75%);' +
+        (supported ? 'backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);' : '') +
+        'will-change:transform,opacity;}';
+      document.head.appendChild(smStyle);
+
+      var puffs = [], MAXS = 20, plx = null, ply = null;
       addEventListener('mousemove', function (e) {
         var x = e.clientX, y = e.clientY;
         if (plx !== null) {
           var vx = x - plx, vy = y - ply, sp = Math.sqrt(vx * vx + vy * vy);
           if (sp > 7) {
-            var dirx = vx / sp, diry = vy / sp, n = Math.min(7, 2 + Math.floor(sp / 7));
+            var dirx = vx / sp, diry = vy / sp, ang = Math.atan2(vy, vx), n = Math.min(4, 1 + Math.floor(sp / 10));
             for (var i = 0; i < n; i++) {
-              if (ps.length >= MAXP) break;
-              var s = (Math.random() - 0.5);
-              ps.push({ x: x, y: y, vx: dirx * sp * 0.28 + s * 2.2, vy: diry * sp * 0.28 + s * 2.0,
-                r: 6 + Math.random() * 8, gr: 0.7 + Math.random() * 0.9, life: 1, decay: 0.015 + Math.random() * 0.02 });
+              if (puffs.length >= MAXS) break;
+              var spread = (Math.random() - 0.5);
+              var el = document.createElement('div'); el.className = 'fmt-smoke';
+              document.body.appendChild(el);
+              puffs.push({ el: el, x: x, y: y, size: 26 + Math.random() * 34,
+                vx: dirx * sp * 0.26 + spread * 2.4, vy: diry * sp * 0.26 + spread * 2.4,
+                gr: 1.1 + Math.random() * 1.1, ang: ang, life: 1, decay: 0.016 + Math.random() * 0.016 });
             }
           }
         }
         plx = x; ply = y;
       }, { passive: true });
+
       (function frame() {
-        ctx.clearRect(0, 0, innerWidth, innerHeight);
-        for (var i = ps.length - 1; i >= 0; i--) {
-          var p = ps[i];
-          p.vx *= 0.95; p.vy *= 0.95; p.x += p.vx; p.y += p.vy; p.r += p.gr; p.life -= p.decay;
-          if (p.life <= 0) { ps.splice(i, 1); continue; }
-          var a = p.life * p.life * 0.5;
-          var g = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r);
-          g.addColorStop(0, 'rgba(255,245,220,' + a + ')');
-          g.addColorStop(0.4, 'rgba(255,226,168,' + (a * 0.5) + ')');
-          g.addColorStop(1, 'rgba(255,210,130,0)');
-          ctx.fillStyle = g; ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, 6.2832); ctx.fill();
+        for (var i = puffs.length - 1; i >= 0; i--) {
+          var p = puffs[i];
+          p.vx *= 0.95; p.vy *= 0.95; p.x += p.vx; p.y += p.vy; p.size += p.gr; p.life -= p.decay;
+          if (p.life <= 0) { p.el.parentNode && p.el.parentNode.removeChild(p.el); puffs.splice(i, 1); continue; }
+          p.el.style.width = p.el.style.height = p.size + 'px';
+          // yo'nalish bo'yicha cho'zilgan (stretched) tutun
+          p.el.style.transform = 'translate(' + (p.x - p.size / 2) + 'px,' + (p.y - p.size / 2) + 'px) rotate(' + p.ang + 'rad) scale(1.7,0.7)';
+          p.el.style.opacity = Math.min(1, p.life * 1.3);
         }
         requestAnimationFrame(frame);
       })();
