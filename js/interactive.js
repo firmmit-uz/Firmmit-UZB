@@ -27,20 +27,24 @@
     function resize() { cv.width = Math.floor(innerWidth * dpr); cv.height = Math.floor(innerHeight * dpr); ctx.setTransform(dpr, 0, 0, dpr, 0, 0); }
     resize(); addEventListener('resize', resize);
 
-    var drops = [], MAX = 700, plx = null, ply = null;
+    var drops = [], MAX = 1400, plx = null, ply = null;
 
-    function spawn(x, y, sp, dirx, diry) {
-      // tez harakat -> ko'proq va uzoqroq otiladi (tutun kabi), tarqoq sochiladi
-      var n = Math.min(20, 4 + Math.floor(sp / 3));
+    function spawn(x, y, sp, ang) {
+      // Purkagich KONUSI: zich, JUDA MAYDA tuman; chetlarida eng mayda tomchilar
+      var n = Math.min(44, 10 + Math.floor(sp / 1.4));
+      var maxSpread = 0.5 + Math.min(sp * 0.012, 0.4);   // tez harakat -> kengroq konus
       for (var i = 0; i < n; i++) {
         if (drops.length >= MAX) break;
-        var s1 = (Math.random() - 0.5), s2 = (Math.random() - 0.5);
+        var sa = (Math.random() - 0.5) * 2 * maxSpread;   // konus ichidagi burchak
+        var a2 = ang + sa;
+        var speed = sp * (0.08 + Math.random() * 0.22);
+        var edge = Math.abs(sa) / maxSpread;              // 0 = markaz, 1 = chet
+        var r = 0.28 + (1 - edge) * 0.9 + Math.random() * 0.28;   // chetda maydaroq
         drops.push({
-          x: x + s1 * 30, y: y + s2 * 30,                          // tarqoq boshlanish
-          vx: dirx * sp * 0.22 + s1 * 5,                           // yo'nalish bo'yicha otiladi + sochiladi
-          vy: diry * sp * 0.22 + s2 * 5,
-          r: 0.5 + Math.random() * 1.6,                            // JUDA MAYDA
-          life: 1, decay: 0.014 + Math.random() * 0.02
+          x: x + (Math.random() - 0.5) * 14, y: y + (Math.random() - 0.5) * 14,
+          vx: Math.cos(a2) * speed + (Math.random() - 0.5) * 1.1,
+          vy: Math.sin(a2) * speed + (Math.random() - 0.5) * 1.1,
+          r: r, life: 1, decay: 0.011 + Math.random() * 0.02
         });
       }
     }
@@ -49,7 +53,7 @@
       var x = e.clientX, y = e.clientY;
       if (plx !== null) {
         var dx = x - plx, dy = y - ply, sp = Math.sqrt(dx * dx + dy * dy);
-        if (sp > 3) { var len = sp || 1; spawn(x, y, sp, dx / len, dy / len); }
+        if (sp > 2.5) spawn(x, y, sp, Math.atan2(dy, dx));
       }
       plx = x; ply = y;
     }, { passive: true });
@@ -58,15 +62,16 @@
       ctx.clearRect(0, 0, innerWidth, innerHeight);
       for (var i = drops.length - 1; i >= 0; i--) {
         var d = drops[i];
-        d.vy += 0.13; d.vx *= 0.98; d.x += d.vx; d.y += d.vy; d.life -= d.decay;
+        d.vy += 0.06; d.vx *= 0.985; d.vy *= 0.985; d.x += d.vx; d.y += d.vy; d.life -= d.decay;
         if (d.life <= 0) { drops.splice(i, 1); continue; }
         var a = Math.max(0, d.life);
-        var g = ctx.createRadialGradient(d.x, d.y, 0, d.x, d.y, d.r * 2.2);
-        g.addColorStop(0, 'rgba(232,247,255,' + (0.55 * a) + ')');
-        g.addColorStop(0.5, 'rgba(140,195,255,' + (0.3 * a) + ')');
-        g.addColorStop(1, 'rgba(90,150,235,0)');
+        var rr = d.r * 2.1;
+        var g = ctx.createRadialGradient(d.x, d.y, 0, d.x, d.y, rr);
+        g.addColorStop(0, 'rgba(255,255,255,' + (0.5 * a) + ')');
+        g.addColorStop(0.5, 'rgba(214,236,255,' + (0.22 * a) + ')');
+        g.addColorStop(1, 'rgba(150,200,245,0)');
         ctx.fillStyle = g;
-        ctx.beginPath(); ctx.arc(d.x, d.y, d.r * 2.2, 0, 6.2832); ctx.fill();
+        ctx.beginPath(); ctx.arc(d.x, d.y, rr, 0, 6.2832); ctx.fill();
       }
       requestAnimationFrame(frame);
     })();
