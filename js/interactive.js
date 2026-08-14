@@ -143,26 +143,33 @@
     (function () {
       var smStyle = document.createElement('style');
       smStyle.textContent = '.fmt-smoke{position:fixed;top:0;left:0;border-radius:50%;pointer-events:none;z-index:9993;' +
-        'background:radial-gradient(circle, rgba(255,255,255,.13), rgba(232,240,252,.05) 55%, rgba(220,230,245,0) 75%);' +
-        (supported ? 'backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);' : '') +
+        'background:radial-gradient(circle, rgba(206,234,255,.16), rgba(150,205,245,.06) 55%, rgba(140,200,245,0) 78%);' +
+        (supported ? 'backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px);' : '') +
         'will-change:transform,opacity;}';
       document.head.appendChild(smStyle);
 
-      var puffs = [], MAXS = 20, plx = null, ply = null;
+      var puffs = [], MAXS = 34, plx = null, ply = null;
       addEventListener('mousemove', function (e) {
         var x = e.clientX, y = e.clientY;
         if (plx !== null) {
           var vx = x - plx, vy = y - ply, sp = Math.sqrt(vx * vx + vy * vy);
           if (sp > 7) {
-            var dirx = vx / sp, diry = vy / sp, ang = Math.atan2(vy, vx), n = Math.min(4, 1 + Math.floor(sp / 10));
+            var dirx = vx / sp, diry = vy / sp, ang = Math.atan2(vy, vx), n = Math.min(9, 3 + Math.floor(sp / 6));
             for (var i = 0; i < n; i++) {
               if (puffs.length >= MAXS) break;
-              var spread = (Math.random() - 0.5);
+              var s1 = (Math.random() - 0.5), s2 = (Math.random() - 0.5);
               var el = document.createElement('div'); el.className = 'fmt-smoke';
               document.body.appendChild(el);
-              puffs.push({ el: el, x: x, y: y, size: 26 + Math.random() * 34,
-                vx: dirx * sp * 0.26 + spread * 2.4, vy: diry * sp * 0.26 + spread * 2.4,
-                gr: 1.1 + Math.random() * 1.1, ang: ang, life: 1, decay: 0.016 + Math.random() * 0.016 });
+              puffs.push({
+                el: el,
+                x: x + s1 * 34, y: y + s2 * 34,                  // tarqoq boshlang'ich joy
+                size: 10 + Math.random() * 38,                    // turli o'lchamlar
+                vx: dirx * sp * 0.22 + s1 * 5, vy: diry * sp * 0.22 + s2 * 5,  // sochilgan tezlik
+                gr: 0.8 + Math.random() * 1.2,
+                ang: ang + s1 * 0.9,                              // turli burchak
+                sx: 1.1 + Math.random() * 0.7, sy: 0.7 + Math.random() * 0.35, // turli cho'zilish
+                life: 1, decay: 0.015 + Math.random() * 0.018
+              });
             }
           }
         }
@@ -175,9 +182,8 @@
           p.vx *= 0.95; p.vy *= 0.95; p.x += p.vx; p.y += p.vy; p.size += p.gr; p.life -= p.decay;
           if (p.life <= 0) { p.el.parentNode && p.el.parentNode.removeChild(p.el); puffs.splice(i, 1); continue; }
           p.el.style.width = p.el.style.height = p.size + 'px';
-          // yo'nalish bo'yicha cho'zilgan (stretched) tutun
-          p.el.style.transform = 'translate(' + (p.x - p.size / 2) + 'px,' + (p.y - p.size / 2) + 'px) rotate(' + p.ang + 'rad) scale(1.7,0.7)';
-          p.el.style.opacity = Math.min(1, p.life * 1.3);
+          p.el.style.transform = 'translate(' + (p.x - p.size / 2) + 'px,' + (p.y - p.size / 2) + 'px) rotate(' + p.ang + 'rad) scale(' + p.sx + ',' + p.sy + ')';
+          p.el.style.opacity = Math.min(1, p.life * 1.25);
         }
         requestAnimationFrame(frame);
       })();
