@@ -54,29 +54,29 @@
     feImg.setAttribute('x', '0'); feImg.setAttribute('y', '0'); feImg.setAttribute('width', '100%'); feImg.setAttribute('height', '100%');
     var feDisp = document.createElementNS(ns, 'feDisplacementMap');
     feDisp.setAttribute('in', 'SourceGraphic'); feDisp.setAttribute('in2', 'map');
-    feDisp.setAttribute('scale', '26'); feDisp.setAttribute('xChannelSelector', 'R'); feDisp.setAttribute('yChannelSelector', 'G');
+    feDisp.setAttribute('scale', '11'); feDisp.setAttribute('xChannelSelector', 'R'); feDisp.setAttribute('yChannelSelector', 'G');
     filter.appendChild(feImg); filter.appendChild(feDisp); svg.appendChild(filter);
     document.body.appendChild(svg);
 
     var style = document.createElement('style');
     style.textContent = '.fmt-drop{position:fixed;top:0;left:0;border-radius:50%;pointer-events:none;z-index:9990;' +
-      'box-shadow:inset 0 0 4px rgba(255,255,255,.4), inset 0 -2px 4px rgba(0,40,90,.18), 0 2px 6px rgba(0,60,120,.16);' +
+      'box-shadow:inset 0 0 1.5px rgba(255,255,255,.45), 0 1px 2px rgba(0,60,120,.14);' +
       (supported ? 'backdrop-filter:url(#fmt-lens) brightness(1.06);-webkit-backdrop-filter:url(#fmt-lens) brightness(1.06);' :
                    'background:radial-gradient(circle at 40% 35%, rgba(255,255,255,.5), rgba(150,195,255,.22) 60%, rgba(120,170,255,0));') +
       'will-change:transform,opacity;}';
     document.head.appendChild(style);
 
     /* ---- Purkash: kursor harakatida mayda linza-tomchilar ---- */
-    var drops = [], MAX = 48, lastX = null, lastY = null;
+    var drops = [], MAX = 110, lastX = null, lastY = null;
     var R = 60;   // linza kengligidagi ta'sir doirasi
 
     function spawn(x, y, speed, dx, dy) {
-      var n = Math.min(6, 2 + Math.floor(speed / 7));
+      var n = Math.min(12, 3 + Math.floor(speed / 4));
       for (var i = 0; i < n; i++) {
         if (drops.length >= MAX) break;
         var ang = Math.random() * 6.2832, rad = Math.sqrt(Math.random()) * R;
         var px = x + Math.cos(ang) * rad, py = y + Math.sin(ang) * rad;
-        var size = 9 + Math.random() * 17;
+        var size = 3 + Math.random() * 7;
         var el = document.createElement('div');
         el.className = 'fmt-drop';
         el.style.width = el.style.height = size + 'px';
