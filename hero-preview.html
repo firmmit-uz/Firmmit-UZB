@@ -86,7 +86,6 @@
 <!-- OLD sahifa (hero): scroll qilganda yuqoriga ketadi, ostidan video ochiladi -->
 <section class="lab-hero" id="lab-hero">
   <div class="bg" style="background-image:url('assets/photos/hero-front.jpg')"></div>
-  <canvas id="lab-ripple"></canvas>
   <div class="lab-inner"><div class="wrap3"><div class="box">
     <span class="lab-eyebrow ink" data-text="Firmmit Uzbekistan · Smart Agriculture"></span>
     <h1 class="lab-title ink" data-text="Growing tomorrow's harvest with smart-farm technology."></h1>
@@ -124,15 +123,9 @@
   </section>
 </div>
 
-<script src="js/ripple.js"></script>
 <script>
 (function(){
   var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  /* Hero ripple (nozik, purkalgan joy o'ynaydi) */
-  var canvas=document.getElementById('lab-ripple');
-  var rip = window.FirmmitRipple ? window.FirmmitRipple(canvas, 'assets/photos/hero-front.jpg') : null;
-  if(!rip){ canvas.style.display='none'; }
 
   /* siyoh yozuv */
   function buildChars(el){ var t=el.getAttribute('data-text')||el.textContent; el.textContent='';
@@ -160,8 +153,8 @@
   function onScroll(){
     var y=scrollY, vh=innerHeight;
     var vis = y < vh*0.55;
-    if(vis && !heroActive){ heroActive=true; play(); if(rip) rip.resume(); }
-    else if(!vis && heroActive){ heroActive=false; if(rip) rip.pause(); }
+    if(vis && !heroActive){ heroActive=true; play(); }
+    else if(!vis && heroActive){ heroActive=false; }
     // Ost sahifa (video) ozgina harakatlansin — jonli
     if(video){ var p=Math.max(0, Math.min(y/(vh*1.6), 1)); video.style.transform='scale('+(1.06+p*0.06)+') translateY('+(p*-24)+'px)'; }
   }
