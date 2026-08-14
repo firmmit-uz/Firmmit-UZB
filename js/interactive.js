@@ -33,7 +33,7 @@
       // Yumshoq oq TUMAN (fog) konusi: yirik yumshoq bo'laklar qo'shilib bulut hosil qiladi,
       // chetlarida eng mayda tomchilar sochiladi.
       var n = Math.min(30, 10 + Math.floor(sp / 2));
-      var maxSpread = 0.42 + Math.min(sp * 0.012, 0.42);   // tez -> kengroq konus
+      var maxSpread = 0.56 + Math.min(sp * 0.014, 0.5);   // kengroq konus
       for (var i = 0; i < n; i++) {
         if (drops.length >= MAX) break;
         var sa = (Math.random() - 0.5) * 2 * maxSpread;
@@ -73,9 +73,9 @@
         var a = Math.max(0, d.life);
         var rr = d.r * 2.1;
         var g = ctx.createRadialGradient(d.x, d.y, 0, d.x, d.y, rr);
-        g.addColorStop(0, 'rgba(255,255,255,' + (d.alpha * a) + ')');
-        g.addColorStop(0.55, 'rgba(244,250,255,' + (d.alpha * 0.45 * a) + ')');
-        g.addColorStop(1, 'rgba(220,235,250,0)');
+        g.addColorStop(0, 'rgba(240,250,255,' + (d.alpha * a) + ')');
+        g.addColorStop(0.5, 'rgba(180,218,255,' + (d.alpha * 0.5 * a) + ')');
+        g.addColorStop(1, 'rgba(120,185,240,0)');
         ctx.fillStyle = g;
         ctx.beginPath(); ctx.arc(d.x, d.y, rr, 0, 6.2832); ctx.fill();
       }
