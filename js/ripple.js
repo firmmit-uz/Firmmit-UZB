@@ -36,9 +36,9 @@
     'float hL=texture2D(s,v-vec2(px.x,0.)).r,hR=texture2D(s,v+vec2(px.x,0.)).r,hD=texture2D(s,v-vec2(0.,px.y)).r,hU=texture2D(s,v+vec2(0.,px.y)).r;' +
     'vec2 g=vec2(hR-hL,hU-hD);' +
     'vec2 iuv=vec2(v.x,1.0-v.y);iuv=(iuv-0.5)*sc+0.5;' +
-    'vec3 col=texture2D(img,iuv+g*0.45).rgb;' +
-    'float spec=clamp((g.x-g.y)*2.0,0.0,1.0);col+=spec*0.22;' +
-    'col-=length(g)*0.15;' +
+    'vec3 col=texture2D(img,iuv+g*0.28).rgb;' +
+    'float spec=clamp((g.x-g.y)*2.0,0.0,1.0);col+=spec*0.13;' +
+    'col-=length(g)*0.09;' +
     'gl_FragColor=vec4(col,1.0);}';
 
   function makeStateTex(gl, w, h, texType) {
@@ -124,7 +124,7 @@
       gl.uniform1i(gl.getUniformLocation(pSim, 's'), 0);
       gl.uniform2f(gl.getUniformLocation(pSim, 'r'), SW, SH);
       gl.uniform2f(gl.getUniformLocation(pSim, 'd'), drop[0], drop[1]);
-      gl.uniform1f(gl.getUniformLocation(pSim, 'ds'), 0.55);
+      gl.uniform1f(gl.getUniformLocation(pSim, 'ds'), 0.30);
       gl.uniform1f(gl.getUniformLocation(pSim, 'dm'), damp);
       gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
       var tmp = texA; texA = texB; texB = tmp;

@@ -32,24 +32,24 @@
     resize();
     addEventListener('resize', resize);
 
-    var drops = [], MAX = 260;
+    var drops = [], MAX = 900;
     var lastX = null, lastY = null;
 
     function spawn(x, y, speed, dirx, diry) {
-      // tezlikka qarab tomchi soni (tez harakat -> ko'proq purkash)
-      var n = Math.min(8, 1 + Math.floor(speed / 6));
+      // tezlikka qarab tomchi soni — mayda va KO'P (purkagich tumani kabi)
+      var n = Math.min(22, 4 + Math.floor(speed / 2.5));
       for (var i = 0; i < n; i++) {
         if (drops.length >= MAX) break;
         var spread = (Math.random() - 0.5);
-        var sp = 0.6 + Math.random() * 1.4;
+        var sp = 0.5 + Math.random() * 1.3;
         drops.push({
-          x: x + (Math.random() - 0.5) * 8,
-          y: y + (Math.random() - 0.5) * 8,
-          vx: dirx * sp * (0.5 + speed * 0.05) + spread * 1.6,
-          vy: diry * sp * (0.5 + speed * 0.05) + spread * 1.2 + 0.4,
-          r: 0.8 + Math.random() * 2.4,
+          x: x + (Math.random() - 0.5) * 12,
+          y: y + (Math.random() - 0.5) * 12,
+          vx: dirx * sp * (0.4 + speed * 0.04) + spread * 2.2,
+          vy: diry * sp * (0.4 + speed * 0.04) + spread * 1.8 + 0.3,
+          r: 0.35 + Math.random() * 1.15,          // maydaroq tomchilar
           life: 1,
-          decay: 0.012 + Math.random() * 0.02
+          decay: 0.014 + Math.random() * 0.024
         });
       }
     }

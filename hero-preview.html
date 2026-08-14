@@ -9,13 +9,22 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&display=swap" rel="stylesheet">
 <style>
-.lab { --smooth: cubic-bezier(.16,1,.1,1); }
+.lab { --smooth: cubic-bezier(.16,1,.1,1); background:#0b1f16; }
 .lab-note { position:fixed; top:10px; left:10px; z-index:99; background:#111; color:#fff; font:600 12px/1.3 system-ui; padding:8px 12px; border-radius:8px; opacity:.85; }
 
-/* #1: HERO fikslanadi, kontent ustidan suzadi */
-.lab-hero { position:fixed; inset:0; height:100vh; z-index:0; overflow:hidden; }
+/* OST sahifa — avvaldan shu yerda (fixed, orqada). Old sahifa uni to'sib turadi. */
+.reveal-behind { position:fixed; inset:0; z-index:0; overflow:hidden; }
+.reveal-behind video { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transform:scale(1.06); will-change:transform; }
+.reveal-behind::after { content:''; position:absolute; inset:0; background:linear-gradient(to top, rgba(6,12,30,.7), transparent 55%); }
+.rb-text { position:absolute; inset:0; display:flex; align-items:flex-end; }
+.rb-text .wrap3 { max-width:1240px; margin:0 auto; padding:0 32px 12vh; width:100%; color:#fff; }
+.rb-text h2 { font-size:clamp(1.8rem,4vw,3rem); font-weight:800; max-width:660px; text-shadow:0 2px 24px rgba(0,0,0,.5); }
+
+/* OLD sahifa (hero) — z1, ustida, scroll qilganda YUQORIGA ketadi */
+.lab-hero { position:relative; z-index:1; height:100vh; overflow:hidden; background:#0b1f16; }
 .lab-hero .bg { position:absolute; inset:0; background:center/cover no-repeat; animation:labZoom 26s ease-in-out infinite alternate; }
 @keyframes labZoom { from{transform:scale(1)} to{transform:scale(1.08)} }
+#lab-ripple { position:absolute; inset:0; width:100%; height:100%; display:block; z-index:1; }
 .lab-hero::after { content:''; position:absolute; inset:0; z-index:2;
   background:linear-gradient(90deg, rgba(8,14,34,.7), rgba(8,14,34,.32) 55%, rgba(8,14,34,.05)); pointer-events:none; }
 .lab-inner { position:absolute; inset:0; z-index:3; display:flex; align-items:center; pointer-events:none; }
@@ -28,15 +37,12 @@
 .lab-scroll { position:absolute; bottom:26px; left:50%; transform:translateX(-50%); z-index:3; color:rgba(255,255,255,.85); font:600 11px/1 var(--font-en,sans-serif); letter-spacing:.24em; display:flex; flex-direction:column; align-items:center; gap:10px; pointer-events:none; }
 .lab-scroll .bar { width:1px; height:44px; background:linear-gradient(rgba(255,255,255,.7),transparent); }
 
-/* Kontent — fiks hero USTIDAN suzadi */
-.lab-after { position:relative; z-index:2; margin-top:100vh; }
-.lab-panel { position:relative; height:100vh; overflow:hidden; display:flex; align-items:flex-end; background:#0b1f16; }
-.lab-panel video { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:0; }
-.lab-panel::after { content:''; position:absolute; inset:0; z-index:1; background:linear-gradient(to top, rgba(6,12,30,.7), transparent 55%); }
-.lab-panel .wrap3 { position:relative; z-index:2; max-width:1240px; margin:0 auto; padding:0 32px 12vh; width:100%; color:#fff; }
-.lab-panel h2 { font-size:clamp(1.8rem,4vw,3rem); font-weight:800; max-width:660px; text-shadow:0 2px 24px rgba(0,0,0,.5); }
+/* Bo'sh oyna: ost (fixed video) ko'rinadigan joy */
+.reveal-spacer { position:relative; z-index:1; height:100vh; }
+/* Qolgan kontent — ost sahifani yopib, ustidan suzadi */
+.rest { position:relative; z-index:1; background:var(--bg-soft,#f5f7fb); }
 
-/* #4: siyoh-ruchka yozuvi (chapdan o'ngga, harf-harf) */
+/* siyoh-ruchka yozuvi */
 .ink .ch { display:inline-block; opacity:0; filter:blur(5px); transform:translateY(3px) rotate(-3deg); }
 .ink.go .ch { animation:inkIn .5s ease forwards; }
 @keyframes inkIn { to { opacity:1; filter:blur(0); transform:none; } }
@@ -44,8 +50,8 @@
 .tw.go span { animation:twIn .4s ease forwards; }
 @keyframes twIn { to { opacity:1; } }
 
-/* #3: drag kolleksiya — kattaroq */
-.lab-coll { padding:90px 0 120px; background:var(--bg-soft,#f5f7fb); overflow:hidden; }
+/* drag kolleksiya */
+.lab-coll { padding:90px 0 120px; overflow:hidden; }
 .lab-coll .head { max-width:1240px; margin:0 auto 34px; padding:0 32px; }
 .lab-coll .head .eye { font:600 13px/1 var(--font-en,sans-serif); letter-spacing:.16em; text-transform:uppercase; color:var(--blue,#3264ff); }
 .lab-coll .head h2 { font-size:clamp(1.8rem,3.4vw,2.8rem); font-weight:800; margin:10px 0 0; color:var(--ink,#111); }
@@ -69,9 +75,18 @@
 <body class="lab">
 <div class="lab-note">SINOV sahifasi — bosh sahifa emas.</div>
 
-<!-- #1: fiks hero (B rasm + suv-purkash kursor + siyoh yozuv) -->
-<div class="lab-hero" id="lab-hero">
+<!-- OST sahifa: avvaldan shu yerda (fixed), old sahifa to'sib turadi -->
+<div class="reveal-behind" id="reveal-behind">
+  <video autoplay muted loop playsinline preload="metadata" poster="assets/photos/services-poster.jpg">
+    <source src="assets/video/services-hero.mp4" type="video/mp4">
+  </video>
+  <div class="rb-text"><div class="wrap3"><h2>Korean smart-farm technology, engineered for Uzbek soil and climate.</h2></div></div>
+</div>
+
+<!-- OLD sahifa (hero): scroll qilganda yuqoriga ketadi, ostidan video ochiladi -->
+<section class="lab-hero" id="lab-hero">
   <div class="bg" style="background-image:url('assets/photos/hero-front.jpg')"></div>
+  <canvas id="lab-ripple"></canvas>
   <div class="lab-inner"><div class="wrap3"><div class="box">
     <span class="lab-eyebrow ink" data-text="Firmmit Uzbekistan · Smart Agriculture"></span>
     <h1 class="lab-title ink" data-text="Growing tomorrow's harvest with smart-farm technology."></h1>
@@ -82,18 +97,13 @@
     </div>
   </div></div></div>
   <div class="lab-scroll">SCROLL<div class="bar"></div></div>
-</div>
+</section>
 
-<!-- Kontent: fiks hero USTIDAN suzadi -->
-<div class="lab-after">
-  <!-- #: orqa fon endi services video -->
-  <section class="lab-panel">
-    <video autoplay muted loop playsinline preload="metadata" poster="assets/photos/services-poster.jpg">
-      <source src="assets/video/services-hero.mp4" type="video/mp4">
-    </video>
-    <div class="wrap3"><h2>Korean smart-farm technology, engineered for Uzbek soil and climate.</h2></div>
-  </section>
+<!-- Ost video ko'rinadigan bo'sh oyna -->
+<div class="reveal-spacer"></div>
 
+<!-- Qolgan kontent ost sahifani yopib ustidan suzadi -->
+<div class="rest">
   <section class="lab-coll">
     <div class="head">
       <span class="eye">Our world</span>
@@ -114,19 +124,23 @@
   </section>
 </div>
 
+<script src="js/ripple.js"></script>
 <script>
 (function(){
   var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* #4: siyoh yozuv — harf-harf (ink) + so'z-so'z (tw), chapdan o'ngga. Fail-safe. */
+  /* Hero ripple (nozik, purkalgan joy o'ynaydi) */
+  var canvas=document.getElementById('lab-ripple');
+  var rip = window.FirmmitRipple ? window.FirmmitRipple(canvas, 'assets/photos/hero-front.jpg') : null;
+  if(!rip){ canvas.style.display='none'; }
+
+  /* siyoh yozuv */
   function buildChars(el){ var t=el.getAttribute('data-text')||el.textContent; el.textContent='';
-    var a=t.split(''); a.forEach(function(ch){ var s=document.createElement('span'); s.className='ch'; s.textContent=(ch===' '?' ':ch); el.appendChild(s); }); return a.length; }
+    var a=t.split(''); a.forEach(function(ch){ var s=document.createElement('span'); s.className='ch'; s.textContent=(ch===' '?' ':ch); el.appendChild(s); }); return a.length; }
   function buildWords(el){ var t=el.getAttribute('data-text')||el.textContent; el.textContent='';
     var a=t.split(' '); a.forEach(function(w,i){ var s=document.createElement('span'); s.textContent=w+(i<a.length-1?' ':''); el.appendChild(s); }); return a.length; }
-  var inks=[].slice.call(document.querySelectorAll('.ink'));
-  var tws=[].slice.call(document.querySelectorAll('.tw'));
-  inks.forEach(function(el){ el._n=buildChars(el); });
-  tws.forEach(function(el){ el._n=buildWords(el); });
+  var inks=[].slice.call(document.querySelectorAll('.ink')), tws=[].slice.call(document.querySelectorAll('.tw'));
+  inks.forEach(function(el){ el._n=buildChars(el); }); tws.forEach(function(el){ el._n=buildWords(el); });
   function play(){
     if(reduce){ inks.concat(tws).forEach(function(el){ [].forEach.call(el.children,function(s){s.style.opacity=1;s.style.filter='none';s.style.transform='none';}); }); return; }
     var t=0.2;
@@ -138,28 +152,34 @@
       el.classList.add('go'); });
   }
   play();
-  // har scrollda hero'ga qaytilsa qayta yozilsin
-  var heroActive=true;
-  addEventListener('scroll', function(){
-    var vis = scrollY < innerHeight*0.55;
-    if(vis && !heroActive){ heroActive=true; play(); }
-    else if(!vis && heroActive){ heroActive=false; }
-  }, {passive:true});
 
-  /* #3: drag — kattaroq + overshoot (o'ngga borib ozgina qaytib joyiga) */
+  /* Scroll: hero ko'rinsa typing qayta + ripple resume; ost sahifa parallaks */
+  var rb=document.getElementById('reveal-behind');
+  var video = rb ? rb.querySelector('video') : null;
+  var heroActive=true;
+  function onScroll(){
+    var y=scrollY, vh=innerHeight;
+    var vis = y < vh*0.55;
+    if(vis && !heroActive){ heroActive=true; play(); if(rip) rip.resume(); }
+    else if(!vis && heroActive){ heroActive=false; if(rip) rip.pause(); }
+    // Ost sahifa (video) ozgina harakatlansin — jonli
+    if(video){ var p=Math.max(0, Math.min(y/(vh*1.6), 1)); video.style.transform='scale('+(1.06+p*0.06)+') translateY('+(p*-24)+'px)'; }
+  }
+  addEventListener('scroll', onScroll, {passive:true}); onScroll();
+
+  /* drag — kattaroq + overshoot */
   var track=document.getElementById('lab-track');
   if(track){
     var down=false,startX=0,startScroll=0,moved=false,lastX=0,lastT=0,vel=0,tween=null;
     function step(){ var c=track.querySelector('.lab-card'); return c? c.offsetWidth+26 : 400; }
-    function easeOutBack(t){ var c1=1.5, c3=c1+1; return 1 + c3*Math.pow(t-1,3) + c1*Math.pow(t-1,2); }
+    function easeOutBack(t){ var c1=1.5,c3=c1+1; return 1+c3*Math.pow(t-1,3)+c1*Math.pow(t-1,2); }
     function animateTo(target,dur){ if(tween)cancelAnimationFrame(tween);
       var start=track.scrollLeft, dist=target-start, t0=null;
       function fr(ts){ if(t0===null)t0=ts; var p=Math.min((ts-t0)/dur,1);
         track.scrollLeft=start+dist*easeOutBack(p); if(p<1)tween=requestAnimationFrame(fr); }
       tween=requestAnimationFrame(fr); }
-    function snap(){ var s=step(), thr=vel*14, idx=Math.round((track.scrollLeft-thr)/s);
-      var max=track.scrollWidth-track.clientWidth, target=Math.max(0,Math.min(idx*s,max));
-      animateTo(target,850); }
+    function snap(){ var s=step(),thr=vel*14,idx=Math.round((track.scrollLeft-thr)/s);
+      var max=track.scrollWidth-track.clientWidth,target=Math.max(0,Math.min(idx*s,max)); animateTo(target,850); }
     function gx(e){ return e.touches? e.touches[0].pageX : e.pageX; }
     function dn(e){ down=true;moved=false;track.classList.add('grabbing'); if(tween)cancelAnimationFrame(tween);
       startX=gx(e);lastX=startX;lastT=Date.now();startScroll=track.scrollLeft;vel=0; }
