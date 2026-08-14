@@ -146,19 +146,24 @@
   }
   play();
 
-  /* Orqa fon vibratsiyasi — kursor harakatida hero rasm ozgina "titrайди" */
+  /* Orqa fon — kursor harakatida hero rasm yo'nalish bo'yicha ozgina CHO'ZILADI + titraydi */
   var bg=document.querySelector('.lab-hero .bg');
   if(bg && !reduce){
     bg.style.animation='none';
-    var vib=0, fc=0, vlx=null, vly=null;
+    var vib=0, fc=0, vlx=null, vly=null, svx=0, svy=0;
     addEventListener('mousemove', function(e){
-      if(vlx!==null){ var dx=e.clientX-vlx, dy=e.clientY-vly; vib=Math.min(vib+Math.sqrt(dx*dx+dy*dy)*0.03, 2.6); }
+      if(vlx!==null){ var dx=e.clientX-vlx, dy=e.clientY-vly;
+        vib=Math.min(vib+Math.sqrt(dx*dx+dy*dy)*0.03, 2.4);
+        svx=svx*0.6+dx*0.4; svy=svy*0.6+dy*0.4;   // silliqlangan tezlik
+      }
       vlx=e.clientX; vly=e.clientY;
     }, {passive:true});
-    (function vloop(){ fc++; vib*=0.9;
-      var zoom=1.045+0.02*Math.sin(fc*0.012);
+    function clamp(v,a,b){ return v<a?a:(v>b?b:v); }
+    (function vloop(){ fc++; vib*=0.9; svx*=0.86; svy*=0.86;
+      var zoom=1.05+0.02*Math.sin(fc*0.012);
       var jx=(Math.random()-0.5)*vib, jy=(Math.random()-0.5)*vib;
-      bg.style.transform='scale('+zoom+') translate('+jx+'px,'+jy+'px)';
+      var skx=clamp(svx*0.05,-4,4), sky=clamp(svy*0.05,-4,4);   // yo'nalishli cho'zilish
+      bg.style.transform='scale('+zoom+') translate('+jx+'px,'+jy+'px) skew('+skx+'deg,'+sky+'deg)';
       requestAnimationFrame(vloop);
     })();
   }

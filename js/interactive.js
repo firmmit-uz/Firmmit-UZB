@@ -137,6 +137,49 @@
       })();
     })();
 
+    /* ---- Nur-bug' otilishi (Smoke uslubi): kursor tez harakatlanib to'xtaganda
+           yo'nalish bo'yicha iliq nur-bug' otilib chiqadi va tarqalib yo'qoladi ---- */
+    (function () {
+      var cv = document.createElement('canvas');
+      cv.style.cssText = 'position:fixed;inset:0;width:100vw;height:100vh;pointer-events:none;z-index:9993;mix-blend-mode:screen';
+      document.body.appendChild(cv);
+      var ctx = cv.getContext('2d'), dpr = Math.min(window.devicePixelRatio || 1, 2);
+      function rs() { cv.width = Math.floor(innerWidth * dpr); cv.height = Math.floor(innerHeight * dpr); ctx.setTransform(dpr, 0, 0, dpr, 0, 0); }
+      rs(); addEventListener('resize', rs);
+      var ps = [], MAXP = 150, plx = null, ply = null;
+      addEventListener('mousemove', function (e) {
+        var x = e.clientX, y = e.clientY;
+        if (plx !== null) {
+          var vx = x - plx, vy = y - ply, sp = Math.sqrt(vx * vx + vy * vy);
+          if (sp > 7) {
+            var dirx = vx / sp, diry = vy / sp, n = Math.min(7, 2 + Math.floor(sp / 7));
+            for (var i = 0; i < n; i++) {
+              if (ps.length >= MAXP) break;
+              var s = (Math.random() - 0.5);
+              ps.push({ x: x, y: y, vx: dirx * sp * 0.28 + s * 2.2, vy: diry * sp * 0.28 + s * 2.0,
+                r: 6 + Math.random() * 8, gr: 0.7 + Math.random() * 0.9, life: 1, decay: 0.015 + Math.random() * 0.02 });
+            }
+          }
+        }
+        plx = x; ply = y;
+      }, { passive: true });
+      (function frame() {
+        ctx.clearRect(0, 0, innerWidth, innerHeight);
+        for (var i = ps.length - 1; i >= 0; i--) {
+          var p = ps[i];
+          p.vx *= 0.95; p.vy *= 0.95; p.x += p.vx; p.y += p.vy; p.r += p.gr; p.life -= p.decay;
+          if (p.life <= 0) { ps.splice(i, 1); continue; }
+          var a = p.life * p.life * 0.5;
+          var g = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r);
+          g.addColorStop(0, 'rgba(255,245,220,' + a + ')');
+          g.addColorStop(0.4, 'rgba(255,226,168,' + (a * 0.5) + ')');
+          g.addColorStop(1, 'rgba(255,210,130,0)');
+          ctx.fillStyle = g; ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, 6.2832); ctx.fill();
+        }
+        requestAnimationFrame(frame);
+      })();
+    })();
+
     /* ---- Magnit tugmalar (BARCHA tugmalar, dinamiklar ham) ---- */
     var MAGSEL = '.btn, .ci-add, .pd-add, .nav-catalog, .cat-chip, button, [role=button]';
     var lastMag = null;
