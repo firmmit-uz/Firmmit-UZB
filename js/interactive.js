@@ -1,61 +1,99 @@
 /* ============================================================
-   FIRMMIT — interaktiv qatlam (maxsus kursor + magnit tugmalar)
-   Faqat sichqonchali (pointer:fine) qurilmalarda ishlaydi.
-   Mobil/touch va reduced-motion'da BUTUNLAY o'chirilgan.
-   Native kursor saqlanadi (halqa unga qo'shimcha) — xavfsiz.
+   FIRMMIT — interaktiv qatlam (BARCHA sahifalarda)
+   1) Suv-purkash kursor: sichqoncha harakatlanganda purkagichdan
+      suv purkalgandek mayda tomchilar sochiladi (issiqxona ruhida).
+   2) Magnit tugmalar: asosiy tugmalar kursorga ozgina tortiladi.
+   Faqat sichqonchali (pointer:fine) qurilmalarda; touch/mobil va
+   reduced-motion'da o'chirilgan. Canvas pointer-events:none — sahifaga
+   xalaqit bermaydi (fail-safe).
    ============================================================ */
 (function () {
   'use strict';
   if (!window.matchMedia) return;
-  if (!matchMedia('(pointer: fine)').matches) return;               // faqat sichqoncha
+  if (!matchMedia('(pointer: fine)').matches) return;
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
   function init() {
-    if (!document.body || document.querySelector('.fmt-ring')) return;
+    if (!document.body || document.getElementById('fmt-spray')) return;
 
-    var css =
-      '.fmt-ring{position:fixed;top:0;left:0;width:38px;height:38px;border:1.6px solid rgba(50,100,255,.5);' +
-        'border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);opacity:0;' +
-        'transition:width .28s var(--ease,ease),height .28s var(--ease,ease),background-color .28s,' +
-        'border-color .28s,opacity .35s;will-change:left,top}' +
-      '.fmt-ring.on{opacity:1}' +
-      '.fmt-ring.grow{width:66px;height:66px;background:rgba(50,100,255,.08);border-color:rgba(50,100,255,.75)}' +
-      '.fmt-ring.press{width:30px;height:30px}' +
-      '.fmt-mag{transition:transform .25s var(--ease,ease)}';
-    var st = document.createElement('style'); st.textContent = css; document.head.appendChild(st);
+    /* ---------- Suv-purkash ---------- */
+    var cv = document.createElement('canvas');
+    cv.id = 'fmt-spray';
+    cv.style.cssText = 'position:fixed;inset:0;width:100vw;height:100vh;pointer-events:none;z-index:9998';
+    document.body.appendChild(cv);
+    var ctx = cv.getContext('2d');
+    var dpr = Math.min(window.devicePixelRatio || 1, 2);
 
-    var ring = document.createElement('div'); ring.className = 'fmt-ring';
-    document.body.appendChild(ring);
+    function resize() {
+      cv.width = Math.floor(innerWidth * dpr);
+      cv.height = Math.floor(innerHeight * dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+    resize();
+    addEventListener('resize', resize);
 
-    var mx = innerWidth / 2, my = innerHeight / 2, rx = mx, ry = my, shown = false;
+    var drops = [], MAX = 260;
+    var lastX = null, lastY = null;
+
+    function spawn(x, y, speed, dirx, diry) {
+      // tezlikka qarab tomchi soni (tez harakat -> ko'proq purkash)
+      var n = Math.min(8, 1 + Math.floor(speed / 6));
+      for (var i = 0; i < n; i++) {
+        if (drops.length >= MAX) break;
+        var spread = (Math.random() - 0.5);
+        var sp = 0.6 + Math.random() * 1.4;
+        drops.push({
+          x: x + (Math.random() - 0.5) * 8,
+          y: y + (Math.random() - 0.5) * 8,
+          vx: dirx * sp * (0.5 + speed * 0.05) + spread * 1.6,
+          vy: diry * sp * (0.5 + speed * 0.05) + spread * 1.2 + 0.4,
+          r: 0.8 + Math.random() * 2.4,
+          life: 1,
+          decay: 0.012 + Math.random() * 0.02
+        });
+      }
+    }
 
     addEventListener('mousemove', function (e) {
-      mx = e.clientX; my = e.clientY;
-      if (!shown) { shown = true; ring.classList.add('on'); }
+      var x = e.clientX, y = e.clientY;
+      if (lastX !== null) {
+        var dx = x - lastX, dy = y - lastY;
+        var speed = Math.sqrt(dx * dx + dy * dy);
+        if (speed > 1.2) {
+          var len = speed || 1;
+          spawn(x, y, speed, dx / len, dy / len);
+        }
+      }
+      lastX = x; lastY = y;
     }, { passive: true });
-    document.addEventListener('mouseleave', function () { ring.classList.remove('on'); shown = false; });
-    addEventListener('mousedown', function () { ring.classList.add('press'); });
-    addEventListener('mouseup', function () { ring.classList.remove('press'); });
 
-    (function loop() {
-      rx += (mx - rx) * 0.2; ry += (my - ry) * 0.2;
-      ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
-      requestAnimationFrame(loop);
-    })();
+    function frame() {
+      ctx.clearRect(0, 0, innerWidth, innerHeight);
+      for (var i = drops.length - 1; i >= 0; i--) {
+        var d = drops[i];
+        d.vy += 0.14;          // tortishish (suv pastga tushadi)
+        d.vx *= 0.99;
+        d.x += d.vx; d.y += d.vy;
+        d.life -= d.decay;
+        if (d.life <= 0) { drops.splice(i, 1); continue; }
+        var a = Math.max(0, d.life);
+        var g = ctx.createRadialGradient(d.x, d.y, 0, d.x, d.y, d.r * 2.2);
+        g.addColorStop(0, 'rgba(226,244,255,' + (0.5 * a) + ')');
+        g.addColorStop(0.5, 'rgba(120,180,255,' + (0.32 * a) + ')');
+        g.addColorStop(1, 'rgba(80,140,230,0)');
+        ctx.fillStyle = g;
+        ctx.beginPath();
+        ctx.arc(d.x, d.y, d.r * 2.2, 0, 6.2832);
+        ctx.fill();
+      }
+      requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
 
-    // Interaktiv elementlar ustida halqa kattalashsin
-    var GROW = 'a,button,.btn,.cat-item,.ci-add,.pd-add,.cat-chip,.pd-thumb,.pd-nav,.fc-fab,input,textarea,select,label,[role=button]';
-    document.addEventListener('mouseover', function (e) {
-      if (e.target.closest && e.target.closest(GROW)) ring.classList.add('grow');
-    });
-    document.addEventListener('mouseout', function (e) {
-      if (e.target.closest && e.target.closest(GROW)) ring.classList.remove('grow');
-    });
-
-    // Magnit effekt — asosiy tugmalar kursorga ozgina tortiladi
+    /* ---------- Magnit tugmalar ---------- */
     var mags = document.querySelectorAll('.btn-primary, .ci-add, .pd-add, .nav-catalog');
     mags.forEach(function (el) {
-      el.classList.add('fmt-mag');
+      el.style.transition = 'transform .25s cubic-bezier(.16,1,.1,1)';
       el.addEventListener('mousemove', function (e) {
         var r = el.getBoundingClientRect();
         var dx = (e.clientX - (r.left + r.width / 2)) * 0.18;
