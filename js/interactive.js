@@ -54,7 +54,7 @@
     feImg.setAttribute('x', '0'); feImg.setAttribute('y', '0'); feImg.setAttribute('width', '100%'); feImg.setAttribute('height', '100%');
     var feDisp = document.createElementNS(ns, 'feDisplacementMap');
     feDisp.setAttribute('in', 'SourceGraphic'); feDisp.setAttribute('in2', 'map');
-    feDisp.setAttribute('scale', '11'); feDisp.setAttribute('xChannelSelector', 'R'); feDisp.setAttribute('yChannelSelector', 'G');
+    feDisp.setAttribute('scale', '8'); feDisp.setAttribute('xChannelSelector', 'R'); feDisp.setAttribute('yChannelSelector', 'G');
     filter.appendChild(feImg); filter.appendChild(feDisp); svg.appendChild(filter);
     document.body.appendChild(svg);
 
@@ -67,16 +67,16 @@
     document.head.appendChild(style);
 
     /* ---- Purkash: kursor harakatida mayda linza-tomchilar ---- */
-    var drops = [], MAX = 110, lastX = null, lastY = null;
-    var R = 60;   // linza kengligidagi ta'sir doirasi
+    var drops = [], MAX = 170, lastX = null, lastY = null;
+    var R = 46;   // ta'sir doirasi (zichroq)
 
     function spawn(x, y, speed, dx, dy) {
-      var n = Math.min(12, 3 + Math.floor(speed / 4));
+      var n = Math.min(18, 5 + Math.floor(speed / 3));
       for (var i = 0; i < n; i++) {
         if (drops.length >= MAX) break;
         var ang = Math.random() * 6.2832, rad = Math.sqrt(Math.random()) * R;
         var px = x + Math.cos(ang) * rad, py = y + Math.sin(ang) * rad;
-        var size = 3 + Math.random() * 7;
+        var size = 2 + Math.random() * 4;
         var el = document.createElement('div');
         el.className = 'fmt-drop';
         el.style.width = el.style.height = size + 'px';
@@ -111,18 +111,21 @@
       requestAnimationFrame(frame);
     })();
 
-    /* ---- Magnit tugmalar ---- */
-    var mags = document.querySelectorAll('.btn-primary, .ci-add, .pd-add, .nav-catalog');
-    mags.forEach(function (el) {
-      el.style.transition = 'transform .25s cubic-bezier(.16,1,.1,1)';
-      el.addEventListener('mousemove', function (e) {
-        var rr = el.getBoundingClientRect();
-        var mx = (e.clientX - (rr.left + rr.width / 2)) * 0.18;
-        var my = (e.clientY - (rr.top + rr.height / 2)) * 0.28;
-        el.style.transform = 'translate(' + mx + 'px,' + my + 'px)';
-      });
-      el.addEventListener('mouseleave', function () { el.style.transform = ''; });
-    });
+    /* ---- Magnit tugmalar (BARCHA tugmalar, dinamiklar ham) ---- */
+    var MAGSEL = '.btn, .ci-add, .pd-add, .nav-catalog, .cat-chip, button, [role=button]';
+    var lastMag = null;
+    document.addEventListener('mousemove', function (e) {
+      var b = e.target.closest ? e.target.closest(MAGSEL) : null;
+      if (b) {
+        if (lastMag && lastMag !== b) { lastMag.style.transform = ''; }
+        lastMag = b;
+        if (b.style.transition.indexOf('transform') === -1) b.style.transition = 'transform .25s cubic-bezier(.16,1,.1,1)';
+        var rr = b.getBoundingClientRect();
+        var mx = (e.clientX - (rr.left + rr.width / 2)) * 0.2;
+        var my = (e.clientY - (rr.top + rr.height / 2)) * 0.35;
+        b.style.transform = 'translate(' + mx + 'px,' + my + 'px)';
+      } else if (lastMag) { lastMag.style.transform = ''; lastMag = null; }
+    }, { passive: true });
   }
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);

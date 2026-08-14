@@ -146,6 +146,23 @@
   }
   play();
 
+  /* Orqa fon vibratsiyasi — kursor harakatida hero rasm ozgina "titrайди" */
+  var bg=document.querySelector('.lab-hero .bg');
+  if(bg && !reduce){
+    bg.style.animation='none';
+    var vib=0, fc=0, vlx=null, vly=null;
+    addEventListener('mousemove', function(e){
+      if(vlx!==null){ var dx=e.clientX-vlx, dy=e.clientY-vly; vib=Math.min(vib+Math.sqrt(dx*dx+dy*dy)*0.03, 2.6); }
+      vlx=e.clientX; vly=e.clientY;
+    }, {passive:true});
+    (function vloop(){ fc++; vib*=0.9;
+      var zoom=1.045+0.02*Math.sin(fc*0.012);
+      var jx=(Math.random()-0.5)*vib, jy=(Math.random()-0.5)*vib;
+      bg.style.transform='scale('+zoom+') translate('+jx+'px,'+jy+'px)';
+      requestAnimationFrame(vloop);
+    })();
+  }
+
   /* Scroll: hero ko'rinsa typing qayta + ripple resume; ost sahifa parallaks */
   var rb=document.getElementById('reveal-behind');
   var video = rb ? rb.querySelector('video') : null;
