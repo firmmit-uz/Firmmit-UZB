@@ -111,23 +111,20 @@
       requestAnimationFrame(frame);
     })();
 
-    /* ---- Prujinali kursor-ergashuvchi (leoparpeix uslubi): shar uchib ergashadi ---- */
+    /* ---- Kursor-yorug'lik (leoparpeix 1-sahifa uslubi): iliq nur kursor ortidan yurib sahnani yoritadi ---- */
     (function () {
-      var f = document.createElement('div'); f.id = 'fmt-follow';
-      f.style.cssText = 'position:fixed;top:0;left:0;width:16px;height:16px;border-radius:50%;' +
-        'pointer-events:none;z-index:9991;transform:translate(-50%,-50%);opacity:0;transition:opacity .3s;' +
-        'background:radial-gradient(circle at 38% 32%, #fff, #ffe14d 42%, #f6c400 72%, rgba(246,196,0,0) 100%);' +
-        'box-shadow:0 2px 12px rgba(246,196,0,.55);';
+      var f = document.createElement('div'); f.id = 'fmt-glow';
+      f.style.cssText = 'position:fixed;top:0;left:0;width:460px;height:460px;border-radius:50%;' +
+        'pointer-events:none;z-index:9992;transform:translate(-50%,-50%);opacity:0;transition:opacity .5s ease;' +
+        'mix-blend-mode:screen;' +
+        'background:radial-gradient(circle, rgba(255,244,214,0.5), rgba(255,226,165,0.22) 34%, rgba(255,210,130,0) 68%);';
       document.body.appendChild(f);
-      var fx = innerWidth / 2, fy = innerHeight / 2, vx = 0, vy = 0, tx = fx, ty = fy, shown = false;
+      var gx = innerWidth / 2, gy = innerHeight / 2, tx = gx, ty = gy, shown = false;
       addEventListener('mousemove', function (e) { tx = e.clientX; ty = e.clientY; if (!shown) { shown = true; f.style.opacity = '1'; } }, { passive: true });
       document.addEventListener('mouseleave', function () { f.style.opacity = '0'; shown = false; });
       (function loop() {
-        // prujina: ozgina o'tib ketib qaytadi (overshoot/wobble)
-        vx = vx * 0.78 + (tx - fx) * 0.16; vy = vy * 0.78 + (ty - fy) * 0.16;
-        fx += vx; fy += vy;
-        var sp = Math.sqrt(vx * vx + vy * vy), ang = Math.atan2(vy, vx), st = Math.min(sp * 0.018, 0.5);
-        f.style.transform = 'translate(' + fx + 'px,' + fy + 'px) translate(-50%,-50%) rotate(' + ang + 'rad) scale(' + (1 + st) + ',' + (1 - st) + ')';
+        gx += (tx - gx) * 0.12; gy += (ty - gy) * 0.12;   // yumshoq, sekin ergashish (seamless)
+        f.style.left = gx + 'px'; f.style.top = gy + 'px';
         requestAnimationFrame(loop);
       })();
     })();
