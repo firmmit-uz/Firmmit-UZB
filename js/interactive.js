@@ -27,24 +27,28 @@
     function resize() { cv.width = Math.floor(innerWidth * dpr); cv.height = Math.floor(innerHeight * dpr); ctx.setTransform(dpr, 0, 0, dpr, 0, 0); }
     resize(); addEventListener('resize', resize);
 
-    var drops = [], MAX = 1400, plx = null, ply = null;
+    var drops = [], MAX = 850, plx = null, ply = null;
 
     function spawn(x, y, sp, ang) {
-      // Purkagich KONUSI: zich, JUDA MAYDA tuman; chetlarida eng mayda tomchilar
-      var n = Math.min(44, 10 + Math.floor(sp / 1.4));
-      var maxSpread = 0.5 + Math.min(sp * 0.012, 0.4);   // tez harakat -> kengroq konus
+      // Yumshoq oq TUMAN (fog) konusi: yirik yumshoq bo'laklar qo'shilib bulut hosil qiladi,
+      // chetlarida eng mayda tomchilar sochiladi.
+      var n = Math.min(30, 10 + Math.floor(sp / 2));
+      var maxSpread = 0.42 + Math.min(sp * 0.012, 0.42);   // tez -> kengroq konus
       for (var i = 0; i < n; i++) {
         if (drops.length >= MAX) break;
-        var sa = (Math.random() - 0.5) * 2 * maxSpread;   // konus ichidagi burchak
+        var sa = (Math.random() - 0.5) * 2 * maxSpread;
         var a2 = ang + sa;
-        var speed = sp * (0.08 + Math.random() * 0.22);
-        var edge = Math.abs(sa) / maxSpread;              // 0 = markaz, 1 = chet
-        var r = 0.28 + (1 - edge) * 0.9 + Math.random() * 0.28;   // chetda maydaroq
+        var speed = sp * (0.05 + Math.random() * 0.2);
+        var edge = Math.abs(sa) / maxSpread;               // 0 markaz .. 1 chet
+        var haze = Math.random() < 0.72;                   // ko'pi yumshoq tuman, ozi mayda tomchi
+        var r = haze ? (2 + (1 - edge) * 6 + Math.random() * 3) : (0.35 + Math.random() * 1.1);
         drops.push({
-          x: x + (Math.random() - 0.5) * 14, y: y + (Math.random() - 0.5) * 14,
-          vx: Math.cos(a2) * speed + (Math.random() - 0.5) * 1.1,
-          vy: Math.sin(a2) * speed + (Math.random() - 0.5) * 1.1,
-          r: r, life: 1, decay: 0.011 + Math.random() * 0.02
+          x: x + (Math.random() - 0.5) * 12, y: y + (Math.random() - 0.5) * 12,
+          vx: Math.cos(a2) * speed + (Math.random() - 0.5) * 0.9,
+          vy: Math.sin(a2) * speed + (Math.random() - 0.5) * 0.9,
+          r: r, grow: haze ? 0.18 : 0.02,
+          alpha: haze ? 0.09 : 0.42,
+          life: 1, decay: haze ? (0.008 + Math.random() * 0.012) : (0.02 + Math.random() * 0.02)
         });
       }
     }
@@ -62,14 +66,16 @@
       ctx.clearRect(0, 0, innerWidth, innerHeight);
       for (var i = drops.length - 1; i >= 0; i--) {
         var d = drops[i];
-        d.vy += 0.06; d.vx *= 0.985; d.vy *= 0.985; d.x += d.vx; d.y += d.vy; d.life -= d.decay;
+        d.vy += 0.04;
+        d.vx += (Math.random() - 0.5) * 0.14; d.vy += (Math.random() - 0.5) * 0.14;  // billowing (tuman aylanishi)
+        d.vx *= 0.985; d.vy *= 0.985; d.x += d.vx; d.y += d.vy; d.r += d.grow; d.life -= d.decay;
         if (d.life <= 0) { drops.splice(i, 1); continue; }
         var a = Math.max(0, d.life);
         var rr = d.r * 2.1;
         var g = ctx.createRadialGradient(d.x, d.y, 0, d.x, d.y, rr);
-        g.addColorStop(0, 'rgba(255,255,255,' + (0.5 * a) + ')');
-        g.addColorStop(0.5, 'rgba(214,236,255,' + (0.22 * a) + ')');
-        g.addColorStop(1, 'rgba(150,200,245,0)');
+        g.addColorStop(0, 'rgba(255,255,255,' + (d.alpha * a) + ')');
+        g.addColorStop(0.55, 'rgba(244,250,255,' + (d.alpha * 0.45 * a) + ')');
+        g.addColorStop(1, 'rgba(220,235,250,0)');
         ctx.fillStyle = g;
         ctx.beginPath(); ctx.arc(d.x, d.y, rr, 0, 6.2832); ctx.fill();
       }
