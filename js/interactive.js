@@ -111,20 +111,28 @@
       requestAnimationFrame(frame);
     })();
 
-    /* ---- Kursor-yorug'lik (leoparpeix 1-sahifa uslubi): iliq nur kursor ortidan yurib sahnani yoritadi ---- */
+    /* ---- Kursor-yorug'lik (leoparpeix 1-sahifa uslubi): iliq nur kursorda "gullaydi";
+           harakatda kuchayib portlab yoritadi (bloom/flare), sekinlashsa pasayadi ---- */
     (function () {
       var f = document.createElement('div'); f.id = 'fmt-glow';
-      f.style.cssText = 'position:fixed;top:0;left:0;width:460px;height:460px;border-radius:50%;' +
-        'pointer-events:none;z-index:9992;transform:translate(-50%,-50%);opacity:0;transition:opacity .5s ease;' +
-        'mix-blend-mode:screen;' +
-        'background:radial-gradient(circle, rgba(255,244,214,0.5), rgba(255,226,165,0.22) 34%, rgba(255,210,130,0) 68%);';
+      f.style.cssText = 'position:fixed;top:0;left:0;width:540px;height:540px;border-radius:50%;' +
+        'pointer-events:none;z-index:9992;transform:translate(-50%,-50%) scale(.6);opacity:0;mix-blend-mode:screen;' +
+        'background:radial-gradient(circle, rgba(255,255,255,.92) 0%, rgba(255,246,218,.6) 16%, rgba(255,228,166,.28) 40%, rgba(255,212,132,0) 70%);';
       document.body.appendChild(f);
-      var gx = innerWidth / 2, gy = innerHeight / 2, tx = gx, ty = gy, shown = false;
-      addEventListener('mousemove', function (e) { tx = e.clientX; ty = e.clientY; if (!shown) { shown = true; f.style.opacity = '1'; } }, { passive: true });
-      document.addEventListener('mouseleave', function () { f.style.opacity = '0'; shown = false; });
+      var gx = innerWidth / 2, gy = innerHeight / 2, tx = gx, ty = gy, lx = null, ly = null, inten = 0, shown = false;
+      addEventListener('mousemove', function (e) {
+        tx = e.clientX; ty = e.clientY;
+        if (lx !== null) { var dx = tx - lx, dy = ty - ly; inten = Math.min(inten + Math.sqrt(dx * dx + dy * dy) * 0.02, 1.1); }
+        lx = tx; ly = ty; shown = true;
+      }, { passive: true });
+      document.addEventListener('mouseleave', function () { inten = 0; shown = false; });
       (function loop() {
-        gx += (tx - gx) * 0.12; gy += (ty - gy) * 0.12;   // yumshoq, sekin ergashish (seamless)
-        f.style.left = gx + 'px'; f.style.top = gy + 'px';
+        gx += (tx - gx) * 0.16; gy += (ty - gy) * 0.16;   // seamless ergashish
+        inten *= 0.9;
+        var op = shown ? Math.min(0.28 + inten * 0.85, 1) : Math.max(0, inten);
+        var sc = 0.55 + inten * 0.6;
+        f.style.opacity = op;
+        f.style.transform = 'translate(' + gx + 'px,' + gy + 'px) translate(-50%,-50%) scale(' + sc + ')';
         requestAnimationFrame(loop);
       })();
     })();
