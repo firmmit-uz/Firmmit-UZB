@@ -32,24 +32,25 @@
     resize();
     addEventListener('resize', resize);
 
-    var drops = [], MAX = 900;
+    var drops = [], MAX = 1600;
     var lastX = null, lastY = null;
 
     function spawn(x, y, speed, dirx, diry) {
-      // tezlikka qarab tomchi soni — mayda va KO'P (purkagich tumani kabi)
-      var n = Math.min(22, 4 + Math.floor(speed / 2.5));
+      // mayda, JUDA KO'P, KENG doira (purkagich tumani)
+      var n = Math.min(34, 8 + Math.floor(speed / 1.6));
+      var R = 26;   // keng ta'sir doirasi
       for (var i = 0; i < n; i++) {
         if (drops.length >= MAX) break;
         var spread = (Math.random() - 0.5);
-        var sp = 0.5 + Math.random() * 1.3;
+        var sp = 0.4 + Math.random() * 1.2;
         drops.push({
-          x: x + (Math.random() - 0.5) * 12,
-          y: y + (Math.random() - 0.5) * 12,
-          vx: dirx * sp * (0.4 + speed * 0.04) + spread * 2.2,
-          vy: diry * sp * (0.4 + speed * 0.04) + spread * 1.8 + 0.3,
-          r: 0.35 + Math.random() * 1.15,          // maydaroq tomchilar
+          x: x + (Math.random() - 0.5) * R,
+          y: y + (Math.random() - 0.5) * R,
+          vx: dirx * sp * (0.3 + speed * 0.035) + spread * 2.6,
+          vy: diry * sp * (0.3 + speed * 0.035) + spread * 2.2 + 0.25,
+          r: 0.28 + Math.random() * 0.85,          // mayda tomchilar
           life: 1,
-          decay: 0.014 + Math.random() * 0.024
+          decay: 0.016 + Math.random() * 0.026
         });
       }
     }
@@ -78,8 +79,8 @@
         if (d.life <= 0) { drops.splice(i, 1); continue; }
         var a = Math.max(0, d.life);
         var g = ctx.createRadialGradient(d.x, d.y, 0, d.x, d.y, d.r * 2.2);
-        g.addColorStop(0, 'rgba(226,244,255,' + (0.5 * a) + ')');
-        g.addColorStop(0.5, 'rgba(120,180,255,' + (0.32 * a) + ')');
+        g.addColorStop(0, 'rgba(230,246,255,' + (0.34 * a) + ')');
+        g.addColorStop(0.5, 'rgba(130,185,255,' + (0.18 * a) + ')');
         g.addColorStop(1, 'rgba(80,140,230,0)');
         ctx.fillStyle = g;
         ctx.beginPath();
