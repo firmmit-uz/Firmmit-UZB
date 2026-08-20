@@ -238,7 +238,7 @@ const tubeAlong=(pts,r,seg=5)=>new THREE.TubeGeometry(new THREE.CatmullRomCurve3
 const cylZ=(x,y,r,len)=>{const g=new THREE.CylinderGeometry(r,r,len,8);g.rotateX(Math.PI/2);g.translate(x,y,len/2);return g;};
 
 // ── build modeled parts ──
-const PARTS=[]; const sel=[]; const fanBlades=[]; let vTween=null,calloutSprite=null;   // sel: selectable objects
+const PARTS=[]; const sel=[]; const fanBlades=[]; let vTween=null,calloutSprite=null,thermalScreen=null;   // sel: selectable objects
 function reg(o){ o.obj.userData.pid=o.id; PARTS.push(o); if(o.obj){scene.add(o.obj); sel.push(o.obj);} }
 function meshMerge(geos,mat,shadow=true){const m=new THREE.Mesh(mergeGeometries(geos,false),mat);m.castShadow=shadow;m.receiveShadow=true;return m;}
 
@@ -277,7 +277,7 @@ function meshMerge(geos,mat,shadow=true){const m=new THREE.Mesh(mergeGeometries(
  reg({id:'sstud',cat:'Ички элементлар',name:'Ён томон арка қувури',spec:'∅25.4×1.5t @1500',qty:'68',sw:'#3498db',obj:meshMerge(g,mkSteel(0xa6b0bd)),anchor:V(17,2.5,33)});}
 // 11 Thermal screen (다겹보온재)
 {const grp=new THREE.Group(),mats=[];for(const cx of BAY_CX){const g=new THREE.PlaneGeometry(D.bayWidth-0.1,Ltot-0.1);g.rotateX(-Math.PI/2);g.translate(cx,D.eaveH-0.04,Ltot/2);const mm=mkScreen();mats.push(mm);grp.add(new THREE.Mesh(g,mm));}
- reg({id:'scr',cat:'Ички элементлар',name:'Кўп қатламли термоэкран',spec:'Кўп қатламли иссиқлик сақловчи парда',qty:'16 рулон',sw:'#cfd6e0',obj:grp,mats,anchor:V(5,3.5,38)});}
+ thermalScreen=grp; reg({id:'scr',cat:'Ички элементлар',name:'Кўп қатламли термоэкран',spec:'Кўп қатламли иссиқлик сақловчи парда',qty:'16 рулон',sw:'#cfd6e0',obj:grp,mats,anchor:V(5,3.5,38)});}
 // 12 Gutter (물받이 600×0.5t + 2중 고무물받이 400×1.5t)
 {const grp=new THREE.Group(),gm=new THREE.MeshStandardMaterial({color:0xc2c9d2,metalness:0.85,roughness:0.28}),
    rg=new THREE.MeshStandardMaterial({color:0x33363b,metalness:0.1,roughness:0.85}),mats=[gm,rg];
@@ -506,7 +506,9 @@ addEventListener('resize',()=>{camera.aspect=innerWidth/innerHeight;camera.updat
 window.__three_ok=true;const ld=document.getElementById('loader');ld.classList.add('fade');setTimeout(()=>ld.style.display='none',650);
 (function loop(){requestAnimationFrame(loop);fanBlades.forEach(b=>b.rotation.z+=0.35);
   if(iT<1){iT=Math.min(1,iT+clock.getDelta()/1.6);camera.position.lerpVectors(sP,eP,ease(iT));camera.lookAt(CENTER);if(iT>=1)controls.enabled=true;}
-  else {if(vTween){vTween.k=Math.min(1,vTween.k+0.045);camera.position.lerpVectors(vTween.f,vTween.t,ease(vTween.k));camera.lookAt(CENTER);if(vTween.k>=1)vTween=null;}controls.update();}
+  else {if(vTween){vTween.k=Math.min(1,vTween.k+0.045);camera.position.lerpVectors(vTween.f,vTween.t,ease(vTween.k));camera.lookAt(CENTER);if(vTween.k>=1)vTween=null;}
+    if(thermalScreen){var tt=clock.getElapsedTime(),period=26,p=(tt%period)/period,s;if(p<0.42)s=1;else if(p<0.52){var k=(p-0.42)/0.10;s=1-ease(k)*0.955;}else if(p<0.92)s=0.045;else{var k2=(p-0.92)/0.08;s=0.045+ease(k2)*0.955;}thermalScreen.scale.z=s;}
+    controls.update();}
   renderer.render(scene,camera);})();
 </script>
 <script>(function(){var e=document.getElementById('cvEnter'),c=document.getElementById('cover');
