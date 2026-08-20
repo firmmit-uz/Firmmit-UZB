@@ -616,3 +616,17 @@ img.mark { width: 34px; height: 34px; object-fit: contain; }
 .hero .hero-bg.has-photo { animation: fmtHeroZoom 24s ease-in-out infinite alternate; will-change: transform; }
 @keyframes fmtHeroZoom { from { transform: scale(1); } to { transform: scale(1.09); } }
 @media (prefers-reduced-motion: reduce) { .hero .hero-bg.has-photo { animation: none; } }
+
+/* ---- Loyihalarimiz (Our projects) kartochkalari — Services -> Construction ---- */
+.proj-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 22px; margin-top: 36px; }
+.proj-card { display: block; border-radius: var(--radius); overflow: hidden; background: #fff; border: 1px solid var(--line); box-shadow: var(--shadow-sm); transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease), border-color 0.4s var(--ease); }
+.proj-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); border-color: transparent; }
+.proj-media { position: relative; aspect-ratio: 16 / 10; background: #dbe3f0 center / cover no-repeat; }
+.proj-media::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(8,16,40,0.34), transparent 55%); }
+.proj-badge { position: absolute; top: 12px; left: 12px; z-index: 2; background: var(--blue); color: #fff; font: 700 12px/1 var(--font-en); letter-spacing: 0.08em; padding: 6px 10px; border-radius: 8px; }
+.proj-body { padding: 18px 20px 22px; }
+.proj-body h3 { font-size: 1.15rem; font-weight: 800; margin: 0 0 6px; }
+.proj-body p { color: var(--muted); font-size: 0.95rem; margin: 0 0 14px; }
+.proj-cta { display: inline-flex; align-items: center; gap: 8px; color: var(--blue); font-weight: 600; font-size: 0.95rem; }
+.proj-cta .arrow { transition: transform 0.35s var(--ease); }
+.proj-card:hover .proj-cta .arrow { transform: translateX(5px); }

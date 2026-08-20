@@ -8,6 +8,22 @@
    Faqat sichqonchali (pointer:fine); touch/mobil va reduced-motion'da
    o'chirilgan. Canvas pointer-events:none — sahifaga xalaqit bermaydi.
    ============================================================ */
+/* ====== Sarlavha/lidlardan gap oxiridagi nuqtani olib tashlash (BARCHA til) ======
+   i18n keshlanган originallariga tegmaydi (kalitlar buzilmaydi) — faqat ko'rinadigan
+   matndan oxirgi nuqtani olib tashlaydi. Har render/til almashuvidan keyin ishlaydi. */
+(function () {
+  var SEL = '.display, .section-title, .lead, .eyebrow, .hero-title, .page-hero h1, .hero h1, .cta-band h2, .flow-step h3, .flow-step p, .card h3, .card p';
+  function stripEl(el) {
+    var w = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null), last = null, n;
+    while ((n = w.nextNode())) { if (n.nodeValue && n.nodeValue.trim()) last = n; }
+    if (last) { var v = last.nodeValue.replace(/([.。．])(\s*)$/, '$2'); if (v !== last.nodeValue) last.nodeValue = v; }
+  }
+  function run() { try { document.querySelectorAll(SEL).forEach(stripEl); } catch (e) {} }
+  function schedule() { setTimeout(run, 80); }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', schedule); else schedule();
+  document.addEventListener('firmmit:lang', schedule);
+})();
+
 (function () {
   'use strict';
   if (!window.matchMedia) return;
