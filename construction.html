@@ -291,7 +291,7 @@ function meshMerge(geos,mat,shadow=true){const m=new THREE.Mesh(mergeGeometries(
 // 13 Circulation fans (유동휀 8)
 {const grp=new THREE.Group(),mats=[];const fan=(x,z)=>{const gp=new THREE.Group();const h=mkDark(),bl=new THREE.MeshStandardMaterial({color:0x23272c,metalness:0.4,roughness:0.6,side:THREE.DoubleSide});mats.push(h,bl);
    const hm=new THREE.Mesh(new THREE.CylinderGeometry(0.32,0.32,0.26,16),h);hm.rotation.x=Math.PI/2;gp.add(hm);
-   const dm=new THREE.Mesh(new THREE.CircleGeometry(0.28,16),bl);dm.position.z=0.14;gp.add(dm);fanBlades.push(dm);gp.position.set(x,2.7,z);gp.traverse(o=>o.castShadow=true);return gp;};
+   const dm=new THREE.Group();const cd=new THREE.Mesh(new THREE.CircleGeometry(0.075,12),bl);cd.position.z=0.146;dm.add(cd);for(let bi=0;bi<4;bi++){const bg=new THREE.PlaneGeometry(0.12,0.46);bg.translate(0,0.23,0.145);bg.rotateZ(bi*Math.PI/2);dm.add(new THREE.Mesh(bg,bl));}gp.add(dm);fanBlades.push(dm);gp.position.set(x,2.7,z);gp.traverse(o=>o.castShadow=true);return gp;};
  for(const cx of BAY_CX)for(const z of [8,20,32,44])grp.add(fan(cx,z));
  reg({id:'fan',cat:'Ички элементлар',name:'Ҳаво айлантириш вентилятори',spec:'60W ∅350',qty:'8',sw:'#34495e',obj:grp,mats,anchor:V(5,2.7,8)});}
 // 14 Doors (출입문 4)
