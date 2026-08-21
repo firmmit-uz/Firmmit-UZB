@@ -1314,6 +1314,21 @@
     n.nodeValue = lead + v + trail;
   }
 
+  // Titles never end in a period — in ANY language. After each translation we
+  // strip a single trailing period from headings (never an ellipsis, never body text).
+  var HEADING_SEL = '.hero-title, .page-hero h1, .hero h1, .section-title, .cta-band h2, .phi-intro-head h2, .phi-label h3';
+  function stripHeadingPeriods() {
+    document.querySelectorAll(HEADING_SEL).forEach(function (el) {
+      var w = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null);
+      var last = null, n;
+      while ((n = w.nextNode())) { if (n.nodeValue && n.nodeValue.trim()) last = n; }
+      if (!last) return;
+      if (/([^.\s])\.(\s*)$/.test(last.nodeValue)) {
+        last.nodeValue = last.nodeValue.replace(/\.(\s*)$/, '$1');
+      }
+    });
+  }
+
   function apply(lang) {
     if (LANGS.indexOf(lang) < 0) lang = 'en';
     if (!cached) cacheOriginals();
@@ -1346,6 +1361,8 @@
     // dynamic dictionary values (address / legal name)
     document.querySelectorAll('[data-field="address"]').forEach(function (el) { el.textContent = ADDRESS[lang] || ADDRESS.en; });
     document.querySelectorAll('[data-field="legalname"]').forEach(function (el) { el.textContent = LEGALNAME[lang] || LEGALNAME.en; });
+
+    stripHeadingPeriods();
 
     document.documentElement.setAttribute('lang', lang);
     try { localStorage.setItem(STORE, lang); } catch (e) {}
