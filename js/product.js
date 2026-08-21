@@ -16,7 +16,11 @@
   };
   function lang() { try { return (window.FirmmitI18N && FirmmitI18N.get()) || localStorage.getItem('firmmit-lang') || 'en'; } catch (e) { return 'en'; } }
   function t(k) { var d = T[lang()] || T.en; return d[k] != null ? d[k] : (T.en[k] || k); }
-  function loc(o, base) { var l = lang(); return o[base + '_' + l] || o[base + '_en'] || o[base + '_uz'] || o[base + '_ru'] || ''; }
+  function loc(o, base) {
+    var l = lang();
+    if (base === 'name' && l === 'ko' && !o.name_ko && window.FIRMMIT_KO_NAMES) { var kn = window.FIRMMIT_KO_NAMES[o.name_en]; if (kn) return kn; }
+    return o[base + '_' + l] || o[base + '_en'] || o[base + '_uz'] || o[base + '_ru'] || '';
+  }
   function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;' }[c]; }); }
   function fmt(v) { var n = parseFloat(v); return isFinite(n) ? Math.round(n).toLocaleString('ru-RU') : ''; }
   function fixImg(u) { if (!u) return u; if (location.protocol === 'https:' && /^http:\/\//i.test(u)) return u.replace(/^http:\/\//i, 'https://'); return u; }
