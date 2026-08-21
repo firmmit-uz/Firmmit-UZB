@@ -22,7 +22,7 @@
   var state = { category:'', search:'', ordering:'', in_stock:false, price_min:'', price_max:'', nextUrl:null, count:0, items:[], loading:false };
 
   /* ---- helpers ---- */
-  function nameOf(o) { var l = lang(); return o['name_' + l] || o.name_uz || o.name_en || o.name_ru || ''; }
+  function nameOf(o) { var l = lang(); return o['name_' + l] || o.name_en || o.name_uz || o.name_ru || ''; }
   function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;' }[c]; }); }
   function fmtPrice(v) { var n = parseFloat(v); if (!isFinite(n)) return ''; return Math.round(n).toLocaleString('ru-RU'); }
   // upgrade http image URLs to https on secure pages (avoids mixed-content block)
