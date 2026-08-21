@@ -157,6 +157,23 @@
   <label><input type="checkbox" id="tGround" checked><span class="sw"></span>Ер сатҳи</label>
 </div>
 
+<style>
+#phases .phnav{background:rgba(91,140,255,.14);border:1px solid rgba(91,140,255,.4);color:#dbe6ff;font-family:inherit;font-size:12px;font-weight:600;padding:7px 11px;border-radius:8px;cursor:pointer}
+#phases .phnav:hover{background:rgba(91,140,255,.28)}
+#phBuild.on{background:#5b8cff;border-color:#5b8cff;color:#fff}
+@media(max-width:760px){#phases{bottom:10px}}
+</style>
+<div id="phases" class="panel" style="position:fixed;left:50%;bottom:64px;transform:translateX(-50%);z-index:16;padding:9px 12px;display:flex;align-items:center;gap:9px;flex-wrap:wrap;justify-content:center;max-width:calc(100vw - 32px)">
+  <button id="phBuild" style="background:rgba(91,140,255,.16);border:1px solid rgba(91,140,255,.45);color:#dbe6ff;font-family:inherit;font-size:12.5px;font-weight:700;padding:8px 14px;border-radius:9px;cursor:pointer">Қурилиш босқичлари</button>
+  <div id="phCtrl" style="display:none;align-items:center;gap:7px">
+    <button id="phPrev" class="phnav" aria-label="Олдинги">◀</button>
+    <button id="phPlay" class="phnav" aria-label="Ижро">▶</button>
+    <button id="phNext" class="phnav" aria-label="Кейинги">▶|</button>
+    <span id="phLabel" style="font-size:12px;color:#cdd8ee;font-weight:600;min-width:150px;text-align:center"></span>
+    <button id="phAll" class="phnav">Тайёр объект</button>
+  </div>
+</div>
+
 <div id="parts" class="panel">
   <div class="ph"><div class="t">Элементлар рўйхати / материаллар жадвали<small>Босилганда алоҳида кўрсатилади · миқдор = ўрнатилган элементлар</small></div>
     <button id="showAll">Ҳаммасини кўриш</button></div>
@@ -492,6 +509,30 @@ function setView(v){controls.autoRotate=false;document.getElementById('tRotate')
   startTween(p);
   document.querySelectorAll('#tools .views button').forEach(b=>b.classList.toggle('active',b.dataset.v===v));}
 document.querySelectorAll('#tools .views button').forEach(b=>b.onclick=()=>setView(b.dataset.v));
+
+// ── Қурилиш босқичлари (build phases) ──
+const PHASE_ORDER=['Конструкция','Қоплама','Очиш-ёпиш','Ички элементлар','Ускуналар'];
+const PHASE_NAMES=['1/5 · Пойдевор ва каркас','2/5 · Қоплама (плёнка)','3/5 · Шамоллатиш','4/5 · Ички жиҳозлар','5/5 · Ускуналар'];
+let buildMode=false,curPhase=PHASE_ORDER.length-1,playT=null;
+function phIdx(cat){const i=PHASE_ORDER.indexOf(cat);return i<0?0:i;}
+function applyPhase(){PARTS.forEach(p=>{if(p.obj)p.obj.visible=(!buildMode)||(phIdx(p.cat)<=curPhase);});
+  const l=document.getElementById('phLabel');if(l)l.textContent=buildMode?PHASE_NAMES[curPhase]:'';}
+function stopPlay(){if(playT){clearInterval(playT);playT=null;}const pb=document.getElementById('phPlay');if(pb)pb.textContent='▶';}
+function setBuild(on){buildMode=on;
+  document.getElementById('phCtrl').style.display=on?'flex':'none';
+  document.getElementById('phBuild').classList.toggle('on',on);
+  if(on){curPhase=0;controls.autoRotate=false;const r=document.getElementById('tRotate');if(r)r.checked=false;}else{stopPlay();}
+  applyPhase();}
+function stepPhase(d){curPhase=Math.max(0,Math.min(PHASE_ORDER.length-1,curPhase+d));applyPhase();}
+function playPhases(){const pb=document.getElementById('phPlay');if(playT){stopPlay();return;}
+  if(!buildMode)setBuild(true);
+  if(curPhase>=PHASE_ORDER.length-1)curPhase=0;applyPhase();pb.textContent='⏸';
+  playT=setInterval(()=>{if(curPhase>=PHASE_ORDER.length-1){stopPlay();return;}curPhase++;applyPhase();},1400);}
+document.getElementById('phBuild').onclick=()=>setBuild(!buildMode);
+document.getElementById('phPrev').onclick=()=>{stopPlay();stepPhase(-1);};
+document.getElementById('phNext').onclick=()=>{stopPlay();stepPhase(1);};
+document.getElementById('phPlay').onclick=playPhases;
+document.getElementById('phAll').onclick=()=>{stopPlay();setBuild(false);};
 // ── mobile bottom-sheet ──
 const partsEl=document.getElementById('parts');
 const isMobile=()=>window.matchMedia('(max-width:760px)').matches;
