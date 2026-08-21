@@ -174,6 +174,15 @@
   </div>
 </div>
 
+<style>
+#lang3d{position:fixed;top:10px;left:50%;transform:translateX(-50%);z-index:30;display:flex;gap:4px}
+#lang3d button{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);color:#cdd8ee;font:600 11px/1 Inter,Arial,sans-serif;padding:6px 10px;border-radius:7px;cursor:pointer;letter-spacing:.02em}
+#lang3d button:hover{background:rgba(91,140,255,.28)}
+#lang3d button.on{background:#5b8cff;border-color:#5b8cff;color:#fff}
+@media(max-width:760px){#lang3d{top:auto;bottom:112px}}
+</style>
+<div id="lang3d"><button data-l="uz" class="on">UZ</button><button data-l="ru">RU</button><button data-l="en">EN</button><button data-l="ko">KO</button></div>
+
 <div id="parts" class="panel">
   <div class="ph"><div class="t">Элементлар рўйхати / материаллар жадвали<small>Босилганда алоҳида кўрсатилади · миқдор = ўрнатилган элементлар</small></div>
     <button id="showAll">Ҳаммасини кўриш</button></div>
@@ -555,5 +564,84 @@ window.__three_ok=true;const ld=document.getElementById('loader');ld.classList.a
 </script>
 <script>(function(){var e=document.getElementById('cvEnter'),c=document.getElementById('cover');
 if(e)e.addEventListener('click',function(){c.classList.add('hide');setTimeout(function(){if(c)c.remove();},750);});})();</script>
+<script>
+/* FIRMMIT 3D — 4 tilli almashtirgich (UZ joriy · RU/EN/KO tarjima). i18n keshi orqali. */
+(function(){
+  var TR={
+   ru:{
+    "Мўғул типидаги 2 пролётли иссиқхона":"Двухпролётная теплица монгольского типа","Ўзбекистон":"Узбекистан",
+    "ТЕХНИК КЎРСАТКИЧЛАР":"ТЕХНИЧЕСКИЕ ДАННЫЕ","Умумий майдон":"Общая площадь","Ўлчам":"Размер","Ён девор бал.":"Высота стены","Конёк бал.":"Высота конька",
+    "Перспектива":"Перспектива","Олд":"Спереди","Ён":"Сбоку","Режа":"План",
+    "X-ray (ички кўриниш)":"Рентген (внутри)","Ўлчамлар":"Размеры","Авто айланиш":"Автоповорот","Ер сатҳи":"Уровень земли",
+    "Элементлар рўйхати / материаллар жадвали":"Список элементов / ведомость материалов","Босилганда алоҳида кўрсатилади · миқдор = ўрнатилган элементлар":"При клике — по отдельности · кол-во = установленные элементы","Ҳаммасини кўриш":"Показать все",
+    "Қурилиш босқичлари":"Этапы строительства","Тайёр объект":"Готовый объект",
+    "1/5 · Пойдевор ва каркас":"1/5 · Фундамент и каркас","2/5 · Қоплама (плёнка)":"2/5 · Покрытие (плёнка)","3/5 · Шамоллатиш":"3/5 · Вентиляция","4/5 · Ички жиҳозлар":"4/5 · Внутренние системы","5/5 · Ускуналар":"5/5 · Оборудование",
+    "Конструкция":"Конструкция","Ички элементлар":"Внутренние элементы","Қоплама":"Покрытие","Очиш-ёпиш":"Открывание/вентиляция","Ускуналар":"Оборудование",
+    "Пойдевор":"Фундамент","Асосий устун":"Основная стойка","Арка қувури":"Арочная труба","Бўйлама қувур":"Продольная труба","Нов тўсини":"Балка водостока","Ён девор ўрта боғловчи қувури":"Средняя связь боковой стены","Қия боғловчи, раскос":"Диагональная связь (раскос)","Иккинчи қават арка қувури":"Арочная труба 2-го слоя","Иккинчи қават бўйлама қувури":"Продольная труба 2-го слоя","Ён томон арка қувури":"Боковая арочная труба","Кўп қатламли термоэкран":"Многослойный термоэкран","Сув йиғиш нови, иккинчи қават":"Водосток, 2-й слой","Ҳаво айлантириш вентилятори":"Циркуляционный вентилятор","Кириш эшиги":"Входная дверь","Том қопламаси, PO":"Кровельная плёнка (PO)","Ён девор қопламаси":"Плёнка боковой стены","Торец қопламаси":"Торцевая плёнка","Ён шамоллатиш қисми, рулонли очилиш":"Боковая вентиляция (рулонная)","Том шамоллатиш қисми":"Кровельная вентиляция","Ҳашаротга қарши тўр":"Противомоскитная сетка","Мўғул типидаги ташқи арка қувури":"Наружная арочная труба (монгольский тип)","Электр ҳаво иситгич":"Электровоздухонагреватель","Фертигация контроллери":"Контроллер фертигации","Бошқарув шкафи":"Шкаф управления","Елка таянч қувури":"Плечевая опорная труба","Конёк тўсини":"Коньковая балка","Торец каркаси":"Торцевой каркас","Улаш фурнитуралари":"Соединительная фурнитура","Гидропоник етиштириш лотоги":"Гидропонный лоток","Гофр қувур":"Гофрированная труба","Пастки рулонли плёнка":"Нижняя рулонная плёнка","Электр рулон очгич мотори":"Электромотор рулонного открывания","Электр симлари":"Электропроводка"
+   },
+   en:{
+    "Мўғул типидаги 2 пролётли иссиқхона":"Mongol-type 2-span greenhouse","Ўзбекистон":"Uzbekistan",
+    "ТЕХНИК КЎРСАТКИЧЛАР":"TECHNICAL SPECS","Умумий майдон":"Total area","Ўлчам":"Dimensions","Ён девор бал.":"Wall height","Конёк бал.":"Ridge height",
+    "Перспектива":"Perspective","Олд":"Front","Ён":"Side","Режа":"Plan",
+    "X-ray (ички кўриниш)":"X-ray (interior)","Ўлчамлар":"Dimensions","Авто айланиш":"Auto-rotate","Ер сатҳи":"Ground",
+    "Элементлар рўйхати / материаллар жадвали":"Parts list / bill of materials","Босилганда алоҳида кўрсатилади · миқдор = ўрнатилган элементлар":"Click to isolate · qty = installed items","Ҳаммасини кўриш":"Show all",
+    "Қурилиш босқичлари":"Construction phases","Тайёр объект":"Finished object",
+    "1/5 · Пойдевор ва каркас":"1/5 · Foundation & frame","2/5 · Қоплама (плёнка)":"2/5 · Covering (film)","3/5 · Шамоллатиш":"3/5 · Ventilation","4/5 · Ички жиҳозлар":"4/5 · Interior systems","5/5 · Ускуналар":"5/5 · Equipment",
+    "Конструкция":"Structure","Ички элементлар":"Interior elements","Қоплама":"Covering","Очиш-ёпиш":"Openings/vents","Ускуналар":"Equipment",
+    "Пойдевор":"Foundation","Асосий устун":"Main column","Арка қувури":"Arch pipe","Бўйлама қувур":"Purlin","Нов тўсини":"Gutter beam","Ён девор ўрта боғловчи қувури":"Side-wall mid rail","Қия боғловчи, раскос":"Diagonal brace","Иккинчи қават арка қувури":"Second-layer arch pipe","Иккинчи қават бўйлама қувури":"Second-layer purlin","Ён томон арка қувури":"Side arch pipe","Кўп қатламли термоэкран":"Multi-layer thermal screen","Сув йиғиш нови, иккинчи қават":"Gutter, second layer","Ҳаво айлантириш вентилятори":"Air circulation fan","Кириш эшиги":"Entrance door","Том қопламаси, PO":"Roof film (PO)","Ён девор қопламаси":"Side-wall film","Торец қопламаси":"Gable film","Ён шамоллатиш қисми, рулонли очилиш":"Side vent (roll-up)","Том шамоллатиш қисми":"Roof vent","Ҳашаротга қарши тўр":"Insect net","Мўғул типидаги ташқи арка қувури":"Mongol-type outer arch pipe","Электр ҳаво иситгич":"Electric air heater","Фертигация контроллери":"Fertigation controller","Бошқарув шкафи":"Control cabinet","Елка таянч қувури":"Shoulder support pipe","Конёк тўсини":"Ridge beam","Торец каркаси":"Gable frame","Улаш фурнитуралари":"Connection fittings","Гидропоник етиштириш лотоги":"Hydroponic growing gutter","Гофр қувур":"Corrugated pipe","Пастки рулонли плёнка":"Lower roll-up film","Электр рулон очгич мотори":"Roll-up motor","Электр симлари":"Electric wiring"
+   },
+   ko:{
+    "Мўғул типидаги 2 пролётли иссиқхона":"몽골형 2연동 온실","Ўзбекистон":"우즈베키스탄",
+    "ТЕХНИК КЎРСАТКИЧЛАР":"기술 사양","Умумий майдон":"총 면적","Ўлчам":"규격","Ён девор бал.":"측고","Конёк бал.":"동고",
+    "Перспектива":"투시","Олд":"정면","Ён":"측면","Режа":"평면",
+    "X-ray (ички кўриниш)":"X-ray(내부)","Ўлчамлар":"치수","Авто айланиш":"자동 회전","Ер сатҳи":"지면",
+    "Элементлар рўйхати / материаллар жадвали":"부품 목록 / 자재표","Босилганда алоҳида кўрсатилади · миқдор = ўрнатилган элементлар":"클릭 시 개별 표시 · 수량 = 설치 요소","Ҳаммасини кўриш":"전체 보기",
+    "Қурилиш босқичлари":"시공 단계","Тайёр объект":"완성 시설",
+    "1/5 · Пойдевор ва каркас":"1/5 · 기초·골조","2/5 · Қоплама (плёнка)":"2/5 · 피복(필름)","3/5 · Шамоллатиш":"3/5 · 환기","4/5 · Ички жиҳозлар":"4/5 · 내부 설비","5/5 · Ускуналар":"5/5 · 설비",
+    "Конструкция":"구조","Ички элементлар":"내부 요소","Қоплама":"외피","Очиш-ёпиш":"개폐","Ускуналар":"설비",
+    "Пойдевор":"기초","Асосий устун":"주 기둥","Арка қувури":"아치 파이프","Бўйлама қувур":"가로 도리","Нов тўсини":"물받이 보","Ён девор ўрта боғловчи қувури":"측벽 중간 연결재","Қия боғловчи, раскос":"가새(브레이스)","Иккинчи қават арка қувури":"2겹 아치 파이프","Иккинчи қават бўйлама қувури":"2겹 도리","Ён томон арка қувури":"측면 아치 파이프","Кўп қатламли термоэкран":"다겹 보온 스크린","Сув йиғиш нови, иккинчи қават":"물받이(2겹)","Ҳаво айлантириш вентилятори":"공기 순환 팬","Кириш эшиги":"출입문","Том қопламаси, PO":"지붕 필름(PO)","Ён девор қопламаси":"측벽 필름","Торец қопламаси":"박공 필름","Ён шамоллатиш қисми, рулонли очилиш":"측면 환기(롤업)","Том шамоллатиш қисми":"지붕 환기","Ҳашаротга қарши тўр":"방충망","Мўғул типидаги ташқи арка қувури":"몽골형 외부 아치 파이프","Электр ҳаво иситгич":"전기 온풍기","Фертигация контроллери":"관비 컨트롤러","Бошқарув шкафи":"제어반","Елка таянч қувури":"어깨 지지 파이프","Конёк тўсини":"용마루 보","Торец каркаси":"박공 골조","Улаш фурнитуралари":"연결 부속","Гидропоник етиштириш лотоги":"수경 재배 베드","Гофр қувур":"주름관","Пастки рулонли плёнка":"하부 롤업 필름","Электр рулон очгич мотори":"롤업 전동 모터","Электр симлари":"전기 배선"
+   }
+  };
+  var HINT={
+   uz:'🖱️ <b>Судраб</b> айлантириш · <b>Ғилдирак</b> билан яқинлаштириш · элементни <b>босиб</b> алоҳида кўриш',
+   ru:'🖱️ <b>Перетаскивание</b> — поворот · <b>Колесо</b> — зум · <b>клик</b> по элементу — изоляция',
+   en:'🖱️ <b>Drag</b> to rotate · <b>Wheel</b> to zoom · <b>click</b> a part to isolate',
+   ko:'🖱️ <b>드래그</b> 회전 · <b>휠</b> 확대 · 부품 <b>클릭</b> 개별 보기'
+  };
+  var origMap=new Map(), cur='uz', applying=false;
+  function skip(p){ return !p || p.nodeName==='SCRIPT'||p.nodeName==='STYLE'||p.nodeName==='CANVAS'||p.nodeName==='NOSCRIPT'|| (p.closest && (p.closest('#hint')||p.closest('#lang3d'))); }
+  function collect(){
+    var w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,{acceptNode:function(n){
+      if(skip(n.parentNode)) return NodeFilter.FILTER_REJECT;
+      return (n.nodeValue && n.nodeValue.trim())?NodeFilter.FILTER_ACCEPT:NodeFilter.FILTER_REJECT; }});
+    var n; while((n=w.nextNode())){ if(!origMap.has(n)) origMap.set(n,n.nodeValue); }
+  }
+  function apply(l){
+    cur=l; applying=true; collect();
+    origMap.forEach(function(orig,node){
+      var val=orig;
+      if(l!=='uz'){ var t=TR[l] && TR[l][orig.trim()]; if(t!=null) val=orig.replace(orig.trim(),t); }
+      if(node.nodeValue!==val) node.nodeValue=val;
+    });
+    var h=document.getElementById('hint'); if(h) h.innerHTML=HINT[l]||HINT.uz;
+    document.querySelectorAll('#lang3d button').forEach(function(b){ b.classList.toggle('on',b.dataset.l===l); });
+    document.documentElement.setAttribute('lang', l);
+    try{ localStorage.setItem('firmmit-lang',l);}catch(e){}
+    setTimeout(function(){applying=false;},0);
+  }
+  function boot(){
+    var saved='uz'; try{ saved=localStorage.getItem('firmmit-lang')||'uz'; }catch(e){}
+    if(['uz','ru','en','ko'].indexOf(saved)<0) saved='uz';
+    document.querySelectorAll('#lang3d button').forEach(function(b){ b.onclick=function(){ apply(b.dataset.l); }; });
+    var mo=new MutationObserver(function(){ if(applying) return; if(cur!=='uz') apply(cur); else collect(); });
+    ['list','phLabel','info'].forEach(function(id){ var el=document.getElementById(id); if(el) mo.observe(el,{childList:true,subtree:true,characterData:true}); });
+    var tries=0;
+    (function wait(){ var list=document.getElementById('list');
+      if((window.__three_ok && list && list.children.length) || tries++>140){ collect(); if(saved!=='uz') apply(saved); else { apply('uz'); } return; }
+      setTimeout(wait,50); })();
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',boot); else boot();
+})();
+</script>
 </body>
 </html>
