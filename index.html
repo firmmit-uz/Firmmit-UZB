@@ -7,16 +7,14 @@
 <title>Firmmit Uzbekistan — Smart-Farm Technology & Agri-Trade</title>
 <meta name="description" content="Firmmit Uzbekistan brings Korean smart-farm technology to Uzbekistan: greenhouses, controlled-environment agriculture, agricultural equipment and Korea–Uzbekistan agri-trade.">
 <link rel="stylesheet" href="css/style.css">
-<link rel="icon" type="image/png" href="/assets/favicon.png">
+<link rel="icon" type="image/png" href="/assets/favicon.png?v=2">
 </head>
 <body data-page="home">
 
 <!-- ============ HERO ============ -->
 <section class="hero">
   <div class="hero-bg hero-video">
-    <video class="hero-vid" autoplay muted loop playsinline preload="auto" poster="assets/photos/hero-poster.jpg">
-      <source src="assets/video/hero.mp4" type="video/mp4">
-    </video>
+    <video class="hero-vid" autoplay muted loop playsinline preload="none" poster="assets/photos/hero-poster.jpg" data-src="assets/video/hero.mp4?v=3"></video>
     <div class="rows"></div>
   </div>
   <div class="wrap">
@@ -124,5 +122,23 @@
 
 <script src="js/site.js"></script>
 <script defer src="js/interactive.js"></script>
+<script>
+/* Hero video: desktopda yuklanadi/o'ynaydi; mobil/sekin internet/reduced-motion'da poster rasm qoladi */
+(function () {
+  var v = document.querySelector('.hero-vid[data-src]');
+  if (!v) return;
+  var c = navigator.connection || {};
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (window.innerWidth >= 768 && !c.saveData && !reduce) {
+    var s = document.createElement('source');
+    s.src = v.getAttribute('data-src');
+    s.type = 'video/mp4';
+    v.appendChild(s);
+    v.load();
+    var p = v.play();
+    if (p && p.catch) p.catch(function () {});
+  }
+})();
+</script>
 </body>
 </html>

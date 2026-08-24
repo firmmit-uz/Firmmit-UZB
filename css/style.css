@@ -133,10 +133,10 @@ h1, h2, h3 { color: var(--ink); line-height: 1.18; letter-spacing: -0.02em; font
 .site-header.solid .brand { color: var(--ink); }
 .site-header.solid .brand .co { color: var(--blue); }
 
-.nav { display: flex; align-items: center; gap: 36px; margin-left: auto; margin-right: 32px; }
+.nav { display: flex; align-items: center; gap: 24px; margin-left: auto; margin-right: 20px; }
 .nav a {
-  font-size: 15px; font-weight: 500; letter-spacing: -0.01em; color: rgba(255,255,255,0.9);
-  position: relative; padding: 8px 0; transition: color 0.3s;
+  font-size: 14px; font-weight: 500; letter-spacing: -0.01em; color: rgba(255,255,255,0.9);
+  position: relative; padding: 8px 0; transition: color 0.3s; white-space: nowrap;
 }
 .nav a::after { content:''; position:absolute; left:0; right:0; bottom:0; height:2px; width:0; margin:0 auto; background: var(--blue); transition: width 0.3s var(--ease); }
 .nav a:hover::after, .nav a.active::after { width: 100%; }
@@ -471,7 +471,7 @@ img.mark { width: 34px; height: 34px; object-fit: contain; }
 /* uploaded logo (light + dark variants) */
 .brand.has-logo { gap: 8px; }
 .brand.has-logo .co { display: none; }           /* logo image carries the wordmark */
-.brand .logo-img { height: 30px; width: auto; max-width: 190px; object-fit: contain; display: block; }
+.brand .logo-img { height: 25px; width: auto; max-width: 146px; object-fit: contain; display: block; }
 .site-header .brand .logo-dark { display: none; }             /* transparent header (dark ground) -> light logo */
 .site-header .brand .logo-light { display: block; }
 .site-header.solid .brand .logo-light { display: none; }      /* solid header (white ground) -> dark logo */

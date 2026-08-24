@@ -1602,7 +1602,7 @@
 
   document.addEventListener('DOMContentLoaded', function () {
     SPA = document.querySelectorAll('section.route').length > 0;
-    setFavicon();
+    /* setFavicon() olib tashlandi — rasmiy /assets/favicon.png (HTML link) ishlatiladi */
     var active = SPA ? currentKey() : (document.body.getAttribute('data-page') || '');
     buildHeader(active);
     buildFooter();
