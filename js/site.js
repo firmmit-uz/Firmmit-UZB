@@ -27,14 +27,6 @@
     account: '20208000907117476001'
   };
 
-  var LOGO = '<svg class="mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">' +
-    '<rect width="40" height="40" rx="11" fill="#3264ff"/>' +
-    '<path d="M20 31c-6 0-9.5-3.6-9.5-8.4C10.5 18 14 15 20 12v19z" fill="#97d4e9"/>' +
-    '<path d="M20 31c6 0 9.5-3.6 9.5-8.4C29.5 18 26 15 20 12v19z" fill="#fff"/>' +
-    '<path d="M20 12c0-3 1.6-5.4 5-7-0.4 3.4-1.8 5.6-5 7z" fill="#97d4e9"/>' +
-    '<rect x="19" y="9" width="2" height="24" rx="1" fill="#fff" opacity="0.9"/>' +
-    '</svg>';
-
   // Primary menu (lean & professional). Partners / Certificates / News / Head Office
   // remain live pages, reachable from the footer.
   var NAV = [

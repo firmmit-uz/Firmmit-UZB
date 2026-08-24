@@ -5,7 +5,7 @@
    ============================================================ */
 
 @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css');
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap');
 
 /* Korean only: wrap lines at word boundaries so a word is never split mid-character */
 html[lang="ko"] { word-break: keep-all; }
@@ -128,7 +128,7 @@ h1, h2, h3 { color: var(--ink); line-height: 1.18; letter-spacing: -0.02em; font
 
 .brand { display: flex; align-items: center; gap: 11px; font-family: var(--font-en); font-weight: 800; font-size: 22px; letter-spacing: -0.02em; color: #fff; transition: color 0.4s var(--ease); }
 .brand .mark { width: 34px; height: 34px; flex: none; }
-.brand .co { font-weight: 800; font-size: 24px; letter-spacing: -0.03em; }
+.brand .co { font-weight: 900; font-size: 24px; letter-spacing: -0.045em; }
 .brand .region { font-family: var(--font); font-weight: 700; font-size: 11px; letter-spacing: 0.14em; color: #fff; background: var(--blue); padding: 3px 8px; border-radius: 6px; margin-left: 4px; }
 .site-header.solid .brand { color: var(--ink); }
 .site-header.solid .brand .co { color: var(--blue); }
