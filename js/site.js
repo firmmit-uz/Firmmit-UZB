@@ -921,9 +921,9 @@
       "We are the Uzbekistan branch of Firmmit Korea — a smart-farm company preparing the food of tomorrow. Our mission is to make advanced, sustainable agriculture accessible to growers across the region.":
         "FIRMMIT Korea의 우즈베키스탄 지사로서 미래의 식량을 준비하는 스마트팜 기업입니다. 지역 전역의 농가에 선진화된 지속 가능한 농업 환경을 제공하는 데 앞장서고 있습니다.",
       "Firmmit Uzbekistan was established to adapt Firmmit Korea's proven controlled-environment agriculture for Central Asia. We combine Korean engineering, R&D and equipment with local agronomy, language and service — so growers get world-class technology with a partner next door.":
-        "Firmmit Uzbekistan은 Firmmit Korea의 검증된 시설 농업을 중앙아시아에 맞게 적용하기 위해 설립되었습니다. 한국의 엔지니어링·R&D·장비를 현지 농학·언어·서비스와 결합해, 농가는 가까운 파트너와 함께 세계적 수준의 기술을 이용합니다.",
+        "FIRMMIT 우즈베키스탄은 FIRMMIT Korea의 검증된 환경 제어 농업 기술을 중앙아시아에 맞게 도입하기 위해 설립되었습니다. 한국의 엔지니어링, R&D 및 최신 설비를 현지 재배 노하우, 언어, 맞춤형 서비스와 결합하여, 농가들이 가까운 파트너를 통해 세계 최고 수준의 기술을 누릴 수 있도록 합니다.",
       "From feasibility study to harvest, we stay involved: designing the facility, sourcing the right systems, installing them, training the team and supporting every season that follows.":
-        "타당성 조사부터 수확까지 함께합니다: 시설 설계, 적합한 시스템 조달, 설치, 팀 교육, 그리고 이후 모든 시즌 지원.",
+        "사업 타당성 검토부터 수확에 이르기까지 전 과정에 함께합니다. 시설 설계, 알맞은 시스템 조달 및 설치, 팀 교육, 그리고 매 시즌 이어지는 사후 관리까지 모든 단계를 철저하게 지원합니다.",
       "Because your life is behind our work.": "우리의 일 뒤에는 당신의 삶이 있습니다",
       "Food security is not merely a matter of agriculture — it is directly tied to the sustainable future of every family, every farm and the entire region. That is why every technological solution we build rests on the principles of dependable harvests, rational use of resources and long-term sustainability. We adapt Korea's advanced smart-farm technologies to Central Asia's climate, water, crops and local growing conditions — delivering practical, measurable results for farmers.":
         "식량 안보는 단순한 농업의 문제가 아닙니다. 그것은 모든 가정과 농장, 그리고 지역 전체의 지속 가능한 미래와 직접 연결되어 있습니다.\n\n그래서 우리가 만드는 모든 기술 솔루션은 신뢰할 수 있는 수확, 합리적인 자원 사용, 장기적인 지속 가능성의 원칙에 기반합니다.\n\n우리는 한국의 첨단 스마트팜 기술을 중앙아시아의 기후, 물, 작물, 현지 재배 환경에 맞게 적용하여 농가에 실질적이고 측정 가능한 결과를 제공합니다.",
