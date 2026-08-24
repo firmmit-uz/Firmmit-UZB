@@ -1234,7 +1234,7 @@
   var origPH = new WeakMap();     // input/textarea -> original placeholder
   var richEls = [];
   var cached = false;
-  var current = 'en';
+  var current = 'uz';
 
   var norm = function (s) { return s.replace(/\s+/g, ' ').trim(); };
 
@@ -1612,8 +1612,8 @@
     reveals();
     counters();
     contactForm();
-    var saved = 'en';
-    try { saved = localStorage.getItem(STORE) || 'en'; } catch (e) {}
+    var saved = 'uz';
+    try { saved = localStorage.getItem(STORE) || 'uz'; } catch (e) {}
     apply(saved);
     if (SPA) {
       showRoute(currentKey());

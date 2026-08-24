@@ -14,7 +14,7 @@
     ru: { back:"← Каталог", store:"Онлайн-магазин", loading:"Загрузка…", notfound:"Товар не найден.", cur:"сум", vat:"с НДС", add:"В корзину", added:"Добавлено ✓", inStock:"В наличии", outStock:"Под заказ", desc:"Описание", specs:"Характеристики", sku:"Артикул", unit:"Ед. изм.", minOrder:"Мин. заказ" },
     ko: { back:"← 카탈로그", store:"온라인 스토어", loading:"불러오는 중…", notfound:"제품을 찾을 수 없습니다.", cur:"UZS", vat:"VAT 포함", add:"장바구니 담기", added:"추가됨 ✓", inStock:"재고 있음", outStock:"주문 제작", desc:"설명", specs:"사양", sku:"SKU", unit:"단위", minOrder:"최소 주문" }
   };
-  function lang() { try { return (window.FirmmitI18N && FirmmitI18N.get()) || localStorage.getItem('firmmit-lang') || 'en'; } catch (e) { return 'en'; } }
+  function lang() { try { return (window.FirmmitI18N && FirmmitI18N.get()) || localStorage.getItem('firmmit-lang') || 'uz'; } catch (e) { return 'uz'; } }
   function t(k) { var d = T[lang()] || T.en; return d[k] != null ? d[k] : (T.en[k] || k); }
   function loc(o, base) {
     var l = lang();

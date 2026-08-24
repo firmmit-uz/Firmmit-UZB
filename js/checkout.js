@@ -58,7 +58,7 @@
       failTitle:"Не удалось оформить заказ", failText:"Проверьте поля и повторите, либо убедитесь, что сервер работает."
     }
   };
-  function lang() { try { return (window.FirmmitI18N && FirmmitI18N.get()) || localStorage.getItem('firmmit-lang') || 'en'; } catch (e) { return 'en'; } }
+  function lang() { try { return (window.FirmmitI18N && FirmmitI18N.get()) || localStorage.getItem('firmmit-lang') || 'uz'; } catch (e) { return 'uz'; } }
   function t(k) { var d = T[lang()] || T.en; return d[k] != null ? d[k] : (T.en[k] || k); }
   function nameOf(o) { var l = lang(); return o['name_' + l] || o.name_uz || o.name_en || o.name_ru || ''; }
   function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;' }[c]; }); }

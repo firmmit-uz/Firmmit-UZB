@@ -13,7 +13,7 @@
     ru: { cart:"Корзина", empty:"Корзина пуста.", total:"Итого", checkout:"Оформить", vat:"с НДС", cur:"сум", add:"В корзину", added:"Добавлено" },
     ko: { cart:"장바구니", empty:"장바구니가 비었습니다.", total:"합계", checkout:"주문하기", vat:"VAT 포함", cur:"UZS", add:"담기", added:"추가됨" }
   };
-  function lang() { try { return (window.FirmmitI18N && FirmmitI18N.get()) || localStorage.getItem('firmmit-lang') || 'en'; } catch (e) { return 'en'; } }
+  function lang() { try { return (window.FirmmitI18N && FirmmitI18N.get()) || localStorage.getItem('firmmit-lang') || 'uz'; } catch (e) { return 'uz'; } }
   function t(k) { var d = T[lang()] || T.en; return d[k] != null ? d[k] : (T.en[k] || k); }
   function nameOf(o) { var l = lang(); return o['name_' + l] || o.name_uz || o.name_en || o.name_ru || ''; }
   function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;' }[c]; }); }
