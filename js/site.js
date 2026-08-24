@@ -928,9 +928,9 @@
       "Food security is not merely a matter of agriculture — it is directly tied to the sustainable future of every family, every farm and the entire region. That is why every technological solution we build rests on the principles of dependable harvests, rational use of resources and long-term sustainability. We adapt Korea's advanced smart-farm technologies to Central Asia's climate, water, crops and local growing conditions — delivering practical, measurable results for farmers.":
         "식량 안보는 단순한 농업의 문제가 아닙니다. 그것은 모든 가정과 농장, 그리고 지역 전체의 지속 가능한 미래와 직접 연결되어 있습니다.\n\n그래서 우리가 만드는 모든 기술 솔루션은 신뢰할 수 있는 수확, 합리적인 자원 사용, 장기적인 지속 가능성의 원칙에 기반합니다.\n\n우리는 한국의 첨단 스마트팜 기술을 중앙아시아의 기후, 물, 작물, 현지 재배 환경에 맞게 적용하여 농가에 실질적이고 측정 가능한 결과를 제공합니다.",
       "MISSION": "미션", "VISION": "비전", "VALUES": "가치",
-      "Sustainably feed the future": "미래를 지속 가능하게 먹이다",
+      "Sustainably feed the future": "지속 가능한 방식으로 미래의 식량을 공급합니다",
       "To build high-yield, efficient and sustainable agricultural production in any climate by deploying smart, precise and resource-efficient agri-technologies. Our aim is not simply to introduce modern technology, but to turn it into real economic results for the farmer.":
-        "스마트하고 정밀하며 자원 효율적인 농업 기술을 도입하여 어떤 기후에서도 고수확·고효율·지속 가능한 농업 생산을 구축합니다.\n\n우리의 목표는 단순히 현대 기술을 도입하는 것이 아니라, 그것을 농가를 위한 실질적인 경제적 성과로 전환하는 것입니다.",
+        "스마트하고 정밀하며 자원 효율적인 농업 기술을 도입하여, 어떤 기후에서든 고수확, 고효율의 지속 가능한 농업 생산을 구축합니다.<br>우리의 목표는 단순히 현대 기술을 도입하는 것에 그치지 않고, 이를 농가를 위한 실질적인 경제적 성과로 전환하는 것입니다.",
       "Setting a new standard for smart agriculture in Central Asia": "중앙아시아 스마트 농업의 새로운 기준 만들기",
       "To become Central Asia's most trusted smart-farm technology partner by optimising water and energy use, raising yield and quality, and automating production processes. We combine Korean engineering and innovation with local agronomic experience to develop suitable, measurable and scalable agri-technology solutions for Uzbekistan and the wider region.":
         "물과 에너지 사용을 최적화하고 수확량과 품질을 높이며 생산 공정을 자동화하여 중앙아시아에서 가장 신뢰받는 스마트팜 기술 파트너가 되는 것.\n\n우리는 한국의 엔지니어링과 혁신을 현지 농학 경험과 결합하여 우즈베키스탄과 더 넓은 지역을 위한 적합하고 측정 가능하며 확장 가능한 농업 기술 솔루션을 개발합니다.",
