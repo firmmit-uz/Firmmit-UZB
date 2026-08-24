@@ -890,7 +890,7 @@
       "For sale": "판매 중", "Catalog": "카탈로그", "Online Store": "온라인 스토어",
       /* home hero */
       "Firmmit Uzbekistan delivers Korean controlled-environment agriculture — modern greenhouses, precision climate systems and reliable agri-systems — to farms across Uzbekistan and Central Asia.":
-        "Firmmit 우즈베키스탄은 우즈베키스탄 및 중앙아시아 전역의 농가에 현대식 온실, 정밀 기후 제어 시스템, 그리고 신뢰할 수 있는 농업 인프라를 아우르는 한구그이 첨단 '환경 제어 농업 솔루션'을 제공합니다.",
+        "Firmmit 우즈베키스탄은 우즈베키스탄 및 중앙아시아 전역의 농가에 현대식 온실, 정밀 기후 제어 시스템, 그리고 신뢰할 수 있는 농업 인프라를 아우르는 한국의 첨단 '환경 제어 농업 솔루션'을 제공합니다.",
       "Explore our solutions": "솔루션 보기", "Talk to our team": "팀에 문의",
       "Regions served": "서비스 지역", "Projects delivered": "완료 프로젝트",
       "Client retention": "고객 유지율", "Greenhouse projects": "온실 프로젝트",
@@ -898,7 +898,7 @@
       "Four connected capabilities that take a project from first design to a thriving, data-driven farm.": "첫 설계부터 데이터 기반의 생산적인 농장까지, 프로젝트 전 과정을 이끄는 네 가지 핵심 역량",
       /* home intro */
       "As the Uzbekistan branch of Firmmit Korea, we localize proven smart-farm technology for the region's climate, crops and growers — combining Korean engineering with on-the-ground agronomy.":
-        "Firmmit Korea의 우즈베키스탄 지사로서, 우리는 검증된 스마트팜 기술을 지역의 기후·작물·농가에 맞게 현지화합니다 — 한국의 엔지니어링과 현장 농학을 결합합니다.",
+        "Firmmit Korea의 우즈베키스탄 지사로서 한국의 우수한 엔지니어링과 현장 농업 노하우를 결합하여, 검증된 스마트팜 기술을 지역 기후와 작물, 농가 환경에 맞게 최적화합니다.",
       "✓ Turnkey smart greenhouses engineered for arid climates": "✓ 건조 기후에 맞춘 턴키 스마트 온실",
       "✓ Precision irrigation, sensors and climate automation": "✓ 정밀 관수, 센서 및 기후 자동화",
       "✓ Direct Korea–Uzbekistan supply and technical support": "✓ 한국–우즈베키스탄 직접 공급 및 기술 지원",
