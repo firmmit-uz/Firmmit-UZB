@@ -931,9 +931,9 @@
       "Sustainably feed the future": "지속 가능한 방식으로 미래의 식량을 공급합니다",
       "To build high-yield, efficient and sustainable agricultural production in any climate by deploying smart, precise and resource-efficient agri-technologies. Our aim is not simply to introduce modern technology, but to turn it into real economic results for the farmer.":
         "스마트하고 정밀하며 자원 효율적인 농업 기술을 도입하여, 어떤 기후에서든 고수확, 고효율의 지속 가능한 농업 생산을 구축합니다.<br>우리의 목표는 단순히 현대 기술을 도입하는 것에 그치지 않고, 이를 농가를 위한 실질적인 경제적 성과로 전환하는 것입니다.",
-      "Setting a new standard for smart agriculture in Central Asia": "중앙아시아 스마트 농업의 새로운 기준 만들기",
+      "Setting a new standard for smart agriculture in Central Asia": "중앙아시아 스마트 농업의 새로운 기준을 세웁니다",
       "To become Central Asia's most trusted smart-farm technology partner by optimising water and energy use, raising yield and quality, and automating production processes. We combine Korean engineering and innovation with local agronomic experience to develop suitable, measurable and scalable agri-technology solutions for Uzbekistan and the wider region.":
-        "물과 에너지 사용을 최적화하고 수확량과 품질을 높이며 생산 공정을 자동화하여 중앙아시아에서 가장 신뢰받는 스마트팜 기술 파트너가 되는 것.\n\n우리는 한국의 엔지니어링과 혁신을 현지 농학 경험과 결합하여 우즈베키스탄과 더 넓은 지역을 위한 적합하고 측정 가능하며 확장 가능한 농업 기술 솔루션을 개발합니다.",
+        "물과 에너지 사용을 최적화하고, 수확량과 품질을 높이며, 생산 공정을 자동화하여 중앙아시아에서 가장 신뢰받는 스마트팜 기술 파트너로 도약합니다. <br>한국의 엔지니어링 및 혁신 기술을 현지 재배 노하우와 결합하여, 우즈베키스탄과 더 넓은 인근 지역에 적합하고 측정 가능하며 확장 가능한 농업 기술 솔루션을 개발합니다.",
       "Trust. Precision. Results.": "신뢰 · 정밀 · 결과",
       "Our work rests on three core principles: Trust — we build open, responsible and long-term partnerships with farmers, partners and investors. Precision — we base decisions on data, sensors, agronomic analysis and real indicators, not guesswork. Results — we turn every technological solution into real, measurable economic value for the farmer.":
         "우리의 활동은 세 가지 핵심 원칙에 기반합니다:\n\n신뢰 — 농가, 파트너, 투자자와 열린 자세로 책임감 있고 장기적인 협력을 구축합니다.\n\n정밀 — 추측이 아니라 데이터, 센서, 농학적 분석, 실제 지표에 근거하여 결정합니다.\n\n결과 — 모든 기술 솔루션을 농가를 위한 실질적이고 측정 가능한 경제적 가치로 전환합니다.",
