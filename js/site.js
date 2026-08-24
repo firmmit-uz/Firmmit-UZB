@@ -953,7 +953,7 @@
       "Firmmit Uzbekistan in numbers": "숫자로 보는 Firmmit Uzbekistan",
       "Partner suppliers": "협력 공급업체", "Global head office": "글로벌 본사",
       "Let's grow something lasting.": "오래도록 이어질 가치를 함께 키웁니다",
-      "Partner with a team that treats your harvest as its own.": "당신의 수확을 자기 것처럼 여기는 팀과 함께하세요.",
+      "Partner with a team that treats your harvest as its own.": "농가의 수확을 내 일처럼 책임지는 든든한 파트너와 함께하세요.",
       /* products */
       "Everything a modern farm needs, in one place.": "현대 농장에 필요한 모든 것을 한곳에서",
       "From the greenhouse shell to the sensor on the vine, we supply integrated smart-farm systems engineered for Uzbekistan's climate and crops.":
