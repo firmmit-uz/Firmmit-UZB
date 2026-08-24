@@ -387,6 +387,9 @@ section.blue-soft { background: var(--bg-blue); }
 /* larger autoplay video showcase */
 .video-media { min-height: 500px; background: #0b1430; }
 .video-media video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+.split-media.photo-media { min-height: 500px; background: #0b1430; }
+.split-media.photo-media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+.hero-bg.hero-video video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
 .video-badge { position: absolute; top: 16px; left: 16px; z-index: 2; background: rgba(50,100,255,0.92); color: #fff; font-family: var(--font-en); font-weight: 700; font-size: 11px; letter-spacing: 0.1em; padding: 6px 13px; border-radius: 999px; box-shadow: var(--shadow-blue); }
 .split-copy h2 { margin: 16px 0 18px; }
 .split-copy .lead { margin-bottom: 26px; }

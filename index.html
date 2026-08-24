@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="preload" as="image" href="assets/photos/hero.jpg" fetchpriority="high">
+<link rel="preload" as="image" href="assets/photos/hero-poster.jpg" fetchpriority="high">
 <title>Firmmit Uzbekistan — Smart-Farm Technology & Agri-Trade</title>
 <meta name="description" content="Firmmit Uzbekistan brings Korean smart-farm technology to Uzbekistan: greenhouses, controlled-environment agriculture, agricultural equipment and Korea–Uzbekistan agri-trade.">
 <link rel="stylesheet" href="css/style.css">
@@ -13,7 +13,12 @@
 
 <!-- ============ HERO ============ -->
 <section class="hero">
-  <div class="hero-bg media-farm photo has-photo" data-photo="assets/photos/hero.jpg" style="background-image:url('assets/photos/hero.jpg');background-size:cover;background-position:center center;"><div class="rows"></div></div>
+  <div class="hero-bg hero-video">
+    <video class="hero-vid" autoplay muted loop playsinline preload="auto" poster="assets/photos/hero-poster.jpg">
+      <source src="assets/video/hero.mp4" type="video/mp4">
+    </video>
+    <div class="rows"></div>
+  </div>
   <div class="wrap">
     <div class="hero-inner">
       <span class="eyebrow reveal">Firmmit Uzbekistan · Smart Agriculture</span>
@@ -51,11 +56,8 @@
         </ul>
         <a href="about.html" class="btn btn-outline reveal d3" style="margin-top:26px;">About Firmmit Uzbekistan <span class="arrow">→</span></a>
       </div>
-      <div class="split-media video-media reveal d2">
-        <video autoplay muted loop playsinline preload="metadata" poster="assets/photos/home-intro.jpg">
-          <source src="assets/video/home-intro.mp4" type="video/mp4">
-        </video>
-        <span class="video-badge">▶ LIVE</span>
+      <div class="split-media photo-media reveal d2">
+        <img src="assets/photos/home-intro.jpg" alt="Firmmit smart greenhouse interior" loading="lazy">
       </div>
     </div>
   </div>
