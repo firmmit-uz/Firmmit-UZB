@@ -1499,9 +1499,16 @@
     var secs = document.querySelectorAll('section:not(.hero):not(.reveal-back):not(.page-hero)');
     var io = new IntersectionObserver(function (en) {
       en.forEach(function (e) {
-        if (e.isIntersecting) { e.target.classList.add('shk'); io.unobserve(e.target); }
+        var t = e.target;
+        if (e.isIntersecting) {
+          t.classList.remove('shk');
+          void t.offsetWidth;      // reflow — animatsiya har safar qaytadan o'ynaydi
+          t.classList.add('shk');
+        } else {
+          t.classList.remove('shk');   // chiqib ketganda tozalanadi -> qayta kirganda yana o'ynaydi
+        }
       });
-    }, { threshold: 0.18, rootMargin: '0px 0px -6% 0px' });
+    }, { threshold: 0.2, rootMargin: '0px 0px -8% 0px' });
     secs.forEach(function (s) { io.observe(s); });
   }
 
