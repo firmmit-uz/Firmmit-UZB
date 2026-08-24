@@ -1372,7 +1372,7 @@
      ============================================================ */
   function brandMarkup() {
     return '<a class="brand no-i18n" href="' + hrefFor('home') + '" aria-label="Firmmit Uzbekistan home">' +
-      '<span class="co">FIRMMIT<span class="dot">.</span></span><span class="region">UZ</span></a>';
+      '<span class="co">FIRMMIT<span class="dot">.</span></span></a>';
   }
 
   function buildHeader(active) {
@@ -1557,12 +1557,11 @@
         var inFooter = !!brand.closest('.site-footer');
         brand.classList.add('has-logo');
         if (inFooter) {
-          brand.innerHTML = '<img class="logo-img" src="' + light + '" alt="Firmmit Uzbekistan"><span class="region">UZ</span>';
+          brand.innerHTML = '<img class="logo-img" src="' + light + '" alt="Firmmit Uzbekistan">';
         } else {
           brand.innerHTML =
             '<img class="logo-img logo-light" src="' + light + '" alt="Firmmit Uzbekistan">' +
-            '<img class="logo-img logo-dark" src="' + dark + '" alt="Firmmit Uzbekistan">' +
-            '<span class="region">UZ</span>';
+            '<img class="logo-img logo-dark" src="' + dark + '" alt="Firmmit Uzbekistan">';
         }
       });
     }
