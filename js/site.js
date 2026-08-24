@@ -970,7 +970,7 @@
       "From the greenhouse shell to the sensor on the vine, we supply integrated smart-farm systems engineered for Uzbekistan's climate and crops.":
         "온실 골조부터 작물의 센서까지, 우즈베키스탄의 기후와 작물에 맞춘 통합 스마트팜 시스템을 공급합니다.",
       "Buy a complete facility or a single subsystem — every product is designed to integrate cleanly with the rest.":
-        "전체 시설이든 단일 하위 시스템이든 — 모든 제품은 나머지와 깔끔하게 통합되도록 설계되었습니다.",
+        "전체 시설이든 단일 하위 시스템이든, 모든 제품은 나머지 시스템과 깔끔하게 통합되도록 설계되었습니다.",
       "Galvanized-frame venlo and multi-span structures with diffused glazing, thermal screens and natural ventilation, sized to your plot.":
         "확산 유리, 보온 스크린, 자연 환기를 갖춘 아연도금 벤로·멀티스팬 구조 — 부지에 맞게 설계",
       "Venlo": "벤로", "Multi-span": "멀티스팬", "Thermal screen": "보온 스크린",
