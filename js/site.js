@@ -1492,6 +1492,19 @@
     els.forEach(function (e) { io.observe(e); });
   }
 
+  // Bo'lim ko'rinishga kirganda "shake" (ozgina yuqoriga siljib joyiga tushadi). Barcha sahifada.
+  function sectionShakes() {
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (!('IntersectionObserver' in window)) return;
+    var secs = document.querySelectorAll('section:not(.hero):not(.reveal-back):not(.page-hero)');
+    var io = new IntersectionObserver(function (en) {
+      en.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('shk'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.18, rootMargin: '0px 0px -6% 0px' });
+    secs.forEach(function (s) { io.observe(s); });
+  }
+
   function counters() {
     var nums = document.querySelectorAll('[data-count]');
     if (!nums.length) return;
@@ -1609,6 +1622,7 @@
     loadLogo();
     playVideos();
     reveals();
+    sectionShakes();
     counters();
     contactForm();
     var saved = 'uz';

@@ -400,10 +400,21 @@ section.blue-soft { background: var(--bg-blue); }
     display: flex; align-items: center;
     background: var(--bg); overflow: hidden;
   }
-  .reveal-spacer { position: relative; z-index: 1; height: 78vh; pointer-events: none; }
+  .reveal-spacer { position: relative; z-index: 1; height: 100vh; pointer-events: none; }
   .reveal-rest { position: relative; z-index: 2; background: var(--bg); }
   .site-footer { position: relative; z-index: 2; }
 }
+
+/* ===== Bo'lim ko'ringanda "shake": ozgina yuqoriga siljib, joyiga tushadi (barcha sahifa) ===== */
+@keyframes fmtSectionShake {
+  0%   { transform: translateY(0); }
+  32%  { transform: translateY(-16px); }
+  62%  { transform: translateY(5px); }
+  82%  { transform: translateY(-2px); }
+  100% { transform: translateY(0); }
+}
+.shk { animation: fmtSectionShake 0.62s cubic-bezier(.34, 1.4, .64, 1) both; }
+@media (prefers-reduced-motion: reduce) { .shk { animation: none; } }
 .video-badge { position: absolute; top: 16px; left: 16px; z-index: 2; background: rgba(50,100,255,0.92); color: #fff; font-family: var(--font-en); font-weight: 700; font-size: 11px; letter-spacing: 0.1em; padding: 6px 13px; border-radius: 999px; box-shadow: var(--shadow-blue); }
 .split-copy h2 { margin: 16px 0 18px; }
 .split-copy .lead { margin-bottom: 26px; }
