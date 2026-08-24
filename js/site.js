@@ -21,10 +21,7 @@
   var CO = {
     email: 'global@firmmit.com',
     phone: '+998 90 063 23 15',
-    phoneHref: '+998900632315',
-    bank: 'Aloqabank (АТ "ALOQABANK") IP PARK RCKU, Tashkent',
-    mfo: '00401',
-    account: '20208000907117476001'
+    phoneHref: '+998900632315'
   };
 
   // Primary menu (lean & professional). Partners / Certificates / News / Head Office
@@ -1457,10 +1454,6 @@
           '<strong class="no-i18n">Firmmit Korea</strong>' +
           '<span style="font-size:0.86rem;">Smart-farm headquarters · Seoul, Republic of Korea</span><br>' +
           '<a class="no-i18n" href="' + KR_URL + '" target="_blank" rel="noopener">www.firmmit.kr ↗</a>' +
-        '</div>' +
-        '<div class="footer-legal no-i18n">' +
-          '<strong>' + LEGALNAME.en + '</strong>' +
-          ' &nbsp;|&nbsp; Bank: ' + CO.bank + ' · MFO ' + CO.mfo + ' · Acc. ' + CO.account +
         '</div>' +
       '</div>' +
       '<div class="footer-bottom">' +
