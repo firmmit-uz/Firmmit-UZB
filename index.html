@@ -127,9 +127,8 @@
 (function () {
   var v = document.querySelector('.hero-vid[data-src]');
   if (!v) return;
-  var c = navigator.connection || {};
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (window.innerWidth >= 768 && !c.saveData && !reduce) {
+  if (!reduce) {
     var s = document.createElement('source');
     s.src = v.getAttribute('data-src');
     s.type = 'video/mp4';

@@ -116,11 +116,17 @@
       .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
       .then(function (data) {
         var results = data.results || data || [];
-        state.count = (data.count != null) ? data.count : results.length;
+        // Faqat haqiqiy rasmi bor mahsulotlar ko'rsatiladi (placeholder/rasmsizlar yashiriladi).
+        // Rasm qo'shilganda main_image o'zgaradi va mahsulot avtomatik qaytadi.
+        results = results.filter(function (p) {
+          var mi = p.main_image;
+          return mi && String(mi).toLowerCase().indexOf('placeholder') === -1;
+        });
         state.nextUrl = data.next || null;
         var prevLen = reset ? 0 : state.items.length;
         if (reset) state.items = results.slice();
         else state.items = state.items.concat(results);
+        state.count = state.items.length;
         renderGrid();
         animateCards(prevLen);
         updateCount();
