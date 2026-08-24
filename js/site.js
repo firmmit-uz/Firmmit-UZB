@@ -890,7 +890,7 @@
       "For sale": "판매 중", "Catalog": "카탈로그", "Online Store": "온라인 스토어",
       /* home hero */
       "Firmmit Uzbekistan delivers Korean controlled-environment agriculture — modern greenhouses, precision climate systems and reliable agri-systems — to farms across Uzbekistan and Central Asia.":
-        "Firmmit Uzbekistan은 한국의 시설 농업 — 현대식 온실, 정밀 기후 시스템, 신뢰할 수 있는 농업 시스템 — 을 우즈베키스탄과 중앙아시아 전역의 농가에 제공합니다.",
+        "Firmmit 우즈베키스탄은 우즈베키스탄 및 중앙아시아 전역의 농가에 현대식 온실, 정밀 기후 제어 시스템, 그리고 신뢰할 수 있는 농업 인프라를 아우르는 한구그이 첨단 '환경 제어 농업 솔루션'을 제공합니다.",
       "Explore our solutions": "솔루션 보기", "Talk to our team": "팀에 문의",
       "Regions served": "서비스 지역", "Projects delivered": "완료 프로젝트",
       "Client retention": "고객 유지율", "Greenhouse projects": "온실 프로젝트",
