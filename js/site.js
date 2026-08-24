@@ -917,9 +917,9 @@
         "온실 한 동이든 지역 규모 시설이든, 우리 팀이 작물·기후·예산에 맞는 솔루션을 설계합니다.",
       "Start your project": "프로젝트 시작", "Get in touch →": "문의하기 →",
       /* about */
-      "Korean smart-farm expertise, rooted in Uzbek soil.": "우즈베키스탄 토양에 뿌리내린 한국 스마트팜 전문성",
+      "Korean smart-farm expertise, rooted in Uzbek soil.": "우즈베키스탄 현지에 깊이 뿌리내린 한국의 스마트팜 전문성",
       "We are the Uzbekistan branch of Firmmit Korea — a smart-farm company preparing the food of tomorrow. Our mission is to make advanced, sustainable agriculture accessible to growers across the region.":
-        "우리는 내일의 식량을 준비하는 스마트팜 기업 Firmmit Korea의 우즈베키스탄 지사입니다. 우리의 사명은 첨단·지속가능 농업을 지역 농가가 이용할 수 있게 하는 것입니다.",
+        "FIRMMIT Korea의 우즈베키스탄 지사로서 미래의 식량을 준비하는 스마트팜 기업입니다. 지역 전역의 농가에 선진화된 지속 가능한 농업 환경을 제공하는 데 앞장서고 있습니다.",
       "Firmmit Uzbekistan was established to adapt Firmmit Korea's proven controlled-environment agriculture for Central Asia. We combine Korean engineering, R&D and equipment with local agronomy, language and service — so growers get world-class technology with a partner next door.":
         "Firmmit Uzbekistan은 Firmmit Korea의 검증된 시설 농업을 중앙아시아에 맞게 적용하기 위해 설립되었습니다. 한국의 엔지니어링·R&D·장비를 현지 농학·언어·서비스와 결합해, 농가는 가까운 파트너와 함께 세계적 수준의 기술을 이용합니다.",
       "From feasibility study to harvest, we stay involved: designing the facility, sourcing the right systems, installing them, training the team and supporting every season that follows.":
