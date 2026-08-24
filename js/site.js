@@ -870,7 +870,7 @@
       "Head Office ↗": "본사 ↗", "Head Office — Firmmit Korea ↗": "본사 — Firmmit Korea ↗",
       /* footer */
       "Bringing Korean smart-farm technology to Uzbekistan — greenhouses, controlled-environment agriculture and agri-trade for a resilient regional food supply.":
-        "한국의 스마트팜 기술을 우즈베키스탄으로 — 온실, 시설 농업, 그리고 안정적인 지역 식량 공급을 위한 농산물 교역",
+        "한국의 스마트팜 기술을 우즈베키스탄으로 전하는 온실 및 시설 농업, 그리고 안정적인 지역 식량 공급을 위한 농산물 교역",
       "Company": "회사", "What we do": "사업 분야", "Head Office": "본사",
       "Smart-farm headquarters · Seoul, Republic of Korea": "스마트팜 본사 · 대한민국 서울",
       "© 2026 Firmmit Uzbekistan. A branch of Firmmit Korea. All rights reserved.":
