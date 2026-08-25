@@ -89,9 +89,9 @@
         var a = Math.max(0, d.life);
         var rr = d.r * 2.1;
         var g = ctx.createRadialGradient(d.x, d.y, 0, d.x, d.y, rr);
-        g.addColorStop(0, 'rgba(255,255,255,' + (d.alpha * a * 0.55) + ')');
-        g.addColorStop(0.5, 'rgba(250,252,255,' + (d.alpha * 0.3 * a) + ')');
-        g.addColorStop(1, 'rgba(245,250,255,0)');
+        g.addColorStop(0, 'rgba(240,250,255,' + (d.alpha * a) + ')');
+        g.addColorStop(0.5, 'rgba(180,218,255,' + (d.alpha * 0.5 * a) + ')');
+        g.addColorStop(1, 'rgba(120,185,240,0)');
         ctx.fillStyle = g;
         ctx.beginPath(); ctx.arc(d.x, d.y, rr, 0, 6.2832); ctx.fill();
       }
