@@ -51,25 +51,231 @@
 <!-- OUR PROJECTS -->
 <section class="block">
   <div class="wrap">
-    <div class="section-head reveal"><span class="eyebrow">Our work</span><h2 class="section-title">Featured projects</h2></div>
-    <div class="proj-grid">
-      <a class="proj-card reveal" href="construction.html">
-        <div class="proj-media" style="background-image:url('assets/photos/hero-front.jpg')"><span class="proj-badge">3D</span></div>
-        <div class="proj-body">
-          <h3>Mongol-type 2-span greenhouse</h3>
-          <p>Interactive 3D model — rotate and explore every part</p>
-          <span class="proj-cta">Explore in 3D <span class="arrow">→</span></span>
-        </div>
-      </a>
-      <a class="proj-card reveal d1" href="construction2.html">
-        <div class="proj-media" style="background-image:url('assets/photos/collection/08.jpg')"><span class="proj-badge">3D</span></div>
-        <div class="proj-body">
-          <h3>Glass greenhouse 2.18 ha</h3>
-          <p>Interactive 3D model — rotate and explore every part</p>
-          <span class="proj-cta">Explore in 3D <span class="arrow">→</span></span>
-        </div>
-      </a>
+    <div class="section-head reveal">
+      <span class="eyebrow">Our work</span>
+      <h2 class="section-title">Completed projects</h2>
+      <p class="lead">Greenhouses we have designed, supplied and built — with the specification and the actual construction cost of each facility.</p>
     </div>
+    <div class="cat-chips reveal" id="pjChips">
+      <button class="cat-chip active" data-pj="all">All</button>
+      <button class="cat-chip" data-pj="venlo">Venlo</button>
+      <button class="cat-chip" data-pj="arch">Arch type</button>
+      <button class="cat-chip" data-pj="glass">Glass</button>
+    </div>
+    <div class="pj-grid" id="pjGrid">
+      <article class="pj-card reveal" data-pjg="glass">
+        <div class="pj-media" style="background-image:url('assets/photos/projects/ongjin.jpg')">
+          <span class="pj-badge">Glass</span>
+        </div>
+        <div class="pj-body">
+          <h3>Ongjin glass greenhouse</h3>
+          <div class="pj-meta"><span>5,280 m²</span></div>
+          <p class="pj-struct">11-span / side height 6 m</p>
+          <div class="pj-price"><strong class="no-i18n">$1,351,700</strong><span class="no-i18n">$256 / m²</span></div>
+          <button class="pj-toggle" type="button">Specifications</button>
+          <dl class="pj-spec">
+            <dt>Facility area</dt><dd class="no-i18n">5,280 m² (1,597 pyeong)</dd>
+            <dt>Structure</dt><dd>11-span / side height 6 m</dd>
+            <dt>Main materials</dt><dd class="no-i18n">Column 150×150×4.5t @4,000, truss 100×50×2.9t</dd>
+            <dt>Covering</dt><dd>Roof 4 mm tempered glass + side 16 mm twin-wall PC</dd>
+            <dt>Screens</dt><dd>Shading + thermal screen</dd>
+            <dt>Control &amp; machine room</dt><dd>Sandwich panel 100T, fire-retardant</dd>
+            <dt>Construction cost</dt><dd class="no-i18n">$1,351,700 · $256 / m²</dd>
+          </dl>
+        </div>
+      </article>
+      <article class="pj-card reveal d1" data-pjg="venlo">
+        <div class="pj-media" style="background-image:url('assets/photos/projects/yangpyeong.jpg')">
+          <span class="pj-badge">Venlo</span>
+        </div>
+        <div class="pj-body">
+          <h3>Yangpyeong smart greenhouse</h3>
+          <div class="pj-meta"><span>4,032 m²</span></div>
+          <p class="pj-struct">9-span Venlo / side height 6 m</p>
+          <div class="pj-price"><strong class="no-i18n">$549,000</strong><span class="no-i18n">$136 / m²</span></div>
+          <button class="pj-toggle" type="button">Specifications</button>
+          <dl class="pj-spec">
+            <dt>Facility area</dt><dd class="no-i18n">4,032 m² (1,220 pyeong)</dd>
+            <dt>Structure</dt><dd>9-span Venlo / side height 6 m</dd>
+            <dt>Main materials</dt><dd class="no-i18n">Column 125×75×2.1–2.9t @4,000, truss 75×45×2.3t</dd>
+            <dt>Covering</dt><dd>PO film</dd>
+            <dt>Screens</dt><dd>Diffusion + shading + thermal screen</dd>
+            <dt>Control &amp; machine room</dt><dd>Sandwich panel 100T, fire-retardant</dd>
+            <dt>Construction cost</dt><dd class="no-i18n">$549,000 · $136 / m²</dd>
+          </dl>
+        </div>
+      </article>
+      <article class="pj-card reveal d2" data-pjg="venlo">
+        <div class="pj-media" style="background-image:url('assets/photos/projects/cheonan.jpg')">
+          <span class="pj-badge">Venlo</span>
+        </div>
+        <div class="pj-body">
+          <h3>Cheonan smart greenhouse</h3>
+          <div class="pj-meta"><span>3,456 m²</span></div>
+          <p class="pj-struct">3-span Venlo / side height 6 m</p>
+          <div class="pj-price"><strong class="no-i18n">$412,800</strong><span class="no-i18n">$119 / m²</span></div>
+          <button class="pj-toggle" type="button">Specifications</button>
+          <dl class="pj-spec">
+            <dt>Facility area</dt><dd class="no-i18n">3,456 m² (1,045 pyeong)</dd>
+            <dt>Structure</dt><dd>3-span Venlo / side height 6 m</dd>
+            <dt>Main materials</dt><dd class="no-i18n">Column 125×75×2.3t @4,500, truss 75×45×2.3t (two-tier)</dd>
+            <dt>Covering</dt><dd>Roof PO film + side 16 mm PC</dd>
+            <dt>Screens</dt><dd>Shading + thermal screen</dd>
+            <dt>Control &amp; machine room</dt><dd>Sandwich panel 100T, fire-retardant</dd>
+            <dt>Construction cost</dt><dd class="no-i18n">$412,800 · $119 / m²</dd>
+          </dl>
+        </div>
+      </article>
+      <article class="pj-card reveal" data-pjg="venlo">
+        <div class="pj-media" style="background-image:url('assets/photos/projects/large.jpg')">
+          <span class="pj-badge">Venlo</span>
+        </div>
+        <div class="pj-body">
+          <h3>Large-scale smart greenhouse</h3>
+          <div class="pj-meta"><span>3,328 m²</span></div>
+          <p class="pj-struct">3-span Venlo / side height 6 m</p>
+          <div class="pj-price"><strong class="no-i18n">$321,400</strong><span class="no-i18n">$97 / m²</span></div>
+          <button class="pj-toggle" type="button">Specifications</button>
+          <dl class="pj-spec">
+            <dt>Facility area</dt><dd class="no-i18n">3,328 m² (1,000 pyeong)</dd>
+            <dt>Structure</dt><dd>3-span Venlo / side height 6 m</dd>
+            <dt>Main materials</dt><dd class="no-i18n">Column 125×75×2.3t @4,000, truss 75×45×2.3t</dd>
+            <dt>Covering</dt><dd>PO film</dd>
+            <dt>Screens</dt><dd>Shading + thermal screen</dd>
+            <dt>Control &amp; machine room</dt><dd>Sandwich panel 100T, fire-retardant</dd>
+            <dt>Construction cost</dt><dd class="no-i18n">$321,400 · $97 / m²</dd>
+          </dl>
+        </div>
+      </article>
+      <article class="pj-card reveal d1" data-pjg="venlo">
+        <div class="pj-media" style="background-image:url('assets/photos/projects/yeongdong.jpg')">
+          <span class="pj-badge">Venlo</span>
+        </div>
+        <div class="pj-body">
+          <h3>Yeongdong smart greenhouse</h3>
+          <div class="pj-meta"><span>2,464 m²</span></div>
+          <p class="pj-struct">7-span Venlo / side height 6 m</p>
+          <div class="pj-price"><strong class="no-i18n">$295,900</strong><span class="no-i18n">$120 / m²</span></div>
+          <button class="pj-toggle" type="button">Specifications</button>
+          <dl class="pj-spec">
+            <dt>Facility area</dt><dd class="no-i18n">2,464 m² (745 pyeong)</dd>
+            <dt>Structure</dt><dd>7-span Venlo / side height 6 m</dd>
+            <dt>Main materials</dt><dd class="no-i18n">Column 125×75×2.1–2.9t @4,000, truss 75×45×2.3t · bevel-gear roof vents</dd>
+            <dt>Covering</dt><dd>PO film</dd>
+            <dt>Screens</dt><dd>Shading + thermal screen</dd>
+            <dt>Control &amp; machine room</dt><dd>Sandwich panel 100T, fire-retardant</dd>
+            <dt>Construction cost</dt><dd class="no-i18n">$295,900 · $120 / m²</dd>
+          </dl>
+        </div>
+      </article>
+      <article class="pj-card reveal d2" data-pjg="glass">
+        <div class="pj-media" style="background-image:url('assets/photos/projects/sejong.jpg')">
+          <span class="pj-badge">Glass</span>
+        </div>
+        <div class="pj-body">
+          <h3>Sejong glass greenhouse</h3>
+          <div class="pj-meta"><span>576 m²</span></div>
+          <p class="pj-struct">single-span / side height 10 m</p>
+          <div class="pj-price"><strong class="no-i18n">$217,500</strong><span class="no-i18n">$378 / m²</span></div>
+          <button class="pj-toggle" type="button">Specifications</button>
+          <dl class="pj-spec">
+            <dt>Facility area</dt><dd class="no-i18n">576 m² (175 pyeong)</dd>
+            <dt>Structure</dt><dd>single-span / side height 10 m</dd>
+            <dt>Main materials</dt><dd class="no-i18n">Greenhouse-grade aluminium system</dd>
+            <dt>Covering</dt><dd>Roof 4 mm tempered glass + side 16 mm PC</dd>
+            <dt>Screens</dt><dd>Shading + thermal screen</dd>
+            <dt>Control &amp; machine room</dt><dd>—</dd>
+            <dt>Construction cost</dt><dd class="no-i18n">$217,500 · $378 / m²</dd>
+          </dl>
+        </div>
+      </article>
+      <article class="pj-card reveal" data-pjg="arch">
+        <div class="pj-media" style="background-image:url('assets/photos/projects/hwasun.jpg')">
+          <span class="pj-badge">Arch type</span>
+        </div>
+        <div class="pj-body">
+          <h3>Hwasun smart greenhouse</h3>
+          <div class="pj-meta"><span>2,860 m²</span></div>
+          <p class="pj-struct">3-span arch / side height 3.5 m</p>
+          <div class="pj-price"><strong class="no-i18n">$213,200</strong><span class="no-i18n">$75 / m²</span></div>
+          <button class="pj-toggle" type="button">Specifications</button>
+          <dl class="pj-spec">
+            <dt>Facility area</dt><dd class="no-i18n">2,860 m² (865 pyeong)</dd>
+            <dt>Structure</dt><dd>3-span arch / side height 3.5 m</dd>
+            <dt>Main materials</dt><dd class="no-i18n">Column 60×60×2.3t @3,000</dd>
+            <dt>Covering</dt><dd>PO film</dd>
+            <dt>Screens</dt><dd>Shading + thermal screen</dd>
+            <dt>Control &amp; machine room</dt><dd>Sandwich panel 100T, fire-retardant</dd>
+            <dt>Construction cost</dt><dd class="no-i18n">$213,200 · $75 / m²</dd>
+          </dl>
+        </div>
+      </article>
+      <article class="pj-card reveal d1" data-pjg="arch">
+        <div class="pj-media" style="background-image:url('assets/photos/projects/dongcheonan.jpg')">
+          <span class="pj-badge">Arch type</span><span class="pj-badge pj-badge-alt">Reconstruction</span>
+        </div>
+        <div class="pj-body">
+          <h3>Dongcheonan smart greenhouse</h3>
+          <div class="pj-meta"><span>4,416 m²</span></div>
+          <p class="pj-struct">6-span arch / side height 3.5 m</p>
+          <div class="pj-price"><strong class="no-i18n">$205,200</strong><span class="no-i18n">$46 / m²</span></div>
+          <button class="pj-toggle" type="button">Specifications</button>
+          <dl class="pj-spec">
+            <dt>Facility area</dt><dd class="no-i18n">4,416 m² (1,336 pyeong)</dd>
+            <dt>Structure</dt><dd>6-span arch / side height 3.5 m</dd>
+            <dt>Main materials</dt><dd class="no-i18n">Column 60×60×2.3t @3,000, truss 60×40×2.3t</dd>
+            <dt>Covering</dt><dd>PO film</dd>
+            <dt>Screens</dt><dd>Shading + aluminium + thermal screen</dd>
+            <dt>Control &amp; machine room</dt><dd>Sandwich panel 100T, fire-retardant</dd>
+            <dt>Construction cost</dt><dd class="no-i18n">$205,200 · $46 / m²</dd>
+          </dl>
+          <p class="pj-note">Reconstruction cost: the existing frame is retained — structural reinforcement, new covering and screens, and sandwich-panel works.</p>
+        </div>
+      </article>
+      <article class="pj-card reveal d2" data-pjg="arch">
+        <div class="pj-media" style="background-image:url('assets/photos/projects/jincheon.jpg')">
+          <span class="pj-badge">Arch type</span>
+        </div>
+        <div class="pj-body">
+          <h3>Jincheon smart greenhouse</h3>
+          <div class="pj-meta"><span>2,444 m²</span></div>
+          <p class="pj-struct">3-span arch / side height 6 m</p>
+          <div class="pj-price"><strong class="no-i18n">$185,000</strong><span class="no-i18n">$76 / m²</span></div>
+          <button class="pj-toggle" type="button">Specifications</button>
+          <dl class="pj-spec">
+            <dt>Facility area</dt><dd class="no-i18n">2,444 m² (740 pyeong)</dd>
+            <dt>Structure</dt><dd>3-span arch / side height 6 m</dd>
+            <dt>Main materials</dt><dd class="no-i18n">Column 125×75×2.3t @3,000, truss 75×45×2.1t</dd>
+            <dt>Covering</dt><dd>PO film</dd>
+            <dt>Screens</dt><dd>Shading + thermal screen</dd>
+            <dt>Control &amp; machine room</dt><dd>Sandwich panel 100T, fire-retardant</dd>
+            <dt>Construction cost</dt><dd class="no-i18n">$185,000 · $76 / m²</dd>
+          </dl>
+        </div>
+      </article>
+      <article class="pj-card reveal" data-pjg="glass">
+        <div class="pj-media" style="background-image:url('assets/photos/projects/firmmitland.jpg')">
+          <span class="pj-badge">Glass</span>
+        </div>
+        <div class="pj-body">
+          <h3>Firmmit Land</h3>
+          <div class="pj-meta"><span>420 m²</span></div>
+          <p class="pj-struct">single-span Venlo / side height 5 m</p>
+          <div class="pj-price"><strong class="no-i18n">$126,500</strong><span class="no-i18n">$301 / m²</span></div>
+          <button class="pj-toggle" type="button">Specifications</button>
+          <dl class="pj-spec">
+            <dt>Facility area</dt><dd class="no-i18n">420 m² (127 pyeong)</dd>
+            <dt>Structure</dt><dd>single-span Venlo / side height 5 m</dd>
+            <dt>Main materials</dt><dd class="no-i18n">Column 125×75×3.2t @4,000, truss 75×45×3.2t</dd>
+            <dt>Covering</dt><dd>Sky-glass 16t</dd>
+            <dt>Screens</dt><dd>Shading + thermal screen</dd>
+            <dt>Control &amp; machine room</dt><dd>—</dd>
+            <dt>Construction cost</dt><dd class="no-i18n">$126,500 · $301 / m²</dd>
+          </dl>
+        </div>
+      </article>
+    </div>
+    <p class="pj-foot">All amounts exclude VAT and are converted at 1,400 KRW = 1 USD. Final cost depends on site conditions, logistics and the equipment package.</p>
   </div>
 </section>
 
@@ -142,6 +348,30 @@
   </div>
 </section>
 
+<script>
+(function () {
+  var grid = document.getElementById('pjGrid');
+  if (!grid) return;
+  document.querySelectorAll('#pjChips .cat-chip').forEach(function (b) {
+    b.addEventListener('click', function () {
+      document.querySelectorAll('#pjChips .cat-chip').forEach(function (x) { x.classList.remove('active'); });
+      b.classList.add('active');
+      var g = b.getAttribute('data-pj');
+      grid.querySelectorAll('.pj-card').forEach(function (c) {
+        c.hidden = !(g === 'all' || c.getAttribute('data-pjg') === g);
+      });
+    });
+  });
+  grid.querySelectorAll('.pj-toggle').forEach(function (t) {
+    t.setAttribute('aria-expanded', 'false');
+    t.addEventListener('click', function () {
+      var dl = t.parentNode.querySelector('.pj-spec');
+      var open = dl.classList.toggle('open');
+      t.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  });
+})();
+</script>
 <script src="js/site.js"></script>
 <script defer src="js/interactive.js"></script>
 </body>
