@@ -6,6 +6,8 @@
   'use strict';
 
   var KR_URL = 'https://www.firmmit.kr/html/#firstPage';
+  var TG_URL = 'https://t.me/FIRMMIT';   // Telegram
+  var IG_URL = 'https://www.instagram.com/firmmit_uz';   // Instagram (YouTube keyin qo'shiladi)
   // Per-language catalog PDF. Replace each value with that language's PDF when available.
   var CATALOG_PDF = {
     uz: 'assets/firmmit-catalog.pdf',
@@ -21,19 +23,8 @@
   var CO = {
     email: 'global@firmmit.com',
     phone: '+998 90 063 23 15',
-    phoneHref: '+998900632315',
-    bank: 'Aloqabank (АТ "ALOQABANK") IP PARK RCKU, Tashkent',
-    mfo: '00401',
-    account: '20208000907117476001'
+    phoneHref: '+998900632315'
   };
-
-  var LOGO = '<svg class="mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">' +
-    '<rect width="40" height="40" rx="11" fill="#3264ff"/>' +
-    '<path d="M20 31c-6 0-9.5-3.6-9.5-8.4C10.5 18 14 15 20 12v19z" fill="#97d4e9"/>' +
-    '<path d="M20 31c6 0 9.5-3.6 9.5-8.4C29.5 18 26 15 20 12v19z" fill="#fff"/>' +
-    '<path d="M20 12c0-3 1.6-5.4 5-7-0.4 3.4-1.8 5.6-5 7z" fill="#97d4e9"/>' +
-    '<rect x="19" y="9" width="2" height="24" rx="1" fill="#fff" opacity="0.9"/>' +
-    '</svg>';
 
   // Primary menu (lean & professional). Partners / Certificates / News / Head Office
   // remain live pages, reachable from the footer.
@@ -78,72 +69,72 @@
     "Certifications behind every project.": {
       ru: '<span class="thin">Сертификаты за</span> каждым проектом.',
       uz: '<span class="thin">Har bir loyiha ortida</span> sertifikatlar.',
-      ko: '<span class="thin">모든 프로젝트를 뒷받침하는</span> 인증.'
+      ko: '<span class="thin">모든 프로젝트를 뒷받침하는</span> 인증'
     },
     "Growing tomorrow's harvest with smart-farm technology.": {
       ru: '<span class="thin">Выращиваем урожай завтрашнего дня</span><br> с помощью <span class="blue">умных</span> агротехнологий.',
       uz: '<span class="thin">Ertangi hosilni yetishtiramiz</span><br> <span class="blue">aqlli</span> ferma texnologiyalari bilan.',
-      ko: '<span class="thin">내일의 수확을 준비합니다</span><br> <span class="blue">스마트팜</span> 기술로.'
+      ko: '<span class="thin">내일의 수확을</span><br> <span class="blue">스마트팜</span> 기술로 준비합니다'
     },
     "Leading the future of agriculture in Uzbekistan.": {
       ru: '<span class="thin">Формируем будущее сельского хозяйства</span> Узбекистана.',
       uz: '<span class="thin">O\'zbekiston qishloq xo\'jaligi</span> kelajagini yaratamiz.',
-      ko: '<span class="thin">우즈베키스탄 농업의 미래를</span> 선도합니다.'
+      ko: '<span class="thin">우즈베키스탄 농업의 미래를</span> 선도합니다'
     },
     "Reliable, distinctive, professional smart farming.": {
       ru: '<span class="thin">Надёжное, уникальное,</span> профессиональное умное фермерство.',
       uz: '<span class="thin">Ishonchli, o\'ziga xos,</span> professional aqlli dehqonchilik.',
-      ko: '<span class="thin">신뢰할 수 있고 독보적인,</span> 전문 스마트팜.'
+      ko: '<span class="thin">신뢰할 수 있고 독보적이며</span> 전문적인 스마트팜'
     },
     "One family of farms — from Korea to Uzbekistan.": {
       ru: '<span class="thin">Одна семья ферм —</span> от Кореи до Узбекистана.',
       uz: '<span class="thin">Yagona fermalar oilasi —</span> Koreyadan O\'zbekistongacha.',
-      ko: '<span class="thin">하나의 농장 가족 —</span> 한국에서 우즈베키스탄까지.'
+      ko: '<span class="thin">하나의 농가 가족 —</span> 한국에서 우즈베키스탄까지'
     },
     "Firmmit Uzbekistan operates as a regional branch of Firmmit Korea, our head office and smart-farm headquarters. That link gives local growers direct access to Korean R&D, equipment and expertise.": {
       ru: 'Firmmit Uzbekistan работает как региональный филиал <strong>Firmmit Korea</strong> — нашего головного офиса и штаб-квартиры умного фермерства. Эта связь даёт местным аграриям прямой доступ к корейским R&D, оборудованию и экспертизе.',
       uz: 'Firmmit Uzbekistan <strong>Firmmit Korea</strong>ning mintaqaviy filiali sifatida ishlaydi — bu bizning bosh ofisimiz va aqlli ferma shtab-kvartiramiz. Bu aloqa mahalliy fermerlarga Koreya R&D, jihozlari va tajribasidan bevosita foydalanish imkonini beradi.',
-      ko: 'Firmmit Uzbekistan은 <strong>Firmmit Korea</strong>의 지역 지사로 운영됩니다 — 본사이자 스마트팜 본부입니다. 이 연결을 통해 현지 농가는 한국의 R&D, 장비, 전문성에 직접 접근할 수 있습니다.'
+      ko: 'Firmmit Uzbekistan은 본사이자 스마트팜 본부인 <strong>Firmmit Korea</strong>의 지역 법인입니다. 이를 통해 현지 농가는 한국의 R&D와 장비, 전문성을 직접 활용할 수 있습니다.'
     },
     "A local partner backed by a global head office.": {
       ru: '<span class="thin">Местный партнёр при поддержке</span> глобального головного офиса.',
       uz: '<span class="thin">Global bosh ofis quvvatlagan</span> mahalliy hamkor.',
-      ko: '<span class="thin">글로벌 본사가 지원하는</span> 현지 파트너.'
+      ko: '<span class="thin">글로벌 본사가 뒷받침하는</span> 현지 파트너'
     },
     "Six core systems that work together.": {
       ru: '<span class="thin">Шесть базовых систем,</span> работающих как единое целое.',
       uz: '<span class="thin">Birga ishlaydigan</span> oltita asosiy tizim.',
-      ko: '<span class="thin">함께 작동하는</span> 6가지 핵심 시스템.'
+      ko: '<span class="thin">유기적으로 연동되는</span> 6가지 핵심 시스템'
     },
     "Built for the region's high-value produce.": {
       ru: '<span class="thin">Создано для ценных культур</span> региона.',
       uz: '<span class="thin">Mintaqaning qimmatli ekinlari</span> uchun yaratilgan.',
-      ko: '<span class="thin">이 지역의 고부가가치 작물을</span> 위해 설계.'
+      ko: '<span class="thin">이 지역의 고부가가치 작물을</span> 위한 설계'
     },
     "A clear path from idea to income.": {
       ru: '<span class="thin">Ясный путь от идеи</span> к доходу.',
       uz: '<span class="thin">G\'oyadan daromadgacha</span> aniq yo\'l.',
-      ko: '<span class="thin">아이디어에서 수익까지</span> 명확한 길.'
+      ko: '<span class="thin">아이디어에서 수익까지</span> 이어지는 명확한 길'
     },
     "A bridge that moves both ways.": {
       ru: '<span class="thin">Мост, работающий</span> в обе стороны.',
       uz: '<span class="thin">Ikki tomonga ishlaydigan</span> ko\'prik.',
-      ko: '<span class="thin">양방향으로 이어주는</span> 다리.'
+      ko: '<span class="thin">양방향으로 이어주는</span> 다리'
     },
     "Firmmit Korea — our head office.": {
       ru: '<span class="thin">Firmmit Korea —</span> наш головной офис.',
       uz: '<span class="thin">Firmmit Korea —</span> bizning bosh ofisimiz.',
-      ko: '<span class="thin">Firmmit Korea —</span> 우리의 본사.'
+      ko: '<span class="thin">Firmmit Korea —</span> 우리의 본사'
     },
     "Not just systems — finished products, too.": {
       ru: '<span class="thin">Не только системы —</span> но и готовая продукция.',
       uz: '<span class="thin">Faqat tizimlar emas —</span> tayyor mahsulotlar ham.',
-      ko: '<span class="thin">시스템만이 아니라 —</span> 완제품도 함께.'
+      ko: '<span class="thin">시스템을 넘어 —</span> 완제품까지'
     },
     "Everything, with specs — in one catalog.": {
       ru: '<span class="thin">Всё, со спецификациями —</span> в одном каталоге.',
       uz: '<span class="thin">Hammasi, spetsifikatsiyalari bilan —</span> bitta katalogda.',
-      ko: '<span class="thin">사양까지 모두 —</span> 하나의 카탈로그에.'
+      ko: '<span class="thin">제품과 사양 모두 —</span> 하나의 카탈로그에'
     }
   };
 
@@ -168,6 +159,7 @@
       "Who we are": "Кто мы", "Our Philosophy": "Наша философия", "How we work": "Как мы работаем",
       "At a glance": "Кратко", "Product range": "Ассортимент", "Best-suited crops": "Подходящие культуры",
       "How a project runs": "Ход проекта", "What we offer": "Что мы предлагаем",
+      "Our work": "Наши работы", "Featured projects": "Наши проекты", "Mongol-type 2-span greenhouse": "Двухпролётная теплица монгольского типа", "Glass greenhouse 2.18 ha": "Стеклянная теплица 2,18 га", "Interactive 3D model — rotate and explore every part": "Интерактивная 3D-модель — вращайте и изучайте каждую деталь", "Explore in 3D": "Смотреть в 3D",
       "Why growers choose us": "Почему выбирают нас", "Two-way trade": "Двусторонняя торговля",
       "How trade works with us": "Как устроена торговля", "Our anchor partner": "Наш ключевой партнёр",
       "Ecosystem": "Экосистема", "Our network": "Наша сеть",
@@ -529,6 +521,7 @@
       "Who we are": "Biz kimmiz", "Our Philosophy": "Falsafamiz", "How we work": "Qanday ishlaymiz",
       "At a glance": "Qisqacha", "Product range": "Mahsulot turlari", "Best-suited crops": "Mos ekinlar",
       "How a project runs": "Loyiha jarayoni", "What we offer": "Nimani taklif qilamiz",
+      "Our work": "Bizning ishlarimiz", "Featured projects": "Loyihalarimiz", "Mongol-type 2-span greenhouse": "Mo'g'ul tipidagi 2 pro'lyotli issiqxona", "Glass greenhouse 2.18 ha": "Shisha issiqxona 2,18 ga", "Interactive 3D model — rotate and explore every part": "Interaktiv 3D model — aylantirib, har bir qismini o'rganing", "Explore in 3D": "3D'da ko'rish",
       "Why growers choose us": "Nega bizni tanlashadi", "Two-way trade": "Ikki tomonlama savdo",
       "How trade works with us": "Savdo qanday ishlaydi", "Our anchor partner": "Asosiy hamkorimiz",
       "Ecosystem": "Ekotizim", "Our network": "Tarmog'imiz",
@@ -878,7 +871,7 @@
       "Head Office ↗": "본사 ↗", "Head Office — Firmmit Korea ↗": "본사 — Firmmit Korea ↗",
       /* footer */
       "Bringing Korean smart-farm technology to Uzbekistan — greenhouses, controlled-environment agriculture and agri-trade for a resilient regional food supply.":
-        "한국의 스마트팜 기술을 우즈베키스탄으로 — 온실, 시설 농업, 그리고 안정적인 지역 식량 공급을 위한 농산물 교역.",
+        "한국의 스마트팜 기술을 우즈베키스탄으로 전하는 온실 및 시설 농업, 그리고 안정적인 지역 식량 공급을 위한 농산물 교역",
       "Company": "회사", "What we do": "사업 분야", "Head Office": "본사",
       "Smart-farm headquarters · Seoul, Republic of Korea": "스마트팜 본사 · 대한민국 서울",
       "© 2026 Firmmit Uzbekistan. A branch of Firmmit Korea. All rights reserved.":
@@ -889,6 +882,7 @@
       "Who we are": "회사 소개", "Our Philosophy": "우리의 철학", "How we work": "업무 방식",
       "At a glance": "한눈에 보기", "Product range": "제품 라인업", "Best-suited crops": "적합한 작물",
       "How a project runs": "프로젝트 진행", "What we offer": "제공 서비스",
+      "Our work": "프로젝트", "Featured projects": "주요 프로젝트", "Mongol-type 2-span greenhouse": "몽골형 2연동 온실", "Glass greenhouse 2.18 ha": "유리 온실 2.18ha", "Interactive 3D model — rotate and explore every part": "인터랙티브 3D 모델 — 회전하며 부품을 살펴보세요", "Explore in 3D": "3D로 보기",
       "Why growers choose us": "선택받는 이유", "Two-way trade": "양방향 교역",
       "How trade works with us": "교역 방식", "Our anchor partner": "핵심 파트너",
       "Ecosystem": "생태계", "Our network": "네트워크",
@@ -897,15 +891,15 @@
       "For sale": "판매 중", "Catalog": "카탈로그", "Online Store": "온라인 스토어",
       /* home hero */
       "Firmmit Uzbekistan delivers Korean controlled-environment agriculture — modern greenhouses, precision climate systems and reliable agri-systems — to farms across Uzbekistan and Central Asia.":
-        "Firmmit Uzbekistan은 한국의 시설 농업 — 현대식 온실, 정밀 기후 시스템, 신뢰할 수 있는 농업 시스템 — 을 우즈베키스탄과 중앙아시아 전역의 농가에 제공합니다.",
+        "Firmmit 우즈베키스탄은 우즈베키스탄 및 중앙아시아 전역의 농가에 현대식 온실, 정밀 기후 제어 시스템, 그리고 신뢰할 수 있는 농업 인프라를 아우르는 한국의 첨단 '환경 제어 농업 솔루션'을 제공합니다.",
       "Explore our solutions": "솔루션 보기", "Talk to our team": "팀에 문의",
       "Regions served": "서비스 지역", "Projects delivered": "완료 프로젝트",
       "Client retention": "고객 유지율", "Greenhouse projects": "온실 프로젝트",
       "Regions covered": "서비스 지역", "Avg. water saved": "평균 물 절감", "Technical support": "기술 지원",
-      "Four connected capabilities that take a project from first design to a thriving, data-driven farm.": "프로젝트를 첫 설계부터 데이터 기반의 번창하는 농장까지 이끄는 네 가지 연결된 역량.",
+      "Four connected capabilities that take a project from first design to a thriving, data-driven farm.": "첫 설계부터 데이터 기반의 생산적인 농장까지, 프로젝트 전 과정을 이끄는 네 가지 핵심 역량",
       /* home intro */
       "As the Uzbekistan branch of Firmmit Korea, we localize proven smart-farm technology for the region's climate, crops and growers — combining Korean engineering with on-the-ground agronomy.":
-        "Firmmit Korea의 우즈베키스탄 지사로서, 우리는 검증된 스마트팜 기술을 지역의 기후·작물·농가에 맞게 현지화합니다 — 한국의 엔지니어링과 현장 농학을 결합합니다.",
+        "Firmmit Korea의 우즈베키스탄 지사로서 한국의 우수한 엔지니어링과 현장 농업 노하우를 결합하여, 검증된 스마트팜 기술을 지역 기후와 작물, 농가 환경에 맞게 최적화합니다.",
       "✓ Turnkey smart greenhouses engineered for arid climates": "✓ 건조 기후에 맞춘 턴키 스마트 온실",
       "✓ Precision irrigation, sensors and climate automation": "✓ 정밀 관수, 센서 및 기후 자동화",
       "✓ Direct Korea–Uzbekistan supply and technical support": "✓ 한국–우즈베키스탄 직접 공급 및 기술 지원",
@@ -913,16 +907,16 @@
       /* business cards */
       "Smart Greenhouses": "스마트 온실",
       "Structures and glazing engineered for high yield and low water use in Central Asian conditions.":
-        "중앙아시아 환경에서 높은 수확량과 낮은 물 사용을 위한 구조물과 유리.",
+        "중앙아시아 환경에서 높은 수확량과 적은 물 사용을 실현하는 구조물과 유리",
       "Climate & IoT": "기후 및 IoT",
       "Sensors, controllers and dashboards that automate temperature, humidity and nutrient delivery.":
-        "온도·습도·양분 공급을 자동화하는 센서, 컨트롤러, 대시보드.",
+        "온도·습도·양분 공급을 자동화하는 센서와 컨트롤러, 대시보드",
       "Agronomy Services": "농학 서비스",
       "Installation, grower training and season-long support from Korean and local specialists.":
-        "한국 및 현지 전문가의 설치, 농가 교육, 시즌 내내 지원.",
+        "한국과 현지 전문가가 함께하는 설치, 농가 교육, 시즌 전반의 지원",
       "Import & Export ": "수출입 ",
       "Sourcing equipment from Korea and connecting Uzbek produce to regional markets.":
-        "한국에서 장비를 조달하고 우즈베키스탄 농산물을 지역 시장에 연결.",
+        "한국에서 장비를 조달하고 우즈베키스탄 농산물을 지역 시장으로 연결",
       "Learn more →": "자세히 →", "Read more →": "더 읽기 →",
       /* home global */
       "Korean R&D": "한국 R&D", "Local agronomy": "현지 농학",
@@ -930,32 +924,32 @@
       "Visit Head Office — Firmmit Korea": "본사 방문 — Firmmit Korea",
       "Visit Firmmit Korea": "Firmmit Korea 방문",
       /* CTA */
-      "Bring smart farming to your land.": "당신의 땅에 스마트팜을 도입하세요.",
+      "Bring smart farming to your land.": "당신의 땅에 스마트팜을 도입하세요",
       "Whether you're planning a single greenhouse or a regional facility, our team will design a solution around your crop, climate and budget.":
         "온실 한 동이든 지역 규모 시설이든, 우리 팀이 작물·기후·예산에 맞는 솔루션을 설계합니다.",
       "Start your project": "프로젝트 시작", "Get in touch →": "문의하기 →",
       /* about */
-      "Korean smart-farm expertise, rooted in Uzbek soil.": "우즈베키스탄 토양에 뿌리내린 한국 스마트팜 전문성.",
+      "Korean smart-farm expertise, rooted in Uzbek soil.": "우즈베키스탄 현지에 깊이 뿌리내린 한국의 스마트팜 전문성",
       "We are the Uzbekistan branch of Firmmit Korea — a smart-farm company preparing the food of tomorrow. Our mission is to make advanced, sustainable agriculture accessible to growers across the region.":
-        "우리는 내일의 식량을 준비하는 스마트팜 기업 Firmmit Korea의 우즈베키스탄 지사입니다. 우리의 사명은 첨단·지속가능 농업을 지역 농가가 이용할 수 있게 하는 것입니다.",
+        "FIRMMIT Korea의 우즈베키스탄 지사로서 미래의 식량을 준비하는 스마트팜 기업입니다. 지역 전역의 농가에 선진화된 지속 가능한 농업 환경을 제공하는 데 앞장서고 있습니다.",
       "Firmmit Uzbekistan was established to adapt Firmmit Korea's proven controlled-environment agriculture for Central Asia. We combine Korean engineering, R&D and equipment with local agronomy, language and service — so growers get world-class technology with a partner next door.":
-        "Firmmit Uzbekistan은 Firmmit Korea의 검증된 시설 농업을 중앙아시아에 맞게 적용하기 위해 설립되었습니다. 한국의 엔지니어링·R&D·장비를 현지 농학·언어·서비스와 결합해, 농가는 가까운 파트너와 함께 세계적 수준의 기술을 이용합니다.",
+        "FIRMMIT 우즈베키스탄은 FIRMMIT Korea의 검증된 환경 제어 농업 기술을 중앙아시아에 맞게 도입하기 위해 설립되었습니다. 한국의 엔지니어링, R&D 및 최신 설비를 현지 재배 노하우, 언어, 맞춤형 서비스와 결합하여, 농가들이 가까운 파트너를 통해 세계 최고 수준의 기술을 누릴 수 있도록 합니다.",
       "From feasibility study to harvest, we stay involved: designing the facility, sourcing the right systems, installing them, training the team and supporting every season that follows.":
-        "타당성 조사부터 수확까지 함께합니다: 시설 설계, 적합한 시스템 조달, 설치, 팀 교육, 그리고 이후 모든 시즌 지원.",
-      "Because your life is behind our work.": "우리의 일 뒤에 당신의 삶이 있기에.",
+        "사업 타당성 검토부터 수확에 이르기까지 전 과정에 함께합니다. 시설 설계, 알맞은 시스템 조달 및 설치, 팀 교육, 그리고 매 시즌 이어지는 사후 관리까지 모든 단계를 철저하게 지원합니다.",
+      "Because your life is behind our work.": "우리의 일 뒤에는 당신의 삶이 있습니다",
       "Food security is not merely a matter of agriculture — it is directly tied to the sustainable future of every family, every farm and the entire region. That is why every technological solution we build rests on the principles of dependable harvests, rational use of resources and long-term sustainability. We adapt Korea's advanced smart-farm technologies to Central Asia's climate, water, crops and local growing conditions — delivering practical, measurable results for farmers.":
         "식량 안보는 단순한 농업의 문제가 아닙니다. 그것은 모든 가정과 농장, 그리고 지역 전체의 지속 가능한 미래와 직접 연결되어 있습니다.\n\n그래서 우리가 만드는 모든 기술 솔루션은 신뢰할 수 있는 수확, 합리적인 자원 사용, 장기적인 지속 가능성의 원칙에 기반합니다.\n\n우리는 한국의 첨단 스마트팜 기술을 중앙아시아의 기후, 물, 작물, 현지 재배 환경에 맞게 적용하여 농가에 실질적이고 측정 가능한 결과를 제공합니다.",
       "MISSION": "미션", "VISION": "비전", "VALUES": "가치",
-      "Sustainably feed the future": "미래를 지속 가능하게 먹이다",
+      "Sustainably feed the future": "지속 가능한 방식으로 미래의 식량을 공급합니다",
       "To build high-yield, efficient and sustainable agricultural production in any climate by deploying smart, precise and resource-efficient agri-technologies. Our aim is not simply to introduce modern technology, but to turn it into real economic results for the farmer.":
-        "스마트하고 정밀하며 자원 효율적인 농업 기술을 도입하여 어떤 기후에서도 고수확·고효율·지속 가능한 농업 생산을 구축합니다.\n\n우리의 목표는 단순히 현대 기술을 도입하는 것이 아니라, 그것을 농가를 위한 실질적인 경제적 성과로 전환하는 것입니다.",
-      "Setting a new standard for smart agriculture in Central Asia": "중앙아시아 스마트 농업의 새로운 기준 만들기",
+        "스마트하고 정밀하며 자원 효율적인 농업 기술을 도입하여, 어떤 기후에서든 고수확, 고효율의 지속 가능한 농업 생산을 구축합니다.\n우리의 목표는 단순히 현대 기술을 도입하는 것에 그치지 않고, 이를 농가를 위한 실질적인 경제적 성과로 전환하는 것입니다.",
+      "Setting a new standard for smart agriculture in Central Asia": "중앙아시아 스마트 농업의 새로운 기준을 세웁니다",
       "To become Central Asia's most trusted smart-farm technology partner by optimising water and energy use, raising yield and quality, and automating production processes. We combine Korean engineering and innovation with local agronomic experience to develop suitable, measurable and scalable agri-technology solutions for Uzbekistan and the wider region.":
-        "물과 에너지 사용을 최적화하고 수확량과 품질을 높이며 생산 공정을 자동화하여 중앙아시아에서 가장 신뢰받는 스마트팜 기술 파트너가 되는 것.\n\n우리는 한국의 엔지니어링과 혁신을 현지 농학 경험과 결합하여 우즈베키스탄과 더 넓은 지역을 위한 적합하고 측정 가능하며 확장 가능한 농업 기술 솔루션을 개발합니다.",
-      "Trust. Precision. Results.": "신뢰. 정밀. 결과.",
+        "물과 에너지 사용을 최적화하고, 수확량과 품질을 높이며, 생산 공정을 자동화하여 중앙아시아에서 가장 신뢰받는 스마트팜 기술 파트너로 도약합니다. \n한국의 엔지니어링 및 혁신 기술을 현지 재배 노하우와 결합하여, 우즈베키스탄과 더 넓은 인근 지역에 적합하고 측정 가능하며 확장 가능한 농업 기술 솔루션을 개발합니다.",
+      "Trust. Precision. Results.": "신뢰 · 정밀 · 결과",
       "Our work rests on three core principles: Trust — we build open, responsible and long-term partnerships with farmers, partners and investors. Precision — we base decisions on data, sensors, agronomic analysis and real indicators, not guesswork. Results — we turn every technological solution into real, measurable economic value for the farmer.":
         "우리의 활동은 세 가지 핵심 원칙에 기반합니다:\n\n신뢰 — 농가, 파트너, 투자자와 열린 자세로 책임감 있고 장기적인 협력을 구축합니다.\n\n정밀 — 추측이 아니라 데이터, 센서, 농학적 분석, 실제 지표에 근거하여 결정합니다.\n\n결과 — 모든 기술 솔루션을 농가를 위한 실질적이고 측정 가능한 경제적 가치로 전환합니다.",
-      "Four commitments to every grower.": "모든 농가를 위한 네 가지 약속.",
+      "Four commitments to every grower.": "모든 농가를 위한 네 가지 약속",
       "Localized engineering": "현지화 엔지니어링",
       "Every system is specified for the site's climate, water and target crop — not copy-pasted from another market.":
         "모든 시스템은 다른 시장에서 복사한 것이 아니라 현장의 기후·물·대상 작물에 맞게 설계됩니다.",
@@ -970,16 +964,16 @@
         "원격 모니터링과 현지 서비스로 시설을 시즌마다 생산적으로 유지합니다.",
       "Firmmit Uzbekistan in numbers": "숫자로 보는 Firmmit Uzbekistan",
       "Partner suppliers": "협력 공급업체", "Global head office": "글로벌 본사",
-      "Let's grow something lasting.": "오래가는 것을 함께 키웁시다.",
-      "Partner with a team that treats your harvest as its own.": "당신의 수확을 자기 것처럼 여기는 팀과 함께하세요.",
+      "Let's grow something lasting.": "오래도록 이어질 가치를 함께 키웁니다",
+      "Partner with a team that treats your harvest as its own.": "농가의 수확을 내 일처럼 책임지는 든든한 파트너와 함께하세요.",
       /* products */
-      "Everything a modern farm needs, in one place.": "현대 농장에 필요한 모든 것을 한곳에서.",
+      "Everything a modern farm needs, in one place.": "현대 농장에 필요한 모든 것을 한곳에서",
       "From the greenhouse shell to the sensor on the vine, we supply integrated smart-farm systems engineered for Uzbekistan's climate and crops.":
         "온실 골조부터 작물의 센서까지, 우즈베키스탄의 기후와 작물에 맞춘 통합 스마트팜 시스템을 공급합니다.",
       "Buy a complete facility or a single subsystem — every product is designed to integrate cleanly with the rest.":
-        "전체 시설이든 단일 하위 시스템이든 — 모든 제품은 나머지와 깔끔하게 통합되도록 설계되었습니다.",
+        "전체 시설이든 단일 하위 시스템이든, 모든 제품은 나머지 시스템과 깔끔하게 통합되도록 설계되었습니다.",
       "Galvanized-frame venlo and multi-span structures with diffused glazing, thermal screens and natural ventilation, sized to your plot.":
-        "확산 유리, 보온 스크린, 자연 환기를 갖춘 아연도금 벤로 및 멀티스팬 구조 — 부지에 맞게 설계.",
+        "확산 유리, 보온 스크린, 자연 환기를 갖춘 아연도금 벤로·멀티스팬 구조 — 부지에 맞게 설계",
       "Venlo": "벤로", "Multi-span": "멀티스팬", "Thermal screen": "보온 스크린",
       "Hydroponic & NFT Systems": "수경재배 및 NFT 시스템",
       "Soil-free growing lines — NFT channels, deep-water culture and substrate systems — that cut water use and boost yield per m².":
@@ -993,11 +987,11 @@
         "온도·습도·EC/pH·토양 수분·광량용 무선 센서가 실시간 대시보드와 자동 제어에 데이터를 공급합니다.",
       "Irrigation & Fertigation": "관수 및 양액",
       "Drip lines, dosing units and filtration that deliver water and nutrients precisely — saving up to 30% versus open-field methods.":
-        "점적 라인, 정량 공급기, 여과로 물과 양분을 정밀하게 공급 — 노지 방식 대비 최대 30% 절감.",
+        "점적 라인, 정량 공급기, 여과 장치로 물과 양분을 정밀하게 공급 — 노지 방식 대비 최대 30% 절감",
       "Drip": "점적", "Dosing": "정량 공급", "Filtration": "여과",
       "Seedlings & Growing Media": "묘목 및 배지",
       "Quality seedlings, coco-coir and rockwool substrates, and nutrient packs selected for high-value greenhouse crops.":
-        "고부가가치 온실 작물을 위한 우수한 묘목, 코코코이어·암면 배지, 양분 패키지.",
+        "고부가가치 온실 작물을 위한 우수한 묘목과 코코코이어·암면 배지, 양분 패키지",
       "Seedlings": "묘목", "Coco-coir": "코코코이어", "Nutrients": "양분",
       "See our services": "서비스 보기",
       "Our systems are tuned for the crops that perform best under controlled environments in Uzbekistan — protecting them from heat, dust and water stress.":
@@ -1010,25 +1004,25 @@
       "Request a quote": "견적 요청",
       /* new products */
       "Beyond greenhouses and equipment, Firmmit Uzbekistan sells finished products: premium strawberry varieties, seedlings, fresh greenhouse produce and genuine spare parts — ready for market.":
-        "온실과 장비를 넘어, Firmmit Uzbekistan은 완제품도 판매합니다: 프리미엄 딸기 품종, 묘목, 신선한 온실 농산물, 정품 부품 — 시장에 바로 공급.",
+        "온실과 장비를 넘어, Firmmit Uzbekistan은 완제품도 공급합니다: 프리미엄 딸기 품종, 묘목, 신선한 온실 농산물, 정품 부품까지 — 시장에 바로 공급합니다.",
       "Seolhyang (설향) Strawberry": "설향 딸기",
       "Korea's most popular strawberry cultivar — large, glossy, high-sugar berries with excellent flavour and shelf life. Available as seedlings and fresh fruit.":
-        "한국에서 가장 인기 있는 딸기 품종 — 크고 윤기 있으며 당도가 높고 풍미와 저장성이 뛰어납니다. 묘목과 생과로 제공.",
+        "한국에서 가장 인기 있는 딸기 품종 — 크고 윤기 있으며 당도가 높고 풍미와 저장성이 뛰어납니다. 묘목과 생과로 공급합니다.",
       "1943 Strawberry": "1943 딸기",
       "A firm, aromatic strawberry variety selected for high yield and transport durability — well suited to controlled-environment growing in the region.":
         "높은 수확량과 수송 내구성을 위해 선발된 단단하고 향이 좋은 딸기 품종 — 지역의 시설 재배에 적합합니다.",
       "Fresh Greenhouse Produce": "신선 온실 농산물",
       "Tomatoes, cucumbers, peppers and leafy greens grown in Firmmit facilities — clean, consistent and available year-round.":
-        "Firmmit 시설에서 재배한 토마토·오이·고추·엽채류 — 깨끗하고 균일하며 연중 공급.",
+        "Firmmit 시설에서 재배한 토마토·오이·고추·엽채류 — 깨끗하고 균일하며 연중 공급합니다.",
       "Seedlings & Starter Plants": "묘목 및 모종",
       "Healthy, disease-screened seedlings and starter plants so growers begin every season from a strong, reliable base.":
         "병해 검사를 마친 건강한 묘목과 모종으로 농가가 매 시즌을 튼튼하고 신뢰할 수 있는 기반에서 시작하도록 합니다.",
       "Genuine Spare Parts": "정품 부품",
       "The same spare parts behind our maintenance service, available for direct purchase — sensors, controllers, fittings, pumps and consumables.":
-        "유지보수 서비스에 사용되는 동일한 부품을 직접 구매 가능 — 센서, 컨트롤러, 피팅, 펌프, 소모품.",
+        "유지보수 서비스에 사용하는 것과 동일한 부품을 직접 구매 — 센서, 컨트롤러, 피팅, 펌프, 소모품",
       "Ready-Stock Equipment": "재고 보유 장비",
       "Frequently ordered climate, irrigation and IoT items kept in stock for fast delivery without a full project lead time.":
-        "자주 주문되는 기후·관수·IoT 품목을 재고로 보유해 전체 프로젝트 기간 없이 신속 배송.",
+        "자주 찾는 기후·관수·IoT 품목을 재고로 보유해 전체 프로젝트 기간을 기다릴 필요 없이 신속하게 배송",
       "Strawberry": "딸기", "Fresh produce": "신선 농산물", "Parts": "부품", "Equipment": "장비",
       "Premium variety": "프리미엄 품종", "Greenhouse-grown": "온실 재배", "Starter plants": "모종",
       "In stock": "재고 있음", "Ready to ship": "출하 준비 완료",
@@ -1040,43 +1034,43 @@
       "The catalog is being finalized — request a copy and we'll send it to you directly.":
         "카탈로그를 마무리 중입니다 — 요청하시면 직접 보내드립니다.",
       /* services */
-      "We stay with you from blueprint to harvest.": "설계도부터 수확까지 함께합니다.",
+      "We stay with you from blueprint to harvest.": "설계도부터 수확까지 함께합니다",
       "A greenhouse is only as good as the team behind it. Our end-to-end services make sure your investment produces — season after season.":
         "온실은 그 뒤의 팀만큼만 훌륭합니다. 우리의 엔드투엔드 서비스는 투자가 시즌마다 결실을 맺도록 보장합니다.",
       "Every engagement follows the same disciplined process, so you always know what happens next.":
         "모든 프로젝트는 동일한 체계적 절차를 따르므로 다음 단계를 항상 알 수 있습니다.",
       "Consult & Design": "상담 및 설계",
       "Site survey, crop selection and a facility design matched to your climate and budget.":
-        "부지 조사, 작물 선정, 기후와 예산에 맞춘 시설 설계.",
+        "부지 조사, 작물 선정, 기후와 예산에 맞춘 시설 설계",
       "Supply & Build": "공급 및 시공",
       "Import, deliver and install the greenhouse, climate and irrigation systems.":
-        "온실·기후·관수 시스템의 수입, 배송, 설치.",
+        "온실·기후·관수 시스템의 수입, 배송, 설치",
       "Train & Launch": "교육 및 가동",
       "Hands-on operator training and a supported first growing cycle.":
-        "실무 운영자 교육과 첫 재배 주기 지원.",
+        "실무 운영자 교육과 첫 재배 주기 지원",
       "Support & Optimize": "지원 및 최적화",
       "Remote monitoring, maintenance and agronomy to keep yields climbing.":
-        "수확량을 계속 높이기 위한 원격 모니터링, 유지보수, 농학.",
+        "수확량을 꾸준히 높이기 위한 원격 모니터링, 유지보수, 농학 지원",
       "Full-service smart farming": "풀서비스 스마트팜",
       "Consulting & Feasibility": "컨설팅 및 타당성",
       "Business case, crop economics, water assessment and ROI modelling before a single beam is ordered.":
-        "기둥 하나 주문하기 전에 사업성, 작물 경제성, 물 평가, ROI 모델링.",
+        "기둥 하나 주문하기 전에 진행하는 사업성, 작물 경제성, 물 평가, ROI 모델링",
       "Engineering & Design": "엔지니어링 및 설계",
       "Structural, climate and irrigation design tailored to your site — delivered as clear, buildable plans.":
-        "부지에 맞춘 구조·기후·관수 설계 — 명확하고 시공 가능한 도면으로 제공.",
+        "부지에 맞춘 구조·기후·관수 설계 — 명확하고 시공 가능한 도면으로 제공",
       "Installation & Commissioning": "설치 및 시운전",
       "Professional on-site assembly, wiring, calibration and handover of a ready-to-grow facility.":
-        "전문 현장 조립, 배선, 보정, 재배 준비된 시설 인계.",
+        "전문 현장 조립, 배선, 보정, 그리고 재배 준비를 마친 시설 인계",
       "Grower Training": "농가 교육",
       "Practical training in climate management, crop care and dashboard use — in Uzbek, Russian and English.":
-        "기후 관리, 작물 관리, 대시보드 사용에 대한 실무 교육 — 우즈베크어·러시아어·영어.",
+        "기후 관리, 작물 관리, 대시보드 사용에 대한 실무 교육 — 우즈베크어·러시아어·영어로 진행",
       "Maintenance & Spare Parts": "유지보수 및 부품",
       "Scheduled servicing, rapid repairs and a stocked supply of genuine spare parts.":
-        "정기 점검, 신속 수리, 정품 부품 재고 공급.",
+        "정기 점검, 신속한 수리, 정품 부품 재고 공급",
       "Remote Monitoring": "원격 모니터링",
       "Cloud dashboards and alerts let our specialists and yours watch the farm from anywhere.":
         "클라우드 대시보드와 알림으로 우리와 귀사의 전문가가 어디서든 농장을 확인합니다.",
-      "Korean technology, local hands.": "한국의 기술, 현지의 손길.",
+      "Korean technology, local hands.": "한국의 기술, 현지의 손길",
       "✓ Backed by Firmmit Korea's R&D and equipment supply": "✓ Firmmit Korea의 R&D 및 장비 공급 지원",
       "✓ Local engineers and agronomists who know the region": "✓ 지역을 아는 현지 엔지니어와 농학자",
       "✓ One accountable partner for the whole project": "✓ 전체 프로젝트를 책임지는 단일 파트너",
@@ -1088,7 +1082,7 @@
         "무료 상담을 예약하시면 생산적인 온실로 가는 가장 빠른 길을 안내합니다.",
       "Talk to a specialist": "전문가와 상담",
       /* import-export */
-      "Connecting Korea and Uzbekistan across the supply chain.": "공급망 전반에서 한국과 우즈베키스탄을 연결합니다.",
+      "Connecting Korea and Uzbekistan across the supply chain.": "공급망 전반에서 한국과 우즈베키스탄을 잇습니다",
       "Beyond national borders — bringing proven Korean agri-technology into Uzbekistan and helping regional produce reach new markets.":
         "국경을 넘어 — 검증된 한국 농업 기술을 우즈베키스탄에 도입하고 지역 농산물이 새로운 시장에 도달하도록 돕습니다.",
       "Our head-office link with Firmmit Korea gives us a direct, trusted channel in both directions of the agricultural supply chain.":
@@ -1096,7 +1090,7 @@
       "IMPORT · KOREA → UZBEKISTAN": "수입 · 한국 → 우즈베키스탄",
       "Smart-farm equipment & inputs": "스마트팜 장비 및 자재",
       "Greenhouse structures, climate and irrigation systems, IoT hardware, growing media and quality seedlings — sourced from Korea and vetted partners, delivered with documentation and warranty.":
-        "온실 구조물, 기후·관수 시스템, IoT 하드웨어, 배지, 우수한 묘목 — 한국과 검증된 파트너에서 조달, 서류와 보증과 함께 배송.",
+        "온실 구조물, 기후·관수 시스템, IoT 하드웨어, 배지, 우수한 묘목 — 한국과 검증된 파트너에서 조달하고 서류와 보증과 함께 배송",
       "✓ Greenhouse & climate systems": "✓ 온실 및 기후 시스템",
       "✓ Sensors, controllers & automation": "✓ 센서, 컨트롤러 및 자동화",
       "✓ Substrates, nutrients & seedlings": "✓ 배지, 양분 및 묘목",
@@ -1111,19 +1105,19 @@
       "Sourcing": "소싱", "We identify the right equipment or buyer and confirm specifications and price.":
         "적합한 장비나 구매자를 찾고 사양과 가격을 확정합니다.",
       "Logistics": "물류", "Freight, insurance and customs handled through established Korea–UZ routes.":
-        "확립된 한국–우즈베키스탄 경로를 통한 운송·보험·통관 처리.",
+        "구축된 한국–우즈베키스탄 경로를 통한 운송·보험·통관 처리",
       "Compliance": "규정 준수", "Certificates, phytosanitary and import/export paperwork prepared correctly.":
-        "인증서, 식물 검역, 수출입 서류를 정확하게 준비.",
+        "인증서, 식물 검역, 수출입 서류를 정확하게 준비",
       "Delivery": "배송", "Goods delivered, inspected and — where needed — installed and commissioned.":
-        "제품 배송, 검수, 필요 시 설치 및 시운전.",
+        "제품 배송과 검수, 필요 시 설치 및 시운전까지",
       "Countries linked": "연결 국가", "Trusted suppliers": "신뢰 공급업체",
       "Documented shipments": "문서화된 선적", "Product categories": "제품 카테고리",
-      "Import equipment or export your harvest.": "장비를 수입하거나 수확물을 수출하세요.",
+      "Import equipment or export your harvest.": "장비를 수입하거나 수확물을 수출하세요",
       "Tell us what you need to move — our trade team will handle sourcing, logistics and compliance.":
         "무엇을 옮겨야 하는지 알려주시면 — 무역팀이 소싱·물류·규정 준수를 처리합니다.",
       "Start a trade inquiry": "교역 문의 시작",
       /* partners */
-      "Strong farms are built on strong partnerships.": "강한 농장은 강한 파트너십 위에 세워집니다.",
+      "Strong farms are built on strong partnerships.": "강한 농장은 강한 파트너십에서 시작됩니다",
       "We bring together our Korean head office, technology suppliers, institutions and growers into one dependable network.":
         "한국 본사, 기술 공급업체, 기관, 농가를 하나의 신뢰할 수 있는 네트워크로 모읍니다.",
       "Every project we deliver draws on the research, engineering and supply strength of Firmmit Korea. This direct relationship is what lets us offer Korean-grade smart-farm technology locally, with full technical backing.":
@@ -1131,29 +1125,29 @@
       "Who we work with": "협력 대상",
       "Four groups of partners make every Firmmit Uzbekistan project possible.":
         "네 그룹의 파트너가 모든 Firmmit Uzbekistan 프로젝트를 가능하게 합니다.",
-      "Firmmit Korea — R&D, engineering and equipment supply.": "Firmmit Korea — R&D, 엔지니어링, 장비 공급.",
+      "Firmmit Korea — R&D, engineering and equipment supply.": "Firmmit Korea — R&D, 엔지니어링, 장비 공급",
       "Technology Suppliers": "기술 공급업체",
-      "Greenhouse, climate, irrigation and sensor manufacturers.": "온실·기후·관수·센서 제조업체.",
-      "Institutions": "기관", "Agricultural universities, research centers and associations.": "농업 대학, 연구소, 협회.",
+      "Greenhouse, climate, irrigation and sensor manufacturers.": "온실·기후·관수·센서 제조업체",
+      "Institutions": "기관", "Agricultural universities, research centers and associations.": "농업 대학, 연구소, 협회",
       "Growers & Cooperatives": "농가 및 협동조합",
-      "Farms and cooperatives operating our facilities on the ground.": "현장에서 우리 시설을 운영하는 농장과 협동조합.",
+      "Farms and cooperatives operating our facilities on the ground.": "현장에서 우리 시설을 운영하는 농장과 협동조합",
       "A growing family of partners": "성장하는 파트너 가족",
       "Our partner network is expanding. Partner organisations will be listed here as agreements are confirmed.":
         "파트너 네트워크가 확장되고 있습니다. 협약이 확정되는 대로 파트너 조직이 여기에 표시됩니다.",
       "Partner logos will appear here soon.": "파트너 로고가 곧 여기에 표시됩니다.",
-      "Become a Firmmit partner.": "Firmmit 파트너가 되세요.",
+      "Become a Firmmit partner.": "Firmmit 파트너가 되세요",
       "Supplier, institution or grower — if you're building the future of regional agriculture, let's talk.":
         "공급업체·기관·농가 — 지역 농업의 미래를 만들고 계신다면, 이야기합시다.",
       "Partner with us": "파트너 되기",
       /* certificates */
-      "Quality you can verify, not just trust.": "믿는 것을 넘어 검증할 수 있는 품질.",
+      "Quality you can verify, not just trust.": "믿음을 넘어 검증할 수 있는 품질",
       "Our systems, processes and trade operations are held to recognized standards — because reliable food production demands it.":
         "우리의 시스템·프로세스·교역 운영은 공인 표준을 준수합니다 — 신뢰할 수 있는 식량 생산이 이를 요구하기 때문입니다.",
-      "Certifications behind every project.": "모든 프로젝트 뒤의 인증.",
+      "Certifications behind every project.": "모든 프로젝트를 뒷받침하는 인증",
       "Certification documents are being compiled and will be published here. Verified certificates are available to clients and partners on request.":
         "인증 서류를 취합 중이며 여기에 게시될 예정입니다. 검증된 인증서는 고객과 파트너에게 요청 시 제공됩니다.",
       "Certificate": "인증서", "Coming soon": "준비 중",
-      "Standards that protect your harvest.": "당신의 수확을 보호하는 표준.",
+      "Standards that protect your harvest.": "당신의 수확을 지키는 표준",
       "Certification isn't paperwork to us — it's how we guarantee that a system installed in Tashkent performs like one engineered in Seoul, and that produce leaving a Firmmit facility is safe and traceable.":
         "인증은 우리에게 서류 작업이 아니라 — 타슈켄트에 설치된 시스템이 서울에서 설계된 것처럼 작동하고, Firmmit 시설에서 나가는 농산물이 안전하고 추적 가능함을 보장하는 방법입니다.",
       "Request certificate documents": "인증 서류 요청",
@@ -1162,9 +1156,9 @@
         "조달 절차에 필요한 인증서와 사양을 제공합니다.",
       "Contact us": "문의하기", "Contact us →": "문의하기 →",
       /* news */
-      "What's growing at Firmmit Uzbekistan.": "Firmmit Uzbekistan의 소식.",
+      "What's growing at Firmmit Uzbekistan.": "Firmmit Uzbekistan의 새로운 소식",
       "Project milestones, technology insights and stories from the field as we bring smart farming to the region.":
-        "지역에 스마트팜을 도입하며 전하는 프로젝트 이정표, 기술 인사이트, 현장 이야기.",
+        "지역에 스마트팜을 도입하며 전하는 프로젝트 이정표, 기술 인사이트, 현장 이야기",
       "Featured": "주요 소식",
       "Firmmit Uzbekistan opens as the regional branch of Firmmit Korea": "Firmmit Uzbekistan, Firmmit Korea 지역 지사로 개소",
       "Our new office brings Korean smart-farm technology, engineering and agri-trade directly to growers in Uzbekistan — with local specialists and full head-office support.":
@@ -1193,7 +1187,7 @@
       "Want to feature your project?": "당신의 프로젝트를 소개하고 싶으신가요?",
       "If you're growing with Firmmit, we'd love to share your story.": "Firmmit과 함께 성장하고 계신다면, 당신의 이야기를 전하고 싶습니다.",
       /* contact */
-      "Let's build your smart farm together.": "당신의 스마트팜을 함께 만들어요.",
+      "Let's build your smart farm together.": "당신의 스마트팜을 함께 만들어 갑니다",
       "Tell us about your land, crop and goals. Our team will get back to you with clear next steps — no obligation.":
         "귀하의 토지·작물·목표를 알려주세요. 우리 팀이 명확한 다음 단계와 함께 연락드립니다 — 부담 없이.",
       "Office": "사무소", "Email": "이메일", "Phone": "전화", "Business hours": "영업 시간",
@@ -1952,7 +1946,7 @@
   var origPH = new WeakMap();     // input/textarea -> original placeholder
   var richEls = [];
   var cached = false;
-  var current = 'en';
+  var current = 'uz';
 
   var norm = function (s) { return s.replace(/\s+/g, ' ').trim(); };
 
@@ -2021,6 +2015,21 @@
     n.nodeValue = lead + v + trail;
   }
 
+  // Titles never end in a period — in ANY language. After each translation we
+  // strip a single trailing period from headings (never an ellipsis, never body text).
+  var HEADING_SEL = '.hero-title, .page-hero h1, .hero h1, .section-title, .cta-band h2, .phi-intro-head h2, .phi-label h3';
+  function stripHeadingPeriods() {
+    document.querySelectorAll(HEADING_SEL).forEach(function (el) {
+      var w = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null);
+      var last = null, n;
+      while ((n = w.nextNode())) { if (n.nodeValue && n.nodeValue.trim()) last = n; }
+      if (!last) return;
+      if (/([^.\s])\.(\s*)$/.test(last.nodeValue)) {
+        last.nodeValue = last.nodeValue.replace(/\.(\s*)$/, '$1');
+      }
+    });
+  }
+
   function apply(lang) {
     if (LANGS.indexOf(lang) < 0) lang = 'en';
     if (!cached) cacheOriginals();
@@ -2054,6 +2063,8 @@
     document.querySelectorAll('[data-field="address"]').forEach(function (el) { el.textContent = ADDRESS[lang] || ADDRESS.en; });
     document.querySelectorAll('[data-field="legalname"]').forEach(function (el) { el.textContent = LEGALNAME[lang] || LEGALNAME.en; });
 
+    stripHeadingPeriods();
+
     document.documentElement.setAttribute('lang', lang);
     try { localStorage.setItem(STORE, lang); } catch (e) {}
 
@@ -2073,7 +2084,7 @@
      ============================================================ */
   function brandMarkup() {
     return '<a class="brand no-i18n" href="' + hrefFor('home') + '" aria-label="Firmmit Uzbekistan home">' +
-      '<span class="co">FIRMMIT<span class="dot">.</span></span><span class="region">UZ</span></a>';
+      '<span class="co">FIRMMIT<span class="dot">.</span></span></a>';
   }
 
   function buildHeader(active) {
@@ -2088,7 +2099,7 @@
       '<div class="wrap">' + brandMarkup() +
         '<nav class="nav">' + links + '</nav>' +
         '<div class="header-cta">' +
-          '<a class="nav-catalog" href="' + catalogHref(current) + '" target="_blank" rel="noopener" aria-label="Product catalog (PDF)">' + iconCatalog() + '<span>Catalog</span></a>' +
+          '<a class="nav-catalog" href="' + hrefFor('catalog') + '" data-key="catalog" aria-label="Online store — product catalog">' + iconCatalog() + '<span>Catalog</span></a>' +
           '<div class="lang-switch no-i18n" role="group" aria-label="Language">' +
             '<button data-lang="uz">UZ</button><button data-lang="ru">RU</button><button data-lang="en">EN</button><button data-lang="ko">한</button>' +
           '</div>' +
@@ -2109,7 +2120,7 @@
           '<button data-lang="uz">UZ</button><button data-lang="ru">RU</button><button data-lang="en">EN</button><button data-lang="ko">한</button>' +
         '</div>' + dLinks +
         '<a href="' + hrefFor('contact') + '" data-key="contact"' + contactActive + '>Contact</a>' +
-        '<a class="drawer-catalog" href="' + catalogHref(current) + '" target="_blank" rel="noopener">' + iconCatalog() + '<span>Catalog (PDF)</span></a>' +
+        '<a class="drawer-catalog" href="' + hrefFor('catalog') + '" data-key="catalog">' + iconCatalog() + '<span>Catalog</span></a>' +
       '</div>';
 
     document.body.prepend(drawer);
@@ -2127,12 +2138,6 @@
 
     document.querySelectorAll('.lang-switch button, .drawer-lang button').forEach(function (b) {
       b.addEventListener('click', function () { apply(b.getAttribute('data-lang')); if (drawer.classList.contains('open')) drawer.classList.remove('open'); });
-    });
-
-    // catalog link follows the selected language
-    document.addEventListener('firmmit:lang', function (e) {
-      var href = catalogHref(e.detail);
-      document.querySelectorAll('.nav-catalog, .drawer-catalog').forEach(function (a) { a.setAttribute('href', href); });
     });
   }
 
@@ -2162,15 +2167,13 @@
           '<span style="font-size:0.86rem;">Smart-farm headquarters · Seoul, Republic of Korea</span><br>' +
           '<a class="no-i18n" href="' + KR_URL + '" target="_blank" rel="noopener">www.firmmit.kr ↗</a>' +
         '</div>' +
-        '<div class="footer-legal no-i18n">' +
-          '<strong>' + LEGALNAME.en + '</strong>' +
-          ' &nbsp;|&nbsp; Bank: ' + CO.bank + ' · MFO ' + CO.mfo + ' · Acc. ' + CO.account +
-        '</div>' +
       '</div>' +
       '<div class="footer-bottom">' +
         '<span>© 2026 Firmmit Uzbekistan. A branch of Firmmit Korea. All rights reserved.</span>' +
         '<div class="socials no-i18n">' +
           '<a href="' + KR_URL + '" target="_blank" rel="noopener" aria-label="Website">' + iconGlobe() + '</a>' +
+          '<a href="' + TG_URL + '" target="_blank" rel="noopener" aria-label="Telegram">' + iconTelegram() + '</a>' +
+          '<a href="' + IG_URL + '" target="_blank" rel="noopener" aria-label="Instagram">' + iconInstagram() + '</a>' +
           '<a href="mailto:' + CO.email + '" aria-label="Email">' + iconMail() + '</a>' +
           '<a href="' + hrefFor('contact') + '" aria-label="Contact">' + iconPin() + '</a>' +
         '</div>' +
@@ -2179,6 +2182,8 @@
   }
 
   function iconGlobe() { return '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 2.5 15 0 18M12 3c-2.5 2.5-2.5 15 0 18"/></svg>'; }
+  function iconTelegram() { return '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71l-4.14-3.05-1.99 1.93c-.23.23-.42.42-.83.42z"/></svg>'; }
+  function iconInstagram() { return '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.15" fill="currentColor" stroke="none"/></svg>'; }
   function iconMail() { return '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>'; }
   function iconPin() { return '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s7-6.4 7-11a7 7 0 1 0-14 0c0 4.6 7 11 7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg>'; }
   function iconPhone() { return '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2 4.2 2 2 0 0 1 4 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.4 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7A2 2 0 0 1 22 16.9Z"/></svg>'; }
@@ -2201,6 +2206,26 @@
       en.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
     }, { threshold: 0.14 });
     els.forEach(function (e) { io.observe(e); });
+  }
+
+  // Bo'lim ko'rinishga kirganda "shake" (ozgina yuqoriga siljib joyiga tushadi). Barcha sahifada.
+  function sectionShakes() {
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (!('IntersectionObserver' in window)) return;
+    var secs = document.querySelectorAll('section:not(.hero):not(.reveal-back):not(.page-hero)');
+    var io = new IntersectionObserver(function (en) {
+      en.forEach(function (e) {
+        var t = e.target;
+        if (e.isIntersecting) {
+          t.classList.remove('shk');
+          void t.offsetWidth;      // reflow — animatsiya har safar qaytadan o'ynaydi
+          t.classList.add('shk');
+        } else {
+          t.classList.remove('shk');   // chiqib ketganda tozalanadi -> qayta kirganda yana o'ynaydi
+        }
+      });
+    }, { threshold: 0.2, rootMargin: '0px 0px -8% 0px' });
+    secs.forEach(function (s) { io.observe(s); });
   }
 
   function counters() {
@@ -2268,12 +2293,11 @@
         var inFooter = !!brand.closest('.site-footer');
         brand.classList.add('has-logo');
         if (inFooter) {
-          brand.innerHTML = '<img class="logo-img" src="' + light + '" alt="Firmmit Uzbekistan"><span class="region">UZ</span>';
+          brand.innerHTML = '<img class="logo-img" src="' + light + '" alt="Firmmit Uzbekistan">';
         } else {
           brand.innerHTML =
             '<img class="logo-img logo-light" src="' + light + '" alt="Firmmit Uzbekistan">' +
-            '<img class="logo-img logo-dark" src="' + dark + '" alt="Firmmit Uzbekistan">' +
-            '<span class="region">UZ</span>';
+            '<img class="logo-img logo-dark" src="' + dark + '" alt="Firmmit Uzbekistan">';
         }
       });
     }
@@ -2313,7 +2337,7 @@
 
   document.addEventListener('DOMContentLoaded', function () {
     SPA = document.querySelectorAll('section.route').length > 0;
-    setFavicon();
+    /* setFavicon() olib tashlandi — rasmiy /assets/favicon.png (HTML link) ishlatiladi */
     var active = SPA ? currentKey() : (document.body.getAttribute('data-page') || '');
     buildHeader(active);
     buildFooter();
@@ -2321,10 +2345,11 @@
     loadLogo();
     playVideos();
     reveals();
+    sectionShakes();
     counters();
     contactForm();
-    var saved = 'en';
-    try { saved = localStorage.getItem(STORE) || 'en'; } catch (e) {}
+    var saved = 'uz';
+    try { saved = localStorage.getItem(STORE) || 'uz'; } catch (e) {}
     apply(saved);
     if (SPA) {
       showRoute(currentKey());

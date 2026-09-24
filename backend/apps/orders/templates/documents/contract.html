@@ -1,0 +1,152 @@
+{% load humanize %}<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<style>
+  @page {
+    size: A4 portrait;
+    margin: 18mm 16mm 22mm 16mm;
+    @bottom-center {
+      content: "«FIRMMIT GLOBAL» МЧЖ ХК  ·  {{ seller.seller_address }}  ·  {{ seller.seller_phone }}  ·  саҳифа " counter(page) " / " counter(pages);
+      font-size: 7pt;
+      color: #666;
+    }
+  }
+  body { font-family: "DejaVu Sans", sans-serif; font-size: 9.5pt; color: #111; line-height: 1.5; }
+  .brand { color: #3365FF; font-weight: bold; }
+  .logo { text-align: right; font-size: 20pt; letter-spacing: 1px; }
+  .logo .dot { color: #3365FF; }
+  h1 { text-align: center; font-size: 13pt; margin: 6px 0 2px; }
+  .sub { text-align: center; font-size: 9pt; color: #444; margin-bottom: 14px; }
+  .row { display: flex; justify-content: space-between; font-size: 9pt; }
+  .section-title { color: #3365FF; font-weight: bold; margin: 12px 0 4px; font-size: 10pt; }
+  p { margin: 4px 0; text-align: justify; }
+  table { width: 100%; border-collapse: collapse; margin-top: 6px; font-size: 8.5pt; }
+  th { background: #3365FF; color: #fff; padding: 5px 4px; border: 1px solid #3365FF; }
+  td { padding: 4px; border: 1px solid #bbb; }
+  td.num { text-align: right; }
+  td.c { text-align: center; }
+  .totals { margin-top: 6px; font-size: 9pt; }
+  .totals .line { display: flex; justify-content: space-between; }
+  .totals .grand { font-weight: bold; color: #3365FF; }
+  .words { font-style: italic; margin-top: 4px; }
+  .sign { margin-top: 24px; }
+  .sign td { border: none; vertical-align: top; width: 50%; padding: 4px 8px; }
+  .muhr { color: #999; font-size: 8pt; }
+  .appendix { page-break-before: always; }
+</style>
+</head>
+<body>
+  <div class="logo"><span class="brand">FIRMMIT</span><span class="dot">.</span></div>
+
+  <h1>ОЛДИ-СОТДИ ШАРТНОМАСИ № {{ order.contract_number }}</h1>
+  <div class="sub">Тошкент шаҳри &nbsp;·&nbsp; {{ order.contract_date|date:"d.m.Y" }} й.</div>
+
+  <p>
+    Қуйида «Сотувчи» деб юритилувчи <b>{{ seller.seller_name_uz_cyrillic }}</b> номидан
+    Устав асосида фаолият юритувчи {{ seller.seller_director_position }}
+    {{ seller.seller_director }} бир томондан, ва «Харидор» деб юритилувчи
+    <b>{{ company.name }}</b> номидан {{ company.director_position }}
+    {{ company.director_name }} иккинчи томондан, қуйидагилар ҳақида мазкур
+    шартномани туздилар:
+  </p>
+
+  <div class="section-title">1. Шартнома предмети</div>
+  <p>Сотувчи товарни, Ҳаридор эса ушбу шартноманинг №1-иловасидаги
+     спецификацияга мувофиқ товарни қабул қилиб олиш ва тўлашни ўз зиммасига олади.</p>
+
+  <div class="section-title">2. Шартнома суммаси</div>
+  <p>Шартнома суммаси <b>{{ order.total_amount|floatformat:0|intcomma }} сўм</b>ни
+     ({{ total_words }}), шу жумладан ҚҚС 12% —
+     {{ order.vat_amount|floatformat:0|intcomma }} сўмни ташкил этади.</p>
+
+  <div class="section-title">3. Тўлов тартиби</div>
+  <p>Тўлов Сотувчи томонидан тақдим этилган ҳисоб асосида, Сотувчининг
+     ҳисобрақамига 100% олдиндан пул ўтказиш йўли билан амалга оширилади.</p>
+
+  <div class="section-title">4. Етказиб бериш</div>
+  <p>Товар тўлов амалга оширилгандан сўнг келишилган муддатда етказиб берилади.</p>
+
+  <div class="section-title">5. Томонлар жавобгарлиги</div>
+  <p>Томонлар мажбуриятларни бажармаган тақдирда Ўзбекистон Республикаси
+     қонунчилигига мувофиқ жавобгар бўладилар.</p>
+
+  <div class="section-title">6. Форс-мажор</div>
+  <p>Енгиб бўлмас куч ҳолатлари юзага келганда томонлар жавобгарликдан озод этилади.</p>
+
+  <div class="section-title">7. Низоларни ҳал этиш</div>
+  <p>Низолар музокаралар йўли билан, келишувга эришилмаса
+     {{ seller.court_name }} орқали ҳал этилади.</p>
+
+  <div class="section-title">8. Амал қилиш муддати</div>
+  <p>Шартнома имзоланган кундан бошлаб томонлар мажбуриятларини тўлиқ
+     бажаргунга қадар амал қилади.</p>
+
+  <div class="section-title">9. Томонларнинг реквизитлари ва имзолари</div>
+  <table class="sign">
+    <tr>
+      <td>
+        <b>СОТУВЧИ:</b><br>
+        {{ seller.seller_name_uz_cyrillic }}<br>
+        Манзил: {{ seller.seller_address }}<br>
+        СТИР: {{ seller.seller_inn }}<br>
+        Х/Р: {{ seller.seller_account }}<br>
+        Банк: {{ seller.seller_bank }}<br>
+        МФО: {{ seller.seller_mfo }}<br>
+        Тел: {{ seller.seller_phone }}<br><br>
+        {{ seller.seller_director_position }} ___________ {{ seller.seller_director }}<br>
+        <span class="muhr">М.Ў.</span>
+      </td>
+      <td>
+        <b>ХАРИДОР:</b><br>
+        {{ company.name }}<br>
+        Манзил: {{ company.legal_address }}<br>
+        СТИР: {{ company.inn }}<br>
+        Х/Р: {{ company.bank_account }}<br>
+        Банк: {{ company.bank_name }}<br>
+        МФО: {{ company.mfo }}<br>
+        Тел: {{ company.phone }}<br><br>
+        {{ company.director_position }} ___________ {{ company.director_name }}<br>
+        <span class="muhr">М.Ў.</span>
+      </td>
+    </tr>
+  </table>
+
+  <div class="appendix">
+    <div class="logo"><span class="brand">FIRMMIT</span><span class="dot">.</span></div>
+    <h1>№1-ИЛОВА — ТОВАРЛАР СПЕЦИФИКАЦИЯСИ</h1>
+    <div class="sub">Шартнома № {{ order.contract_number }} гa &nbsp;·&nbsp; {{ order.contract_date|date:"d.m.Y" }} й.</div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>№</th><th>Товар номи</th><th>Артикул</th><th>Бирлик</th><th>Миқдори</th>
+          <th>Нархи (ҚҚСсиз)</th><th>Суммаси</th><th>ҚҚС 12%</th><th>Жами</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in items %}
+        <tr>
+          <td class="c">{{ forloop.counter }}</td>
+          <td>{{ item.product_name }}</td>
+          <td class="c">{{ item.product_sku }}</td>
+          <td class="c">{{ item.unit }}</td>
+          <td class="c">{{ item.quantity }}</td>
+          <td class="num">{{ item.price|floatformat:0|intcomma }}</td>
+          <td class="num">{{ item.subtotal|floatformat:0|intcomma }}</td>
+          <td class="num">{{ item.vat_amount|floatformat:0|intcomma }}</td>
+          <td class="num">{{ item.total|floatformat:0|intcomma }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <div class="totals">
+      <div class="line"><span>Жами (ҚҚСсиз):</span><span>{{ order.amount_without_vat|floatformat:0|intcomma }} сўм</span></div>
+      <div class="line"><span>ҚҚС 12%:</span><span>{{ order.vat_amount|floatformat:0|intcomma }} сўм</span></div>
+      <div class="line grand"><span>Умумий сумма:</span><span>{{ order.total_amount|floatformat:0|intcomma }} сўм</span></div>
+      <div class="words">Сумма сўз билан: {{ total_words }}.</div>
+    </div>
+  </div>
+</body>
+</html>

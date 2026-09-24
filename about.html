@@ -3,14 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preload" as="image" href="assets/photos/about-hero.jpg" fetchpriority="high">
 <title>About Us — Firmmit Uzbekistan</title>
 <meta name="description" content="Firmmit Uzbekistan is the regional branch of Firmmit Korea, delivering smart-farm technology, greenhouses and agronomy services across Uzbekistan.">
 <link rel="stylesheet" href="css/style.css">
+<link rel="icon" type="image/png" href="/assets/favicon.png?v=2">
 </head>
 <body data-page="about">
 
 <section class="hero">
-  <div class="hero-bg media-farm photo" data-photo="assets/photos/about-hero.jpg"><div class="rows"></div></div>
+  <div class="hero-bg media-farm photo has-photo" data-photo="assets/photos/about-hero.jpg" style="background-image:url('assets/photos/about-hero.jpg');background-size:cover;background-position:center center;"><div class="rows"></div></div>
   <div class="wrap">
     <div class="hero-inner">
       <span class="eyebrow reveal">About Us</span>
@@ -119,5 +121,6 @@ Results — we turn every technological solution into real, measurable economic 
 </section>
 
 <script src="js/site.js"></script>
+<script defer src="js/interactive.js"></script>
 </body>
 </html>

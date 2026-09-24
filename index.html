@@ -3,15 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preload" as="image" href="assets/photos/hero-poster.jpg" fetchpriority="high">
 <title>Firmmit Uzbekistan — Smart-Farm Technology & Agri-Trade</title>
 <meta name="description" content="Firmmit Uzbekistan brings Korean smart-farm technology to Uzbekistan: greenhouses, controlled-environment agriculture, agricultural equipment and Korea–Uzbekistan agri-trade.">
 <link rel="stylesheet" href="css/style.css">
+<link rel="icon" type="image/png" href="/assets/favicon.png?v=2">
 </head>
 <body data-page="home">
 
 <!-- ============ HERO ============ -->
 <section class="hero">
-  <div class="hero-bg media-farm photo" data-photo="assets/photos/hero.jpg"><div class="rows"></div></div>
+  <div class="hero-bg hero-video">
+    <video class="hero-vid" autoplay muted loop playsinline preload="none" poster="assets/photos/hero-poster.jpg" data-src="assets/video/hero.mp4?v=4"></video>
+    <div class="rows"></div>
+  </div>
   <div class="wrap">
     <div class="hero-inner">
       <span class="eyebrow reveal">Firmmit Uzbekistan · Smart Agriculture</span>
@@ -49,11 +54,8 @@
         </ul>
         <a href="about.html" class="btn btn-outline reveal d3" style="margin-top:26px;">About Firmmit Uzbekistan <span class="arrow">→</span></a>
       </div>
-      <div class="split-media video-media reveal d2">
-        <video autoplay muted loop playsinline preload="metadata" poster="assets/photos/home-intro.jpg">
-          <source src="assets/video/home-intro.mp4" type="video/mp4">
-        </video>
-        <span class="video-badge">▶ LIVE</span>
+      <div class="split-media photo-media reveal d2">
+        <img src="assets/photos/home-intro.jpg?v=2" alt="Firmmit smart greenhouse interior" loading="lazy">
       </div>
     </div>
   </div>
@@ -125,5 +127,29 @@
 </section>
 
 <script src="js/site.js"></script>
+<script defer src="js/interactive.js"></script>
+<script>
+/* Hero video: desktop va mobilda o'ynaydi (reduced-motion'da poster rasm qoladi) */
+(function () {
+  var v = document.querySelector('.hero-vid[data-src]');
+  if (!v) return;
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce) return;
+  var s = document.createElement('source');
+  s.src = v.getAttribute('data-src');
+  s.type = 'video/mp4';
+  v.appendChild(s);
+  v.muted = true;            // muted — mobil autoplay uchun majburiy
+  v.setAttribute('muted', '');
+  v.playsInline = true;
+  v.load();
+  function tryPlay() { var p = v.play(); if (p && p.catch) p.catch(function () {}); }
+  tryPlay();
+  // Zaxira: ba'zi mobil brauzerlarda birinchi teginish/skrollda ishga tushadi
+  ['touchstart', 'scroll', 'click'].forEach(function (ev) {
+    document.addEventListener(ev, function h() { tryPlay(); }, { once: true, passive: true });
+  });
+})();
+</script>
 </body>
 </html>
