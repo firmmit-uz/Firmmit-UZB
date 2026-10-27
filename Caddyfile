@@ -22,19 +22,38 @@
 		file_server
 	}
 
-	# Qolgan hammasi — frontend (statik sayt)
-	handle {
+	# ================= VAQTINCHA: SAYT TO'XTATILGAN ("Tayyorgarlik ko'rilmoqda") =================
+	# Barcha sahifalar maintenance/index.html ga yo'naltiriladi (HTTP 503 = vaqtincha yopiq,
+	# qidiruv tizimlari saytni o'chirib yubormaydi). /api, /admin, /static, /media ishlayveradi.
+	# SAYTNI QAYTA OCHISH: quyidagi ikki "handle" blokini o'chirib, pastdagi asl blokdan
+	# "#" belgilarini olib tashlang, so'ng serverda:  docker exec firmmit-uzb-caddy-1 caddy reload --config /etc/caddy/Caddyfile
+	handle /maintenance/* {
 		root * /srv/site
-
-		# HTML/JS/CSS — brauzer har safar serverdan yangiligini tekshirsin.
-		# (ETag orqali: o'zgarmagan bo'lsa 304, o'zgargan bo'lsa yangi versiya.)
-		# Shu tufayli sayt yangilangач foydalanuvchi darhol ko'radi, kesh ilashib qolmaydi.
-		@revalidate {
-			path *.html *.js *.css
-		}
-		header @revalidate Cache-Control "no-cache"
-
-		try_files {path} {path}/index.html {path}.html /index.html
 		file_server
 	}
+	handle {
+		root * /srv/site
+		header Cache-Control "no-store"
+		header Retry-After "86400"
+		rewrite * /maintenance/index.html
+		file_server {
+			status 503
+		}
+	}
+
+	# --- Asl frontend bloki (sayt ochiq bo'lganda) ---
+	# handle {
+	# 	root * /srv/site
+	#
+	# 	# HTML/JS/CSS — brauzer har safar serverdan yangiligini tekshirsin.
+	# 	# (ETag orqali: o'zgarmagan bo'lsa 304, o'zgargan bo'lsa yangi versiya.)
+	# 	# Shu tufayli sayt yangilangач foydalanuvchi darhol ko'radi, kesh ilashib qolmaydi.
+	# 	@revalidate {
+	# 		path *.html *.js *.css
+	# 	}
+	# 	header @revalidate Cache-Control "no-cache"
+	#
+	# 	try_files {path} {path}/index.html {path}.html /index.html
+	# 	file_server
+	# }
 }

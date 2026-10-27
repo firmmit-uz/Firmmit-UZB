@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>FIRMMIT | Tayyorgarlik ko'rilmoqda</title>
+<link rel="icon" type="image/png" href="/maintenance/favicon.png">
+<style>
+  /* Vaqtincha to'xtatish sahifasi: poster butunligicha (kesilmasdan) ko'rinadi,
+     atrofi o'sha rasmning xiralashtirilgan nusxasi bilan to'ldiriladi. */
+  html, body { margin: 0; height: 100%; }
+  body { background: #0f1218; display: grid; place-items: center; overflow: hidden; }
+  .bg { position: fixed; inset: -60px; background: url('/maintenance/poster.webp') center / cover no-repeat;
+        filter: blur(30px) brightness(0.5); }
+  .frame { position: relative; width: min(100vw, 177.78vh); aspect-ratio: 16 / 9; }
+  .frame img { display: block; width: 100%; height: 100%; }
+  /* rasmdagi telefon va email qatorlari ustidagi bosiladigan joylar */
+  .hit { position: absolute; left: 26%; width: 48%; height: 9%; border-radius: 12px; }
+  .hit:focus-visible { outline: 3px solid #fff; outline-offset: 2px; }
+  .tel { top: 46.3%; }
+  .mail { top: 56.8%; }
+</style>
+</head>
+<body>
+<div class="bg" aria-hidden="true"></div>
+<main class="frame">
+  <img src="/maintenance/poster.webp" width="1280" height="720"
+       alt="FIRMMIT, Korea No. 1 Smart Farm Company. Sayt tayyorlanmoqda. Telefon: +998 90 063 23 15. Email: global@firmmit.com">
+  <a class="hit tel" href="tel:+998900632315" aria-label="Qo'ng'iroq qilish: +998 90 063 23 15"></a>
+  <a class="hit mail" href="mailto:global@firmmit.com" aria-label="Email yozish: global@firmmit.com"></a>
+</main>
+</body>
+</html>
